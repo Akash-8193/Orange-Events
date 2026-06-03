@@ -140,8 +140,40 @@ export function ServicesScene() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} id="services" className="relative w-full h-screen bg-background overflow-hidden">
-      {services.map((service, index) => (
+    <>
+      <section className="bg-white pt-32 pb-24 relative overflow-hidden flex flex-col items-center border-b border-slate-100">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        {/* Massive Watermark Text - Light Brown/Black */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden">
+          <span className="text-[12rem] md:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+            SERVICES
+          </span>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
+          {/* Animated Vertical Line */}
+          <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-primary/30 to-primary mb-8" />
+          
+          <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold flex items-center gap-4">
+            <span className="w-8 h-[1px] bg-primary/30" />
+            Our Services
+            <span className="w-8 h-[1px] bg-primary/30" />
+          </p>
+          
+          <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-[#0a1128] leading-[1.1] mb-8">
+            Experiences we <span className="italic text-primary font-light">craft</span>
+          </h2>
+          
+          <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+            From grand corporate galas to intimate luxury weddings, we bring a blend of meticulous planning, bold creativity, and flawless execution to every moment.
+          </p>
+        </div>
+      </section>
+
+      <div ref={containerRef} id="services" className="relative w-full h-screen bg-background overflow-hidden">
+        {services.map((service, index) => (
         <section 
           key={service.id} 
           className="service-section absolute top-0 left-0 w-full h-full overflow-hidden cursor-pointer group"
@@ -187,6 +219,7 @@ export function ServicesScene() {
           </div>
         </section>
       ))}
-    </div>
+      </div>
+    </>
   );
 }
