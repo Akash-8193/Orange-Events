@@ -155,7 +155,7 @@ export function ContactScene() {
       </div>
 
       {/* Footer strip */}
-      <div className="relative z-10 w-full border-t border-white/10 px-6 py-6">
+      <div className="relative z-10 w-full border-t border-white/10 px-6 py-6 mt-auto">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-white/30 text-xs tracking-widest uppercase">
           <span>© {new Date().getFullYear()} Orange Events &amp; Conferences Pvt. Ltd.</span>
           <span>www.orangeevents.in</span>
