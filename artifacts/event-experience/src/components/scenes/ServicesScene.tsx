@@ -67,130 +67,126 @@ export function ServicesScene() {
 
     const sections = gsap.utils.toArray(".service-section");
 
-    sections.forEach((section: any) => {
-      const wrapper = section.querySelector(".service-wrapper");
+    // Master Timeline for pinning and stacking
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: `+=${sections.length * 150}%`, // extend scroll length to allow for pauses
+        pin: true,
+        scrub: 1, // Smooth cinematic scrub
+      }
+    });
+
+    sections.forEach((section: any, i) => {
       const img = section.querySelector(".service-bg-img");
       const contentElements = section.querySelectorAll(".reveal-text");
 
-      // 1. Bottom-to-top reveal of the whole panel wrapper
-      gsap.fromTo(wrapper,
-        { y: "25vh", scale: 1.05, opacity: 0 },
-        {
-          y: "0vh", scale: 1, opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 95%", // Start when the top of the section hits 95% of the viewport (bottom)
-            end: "top 25%",   // End when it's mostly on screen
-            scrub: true,
-          }
-        }
-      );
-
-      // 2. Image parallax (moves opposite to scroll for depth)
-      if (img) {
-        gsap.fromTo(img,
-          { y: "-15%" },
-          {
-            y: "15%",
-            ease: "none",
+      // Set initial states
+      if (i > 0) {
+        gsap.set(section, { yPercent: 120 }); // start fully below viewport, added 20% buffer to prevent bottom bleed/bounce visibility
+      } else {
+        // Initial intro animation for the very first section (Corporate Event)
+        // This is not in the timeline because it should play once on load/entry.
+        gsap.fromTo(contentElements, 
+          { y: 50, opacity: 0 }, 
+          { 
+            y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: "power3.out",
             scrollTrigger: {
-              trigger: section,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
+              trigger: containerRef.current,
+              start: "top 70%",
             }
           }
         );
       }
 
-      // 3. Staggered text reveal (bottom-to-top for texts)
-      if (contentElements.length) {
-        gsap.fromTo(contentElements,
-          { y: 60, opacity: 0 },
+      if (i > 0) {
+        // 1. Pause: Add a dummy tween to create a "reading phase" where the user scrolls but the previous section stays fully visible.
+        tl.to({}, { duration: 0.8 }); // The higher the duration, the longer the pause
+
+        // 2. Slide Up: The next panel slides up over the current one from a safe distance (120%)
+        tl.fromTo(section, 
+          { yPercent: 120 },
           {
-            y: 0, opacity: 1,
-            stagger: 0.1,
+            yPercent: 0,
+            duration: 1,
             ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 75%",
-              end: "top 35%",
-              scrub: true,
-            }
           }
         );
+
+        // 3. Image Parallax: animate the image inside the panel using the timeline
+        if (img) {
+          tl.fromTo(img, 
+            { yPercent: -15 }, 
+            { yPercent: 0, duration: 1, ease: "none" }, 
+            "<" // sync exactly with the panel sliding up
+          );
+        }
+
+        // 4. Text reveal: fade and slide up during the transition
+        if (contentElements.length) {
+          tl.fromTo(contentElements,
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.05, duration: 0.8, ease: "none" },
+            "<0.2" // start 20% into the slide up
+          );
+        }
       }
     });
+
+    // Add a final pause at the end of the timeline so the last section stays pinned for a moment
+    tl.to({}, { duration: 0.8 });
 
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} id="services" className="w-full bg-background flex flex-col py-24 gap-16 md:gap-32">
-      
-      {/* Intro Header */}
-      <div className="px-8 md:px-24">
-        <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-primary font-bold mb-4">
-          What we do
-        </p>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-foreground">
-          Our Services
-        </h2>
-      </div>
+    <div ref={containerRef} id="services" className="relative w-full h-screen bg-background overflow-hidden">
+      {services.map((service, index) => (
+        <section 
+          key={service.id} 
+          className="service-section absolute top-0 left-0 w-full h-full overflow-hidden cursor-pointer group"
+          style={{ zIndex: index }} // Ensure newer sections stack on top
+          onClick={() => setLocation(`/service/${service.id}`)}
+        >
+          {/* Parallax Image Wrapper */}
+          <div className="absolute top-0 left-0 w-full h-[120%] pointer-events-none">
+            <img
+              src={service.image}
+              alt={service.title}
+              className="service-bg-img w-full h-full object-cover brightness-[0.7] group-hover:brightness-[0.85] transition-all duration-700"
+            />
+          </div>
 
-      {/* Services List */}
-      <div className="flex flex-col w-full px-4 md:px-8 lg:px-12 gap-8 md:gap-16">
-        {services.map((service, index) => (
-          <section 
-            key={service.id} 
-            className="service-section relative w-full h-[85vh] lg:h-[90vh]"
-          >
-            {/* The wrapper that receives the GSAP entrance animation */}
-            <div 
-              className="service-wrapper relative w-full h-full rounded-[2rem] overflow-hidden cursor-pointer group"
-              onClick={() => setLocation(`/service/${service.id}`)}
-            >
-              {/* Parallax Image */}
-              <div className="absolute inset-0 w-full h-[130%] -top-[15%] pointer-events-none">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="service-bg-img w-full h-full object-cover brightness-[0.7] group-hover:brightness-[0.9] transition-all duration-700"
-                />
-              </div>
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/50 pointer-events-none transition-opacity duration-700 group-hover:opacity-80" />
 
-              {/* Overlays for text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/50 pointer-events-none transition-opacity duration-700 group-hover:opacity-80" />
-
-              {/* Text Content Container */}
-              <div className="relative z-10 w-full max-w-7xl mx-auto h-full px-8 md:px-16 flex flex-col justify-end pb-16 md:pb-24 pointer-events-none">
-                
-                <div className="reveal-text flex items-center gap-4 mb-6">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-primary drop-shadow-md">
-                    {String(index + 1).padStart(2, '0')} / {service.tag}
-                  </span>
-                </div>
-
-                <h3 className="reveal-text text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
-                  {service.title}
-                </h3>
-                
-                <p className="reveal-text text-lg md:text-2xl text-white/80 font-light italic font-serif max-w-3xl mb-12">
-                  {service.desc}
-                </p>
-
-                <div className="reveal-text mt-4">
-                  <span className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-white/70 group-hover:text-primary transition-colors">
-                    Explore Experience
-                    <span className="w-12 h-[1px] bg-white/70 group-hover:bg-primary transition-all group-hover:w-20" />
-                  </span>
-                </div>
-
-              </div>
+          {/* Content */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto h-full px-8 md:px-16 flex flex-col justify-end md:justify-center pb-24 md:pb-0 pointer-events-none">
+            
+            <div className="reveal-text flex items-center gap-4 mb-6">
+              <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-primary drop-shadow-md">
+                {String(index + 1).padStart(2, '0')} / {service.tag}
+              </span>
             </div>
-          </section>
-        ))}
-      </div>
+
+            <h3 className="reveal-text text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
+              {service.title}
+            </h3>
+            
+            <p className="reveal-text text-xl md:text-3xl text-white/80 font-light italic font-serif max-w-4xl mb-12">
+              {service.desc}
+            </p>
+
+            <div className="reveal-text mt-4">
+              <span className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-white/70 group-hover:text-primary transition-colors">
+                Explore Experience
+                <span className="w-12 h-[1px] bg-white/70 group-hover:bg-primary transition-all group-hover:w-20" />
+              </span>
+            </div>
+
+          </div>
+        </section>
+      ))}
     </div>
   );
 }
