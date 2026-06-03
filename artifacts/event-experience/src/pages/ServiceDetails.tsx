@@ -69,20 +69,21 @@ export default function ServiceDetails() {
   const service = serviceData[params.id];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Hero Header */}
-      <div className="relative h-[60vh] w-full overflow-hidden">
+      <div className="relative h-[65vh] w-full overflow-hidden">
         <img 
           src={service.image} 
           alt={service.title} 
-          className="w-full h-full object-cover brightness-75"
+          className="w-full h-full object-cover brightness-[0.65]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        {/* Dark gradient so white text ALWAYS pops */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
         
         {/* Back button */}
         <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20">
           <Link href="/">
-            <a className="flex items-center gap-2 text-white/80 hover:text-white transition-colors uppercase tracking-widest text-xs font-semibold backdrop-blur-md bg-black/20 px-4 py-2 rounded-full border border-white/10 hover:bg-black/40">
+            <a className="flex items-center gap-2 text-white/80 hover:text-white transition-colors uppercase tracking-widest text-xs font-semibold backdrop-blur-md bg-black/30 px-5 py-2.5 rounded-full border border-white/20 hover:bg-black/60">
               <ArrowLeft size={16} />
               Back to Home
             </a>
@@ -95,15 +96,15 @@ export default function ServiceDetails() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+            className="max-w-5xl"
           >
-            <p className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4">
+            <p className="text-primary font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-4 drop-shadow-md">
               Service Details
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-4" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
               {service.title}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 font-light italic font-serif">
+            <p className="text-xl md:text-3xl text-white/90 font-light italic font-serif max-w-3xl drop-shadow-lg">
               {service.tagline}
             </p>
           </motion.div>
@@ -112,15 +113,15 @@ export default function ServiceDetails() {
 
       {/* Content Section */}
       <div className="container mx-auto px-8 md:px-16 py-24">
-        <div className="max-w-3xl">
-          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed font-light">
+        <div className="max-w-4xl">
+          <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-light font-serif">
             {service.description}
           </p>
 
-          <div className="mt-16">
-            <h3 className="text-2xl font-serif mb-6">Ready to plan this event?</h3>
+          <div className="mt-20">
+            <h3 className="text-3xl font-serif mb-8 text-white">Ready to plan this event?</h3>
             <Link href="/#contact">
-              <a className="inline-block px-8 py-4 bg-primary text-primary-foreground font-semibold uppercase tracking-widest text-sm rounded-full hover:bg-white hover:text-black transition-colors">
+              <a className="inline-block px-10 py-5 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-sm rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                 Contact Us
               </a>
             </Link>
