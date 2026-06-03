@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Phone } from "lucide-react";
+import imgFaq from "../../assets/generated_images/about_corporate_1780473664041.png";
 
 const faqs = [
   {
@@ -45,21 +46,21 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.07 }}
-      className="border-b border-border/40"
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      className="border-b border-slate-200 last:border-b-0"
     >
       <button
-        className="w-full flex items-center justify-between py-7 text-left group hover-target"
+        className="w-full flex items-center justify-between py-6 text-left group"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-base md:text-lg font-serif text-foreground pr-8 group-hover:text-primary transition-colors duration-300">
-          {q}
+        <span className="text-[17px] md:text-lg font-bold text-[#0a1128] pr-8 group-hover:text-primary transition-colors duration-300">
+          {index + 1}. {q}
         </span>
-        <span className="flex-shrink-0 w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
+        <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
           {open ? (
-            <Minus className="w-4 h-4 text-primary" strokeWidth={1.5} />
+            <Minus className="w-5 h-5 text-primary font-bold" strokeWidth={3} />
           ) : (
-            <Plus className="w-4 h-4 text-primary" strokeWidth={1.5} />
+            <Plus className="w-5 h-5 text-primary font-bold" strokeWidth={3} />
           )}
         </span>
       </button>
@@ -69,10 +70,10 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-7 text-foreground/70 text-sm leading-relaxed max-w-3xl">{a}</p>
+            <p className="pb-6 pt-2 text-slate-600 text-sm md:text-[15px] leading-relaxed max-w-2xl">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -82,73 +83,68 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 export function FAQScene() {
   return (
-    <section className="py-32 px-6 bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[80px] opacity-40 pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="mb-20 grid md:grid-cols-2 gap-12 items-start">
-          <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-xs uppercase tracking-[0.3em] text-primary mb-4"
-            >
-              FAQ
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-serif text-foreground leading-tight"
-            >
-              Questions we
-              <span className="block italic text-primary">answer often</span>
-            </motion.h2>
+    <section id="faq" className="py-24 md:py-32 bg-white overflow-hidden relative">
+      <div className="max-w-[90rem] mx-auto px-4 md:px-8 flex flex-col lg:flex-row gap-20 lg:gap-28 items-start">
+        
+        {/* Left Column - Image & Contact Box */}
+        <div className="w-full lg:w-[45%] relative pl-12 md:pl-20 mt-10 lg:mt-0">
+          {/* Vertical rotated text behind image */}
+          <div className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 -rotate-90 origin-center text-center w-[800px] h-32 -ml-[400px] z-0 opacity-10">
+            <span className="text-[7rem] md:text-[10rem] font-black text-[#0a1128] tracking-tighter uppercase leading-none">
+              QUESTIONS
+            </span>
           </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-foreground/80 leading-relaxed md:pt-12"
-          >
-            We believe in radical transparency. Here are honest answers to the questions
-            clients ask us most — because trust starts with clarity, not sales speak.
-          </motion.p>
+
+          <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative z-10 bg-slate-100">
+             <img src={imgFaq} alt="Events FAQ" className="w-full h-full object-cover" />
+          </div>
+          
+          {/* Contact Overlay Box (Primary Color) */}
+          <div className="absolute -bottom-10 -right-4 md:-right-12 bg-primary text-white p-8 md:p-10 rounded-3xl shadow-2xl z-20 w-[18rem] md:w-[22rem]">
+             <div className="flex -space-x-4 mb-8">
+              <div className="w-12 h-12 rounded-full bg-[#fca311] border-2 border-primary overflow-hidden">
+                 <img src={imgFaq} className="w-full h-full object-cover" />
+              </div>
+              <div className="w-12 h-12 rounded-full bg-[#14213d] border-2 border-primary overflow-hidden">
+                 <img src={imgFaq} className="w-full h-full object-cover" />
+              </div>
+              <div className="w-12 h-12 rounded-full bg-[#000000] border-2 border-primary overflow-hidden">
+                 <img src={imgFaq} className="w-full h-full object-cover" />
+              </div>
+            </div>
+            <h4 className="text-xl md:text-2xl font-bold mb-4">Still Have Any Questions?</h4>
+            <p className="text-sm opacity-90 leading-relaxed mb-8">
+              We take the time to understand your unique event requirements and vision.
+            </p>
+            <div className="flex items-center gap-3">
+              <Phone className="w-5 h-5" />
+              <span className="font-bold text-lg">+91 (0) 123 456 7890</span>
+            </div>
+          </div>
         </div>
 
-        <div className="border-t border-border/40">
-          {faqs.map((faq, i) => (
-            <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
-          ))}
+        {/* Right Column - FAQ Content */}
+        <div className="w-full lg:w-[55%] flex flex-col pt-12 lg:pt-0 z-10 relative">
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#0a1128]">Frequently Asked Questions</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#0a1128] mb-6 font-serif leading-tight">
+              Questions we answer often
+            </h2>
+            <p className="text-slate-600 text-[15px] md:text-lg leading-relaxed max-w-2xl">
+              We believe in radical transparency. Here are honest answers to the questions clients ask us most — because trust starts with clarity, not sales speak.
+            </p>
+          </div>
+
+          <div className="flex flex-col border-t border-slate-200">
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
+            ))}
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 p-10 bg-primary/5 border border-primary/20 rounded-2xl text-center"
-        >
-          <p className="font-serif text-xl text-foreground mb-2">
-            Didn't find your answer?
-          </p>
-          <p className="text-foreground/70 text-sm mb-6">
-            Our team responds within 2 business hours.
-          </p>
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="inline-block px-8 py-4 bg-primary text-primary-foreground text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-500 rounded-full hover-target"
-          >
-            Ask Us Directly
-          </a>
-        </motion.div>
       </div>
     </section>
   );

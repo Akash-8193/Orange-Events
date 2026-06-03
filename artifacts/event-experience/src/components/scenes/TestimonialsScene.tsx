@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, ArrowLeft, ArrowRight } from "lucide-react";
 import imgTestimonial from "../../assets/gallery/WhatsApp-Image-2025-02-15-at-10.16.56-768x1024.jpeg";
 
 const testimonials = [
@@ -56,22 +56,40 @@ const testimonials = [
 
 export function TestimonialsScene() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   // Infinite marquee for testimonial cards
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     const width = track.scrollWidth / 2;
-    const tween = gsap.fromTo(
+    tweenRef.current = gsap.fromTo(
       track,
       { x: 0 },
       { x: -width, duration: 40, ease: "none", repeat: -1 }
     );
-    return () => { tween.kill(); };
+    return () => { tweenRef.current?.kill(); };
   }, []);
 
+  const handleMouseEnter = () => tweenRef.current?.pause();
+  const handleMouseLeave = () => tweenRef.current?.play();
+
+  const handlePrev = () => {
+    if (tweenRef.current) {
+      let newTime = tweenRef.current.totalTime() - 3;
+      if (newTime < 0) newTime += tweenRef.current.duration();
+      gsap.to(tweenRef.current, { totalTime: newTime, duration: 0.5, ease: "power2.out" });
+    }
+  };
+
+  const handleNext = () => {
+    if (tweenRef.current) {
+      gsap.to(tweenRef.current, { totalTime: tweenRef.current.totalTime() + 3, duration: 0.5, ease: "power2.out" });
+    }
+  };
+
   return (
-    <section className="py-24 md:py-32 bg-white text-slate-900 overflow-hidden">
+    <section className="pt-24 md:pt-32 pb-4 bg-white text-slate-900 overflow-hidden">
       <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-16 lg:gap-20 items-center">
         
         {/* Left Column - Image & Overlay */}
@@ -110,7 +128,11 @@ export function TestimonialsScene() {
           </div>
 
           {/* Scrolling Cards Track */}
-          <div className="w-full overflow-hidden relative pb-10 pt-4 cursor-grab active:cursor-grabbing">
+          <div 
+            className="w-full overflow-hidden relative pb-6 pt-4 cursor-grab active:cursor-grabbing"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <div ref={trackRef} className="flex gap-6 w-max will-change-transform">
                {[...testimonials, ...testimonials].map((t, i) => (
                  <div key={i} className="w-[380px] md:w-[480px] bg-[#f8f9fa] rounded-3xl p-8 md:p-10 flex-shrink-0 relative shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300">
@@ -142,6 +164,26 @@ export function TestimonialsScene() {
             {/* Fade edges */}
             <div className="absolute top-0 bottom-0 left-0 w-12 bg-gradient-to-r from-white to-transparent pointer-events-none" />
             <div className="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex justify-end gap-4 mt-2 pr-4">
+            <button 
+              onClick={handlePrev}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="w-12 h-12 rounded-full bg-[#f8f9fa] flex items-center justify-center hover:bg-slate-200 transition-colors shadow-sm cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5 text-primary" />
+            </button>
+            <button 
+              onClick={handleNext}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="w-12 h-12 rounded-full bg-[#f8f9fa] flex items-center justify-center hover:bg-slate-200 transition-colors shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5 text-primary" />
+            </button>
           </div>
 
         </div>
