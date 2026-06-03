@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Phone } from "lucide-react";
-import imgFaq from "../../assets/generated_images/about_corporate_1780473664041.png";
+import imgFaq from "../../assets/gallery/WhatsApp-Image-2025-02-12-at-19.56.14-1-768x1024.jpeg";
 
 const faqs = [
   {

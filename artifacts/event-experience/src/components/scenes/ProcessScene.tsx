@@ -106,12 +106,19 @@ export function ProcessScene() {
       </div>
 
       <div className="max-w-[90rem] mx-auto px-4 md:px-8 relative z-10">
-        <div className="mb-24 text-center">
+        <div className="mb-24 text-center relative flex flex-col items-center justify-center">
+          {/* Massive Watermark Text */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden">
+            <span className="text-[11rem] md:text-[16rem] lg:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+              PROCESS
+            </span>
+          </div>
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4"
+            className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 relative z-10"
           >
             Our Process
           </motion.p>
@@ -120,12 +127,12 @@ export function ProcessScene() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#0a1128] font-bold mb-6 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#0a1128] font-bold mb-6 leading-[1.1] relative z-10"
           >
             From Concept to Celebration,
             <span className="block italic text-primary font-normal mt-2">We Handle Everything</span>
           </motion.h2>
-          <p className="text-slate-600 font-medium max-w-xl mx-auto text-lg leading-relaxed">
+          <p className="text-slate-600 font-medium max-w-xl mx-auto text-lg leading-relaxed relative z-10">
             Our proven 5-step event management process ensures every event is delivered
             on time, within budget, and beyond expectations.
           </p>
