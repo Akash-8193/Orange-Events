@@ -1,0 +1,106 @@
+The current website content is too limited and does not create enough trust, excitement, or conversion potential.
+
+I do NOT want a basic informational website.
+
+Think like a premium event agency, luxury brand designer, marketing strategist, and Awwwards-level creative developer.
+
+Content Requirements:
+
+* Expand the content significantly.
+* Do not simply copy the provided content.
+* Create additional premium marketing content where needed.
+* Write persuasive and conversion-focused copy.
+* Make visitors feel confident that Orange Events & Conferences is a professional and trusted event partner.
+
+The website should answer:
+
+Why should a customer choose us?
+What makes us different?
+Why can they trust us?
+What experience do we provide?
+How do we manage events successfully?
+
+Add rich content sections such as:
+
+* Why Choose Orange Events
+* Our Event Planning Process
+* Event Management Excellence
+* Industry Expertise
+* Success Stories
+* Event Categories We Handle
+* Corporate Event Solutions
+* Wedding & Celebration Experiences
+* End-to-End Event Execution
+* Frequently Asked Questions
+* Client Success Highlights
+* Our Commitment To Quality
+* Event Planning Journey
+* Testimonials & Trust Indicators
+* Event Statistics & Achievements
+
+Use powerful headlines and engaging descriptions.
+
+Examples:
+
+"Creating Experiences That People Remember Forever"
+
+"From Concept To Celebration, We Handle Everything"
+
+"Transforming Ideas Into Extraordinary Events"
+
+"Where Creativity Meets Flawless Execution"
+
+"Delivering Premium Event Experiences Across India"
+
+Animations & Motion Design:
+
+Do not use basic fade-ins only.
+
+Use modern 2026 premium website motion design:
+
+* GSAP ScrollTrigger animations
+* Framer Motion transitions
+* Text reveal animations
+* Staggered content reveals
+* Image reveal effects
+* Mask animations
+* Smooth parallax effects
+* Horizontal scrolling sections
+* Interactive hover animations
+* Magnetic buttons
+* Smooth page transitions
+* Floating elements
+* Animated counters
+* Infinite marquees
+* Mouse-follow interactions
+* Glassmorphism effects
+* Premium card hover effects
+
+Create immersive storytelling sections where content appears progressively while scrolling.
+
+Visual Experience:
+
+The website should feel alive.
+
+Use:
+
+* High-quality event photography
+* Premium event videos
+* Cinematic hero backgrounds
+* Service showcase imagery
+* Event gallery imagery
+* Luxury visual composition
+
+Avoid:
+
+* Empty white sections
+* Text-only sections
+* Placeholder content
+* Generic corporate design
+* Template-style layouts
+
+Goal:
+
+When visitors land on the website, they should immediately feel that Orange Events & Conferences is a premium, professional, and trusted event management company capable of handling corporate events, weddings, entertainment events, destination events, and large-scale experiences.
+
+The website should maximize trust, engagement, and lead generation while maintaining a luxury premium brand identity.
