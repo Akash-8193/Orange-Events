@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Event Experience"
+version = "1.0.0"
+id = "artifacts/event-experience"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22817
+
+[services.development]
+run = "pnpm --filter @workspace/event-experience run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/event-experience", "run", "build" ]
+publicDir = "artifacts/event-experience/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22817"
+BASE_PATH = "/"

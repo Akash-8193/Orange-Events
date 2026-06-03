@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "q-sd5K7SdTIVdje1vh_hd"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-1.png"
+type = "image"
+title = "luxury wedding ceremony outdoors"
+
+[[generated]]
+id = "iaMKb-EeOZX1GeVvb9a0e"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-2.png"
+type = "image"
+title = "gala dinner ballroom"
+
+[[generated]]
+id = "Pf4bXFUSCPg75N-wAEgu1"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-3.png"
+type = "image"
+title = "corporate brand launch modern"
+
+[[generated]]
+id = "Kgxk-Xj9XOvBr_r9kweR1"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-4.png"
+type = "image"
+title = "flower filled celebration pink"
+
+[[generated]]
+id = "9hemoieFPH2GukBWLMw5A"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-5.png"
+type = "image"
+title = "chandelier ballroom extravagant"
+
+[[generated]]
+id = "cPIbkYsE9ktPJClpOfd8x"
+uri = "file://artifacts/event-experience/src/assets/images/portfolio-6.png"
+type = "image"
+title = "rooftop party sunset"

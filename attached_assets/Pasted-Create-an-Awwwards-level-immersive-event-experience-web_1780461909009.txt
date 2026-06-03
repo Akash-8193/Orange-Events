@@ -1,0 +1,152 @@
+Create an Awwwards-level immersive event experience website inspired by luxury interactive websites like House of Dreamers.
+
+This should NOT look like a normal corporate website.
+Create a cinematic digital world where users explore the event brand.
+
+I will provide:
+- Brand content
+- Event details
+- Images
+- Text
+
+Convert everything into an immersive storytelling website.
+
+Design Direction:
+- Luxury premium light theme
+- Dreamy cinematic atmosphere
+- Elegant event brand feeling
+- Soft gradients
+- Premium typography
+- Minimal luxury UI
+
+Experience:
+Create a virtual event world:
+- User should feel they are travelling inside the website
+- Smooth camera movements
+- Scroll based storytelling
+- Scene transitions instead of normal sections
+
+Technology:
+Use:
+Next.js
+React
+Tailwind CSS
+Three.js
+React Three Fiber
+GSAP ScrollTrigger
+Framer Motion
+
+3D World:
+
+Create custom animated 3D scenes:
+
+Hero:
+- Full screen immersive scene
+- Floating luxury event elements
+- Clouds / particles / abstract environment
+- Slow moving 3D objects
+- Camera depth animation
+- Mouse movement parallax
+
+Objects based on event industry:
+- Luxury stage setup
+- Flowers
+- Chandeliers
+- Lights
+- Cameras
+- Wedding decor
+- Celebration elements
+- Floating glass objects
+
+Animation Requirements:
+
+Use:
+- Smooth camera animation
+- Scroll controlled 3D movement
+- Object rotation
+- Floating physics
+- Particle systems
+- Reveal animations
+- Morphing transitions
+- Smooth fade between scenes
+
+Website Flow:
+
+Scene 1:
+Dream introduction
+Brand name reveal with cinematic animation
+
+Scene 2:
+About brand
+Story appears while travelling through 3D world
+
+Scene 3:
+Services universe
+
+Create floating planets/cards for:
+Wedding Events
+Corporate Events
+Luxury Parties
+Brand Events
+Custom Events
+
+Each service opens with smooth animation.
+
+Scene 4:
+Portfolio Gallery
+
+Create immersive gallery:
+- 3D image wall
+- Floating images
+- Depth effect
+- Smooth hover
+
+Scene 5:
+Event Journey Map
+
+Create animated timeline:
+Idea
+Planning
+Design
+Production
+Celebration
+
+Like a luxury exhibition journey.
+
+Scene 6:
+Testimonials
+
+Premium floating glass cards.
+
+Scene 7:
+Contact
+
+Beautiful ending scene with CTA.
+
+Navigation:
+- Minimal floating navigation
+- Circular animated menu button
+- Smooth transitions
+
+Add:
+- Custom cursor
+- Magnetic buttons
+- Sound toggle UI
+- Loading animation
+- Page transition effects
+
+Performance:
+Even with heavy animations:
+- Optimize models
+- Lazy load 3D
+- Mobile optimized
+- Smooth 60 FPS
+
+Important:
+Do not create normal sections.
+Do not create template design.
+
+Make it feel like:
+Luxury brand + Digital exhibition + Event experience.
+
+Every scroll should surprise the user.
