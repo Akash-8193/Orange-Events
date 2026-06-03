@@ -10,6 +10,7 @@ import { PortfolioScene } from "@/components/scenes/PortfolioScene";
 import { TestimonialsScene } from "@/components/scenes/TestimonialsScene";
 import { ClientsScene } from "@/components/scenes/ClientsScene";
 import { FAQScene } from "@/components/scenes/FAQScene";
+import { BlogScene } from "@/components/scenes/BlogScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { CustomCursor } from "@/components/CustomCursor";
@@ -35,6 +36,7 @@ export default function Home() {
           <TestimonialsScene />
           <ClientsScene />
           <FAQScene />
+          <BlogScene />
           <ContactScene />
         </main>
       )}

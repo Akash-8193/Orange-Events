@@ -17,20 +17,27 @@ export function Navigation() {
   }, []);
 
   const links = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Our Works", href: "#portfolio" },
-    { name: "Journey", href: "#journey" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Our Works", href: "/#portfolio" },
+    { name: "Journey", href: "/#journey" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top, behavior: "smooth" });
+    
+    if (href.startsWith("/#")) {
+      const targetId = href.substring(1); // get '#about' from '/#about'
+      const element = document.querySelector(targetId);
+      
+      // If we are already on the homepage and the element exists, scroll smoothly
+      if (element) {
+        e.preventDefault();
+        const top = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     }
   };
 
