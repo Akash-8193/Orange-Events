@@ -18,7 +18,7 @@ export function Navigation() {
   const links = [
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Our Works", href: "#portfolio" },
     { name: "Journey", href: "#journey" },
     { name: "Contact", href: "#contact" },
   ];
@@ -26,14 +26,10 @@ export function Navigation() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
     const element = document.querySelector(href);
     if (element) {
       const top = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -42,50 +38,55 @@ export function Navigation() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 3 }}
+        transition={{ duration: 1, delay: 3.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "bg-background/80 backdrop-blur-md py-4 border-b border-border" : "bg-transparent py-6"
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md py-3 border-b border-border"
+            : "bg-transparent py-5"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <a href="#" className="text-2xl font-serif tracking-[0.2em] hover-target">
-            AURA
+          <a href="#" className="flex flex-col leading-none hover-target">
+            <span className="text-lg md:text-xl font-serif tracking-[0.15em] text-foreground">
+              ORANGE EVENTS
+            </span>
+            <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-light">
+              &amp; Conferences Pvt. Ltd.
+            </span>
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm uppercase tracking-widest hover:text-primary transition-colors hover-target"
+                className="text-xs uppercase tracking-widest hover:text-primary transition-colors hover-target"
               >
                 {link.name}
               </a>
             ))}
-            
-            <button 
+            <button
               onClick={() => setIsSoundOn(!isSoundOn)}
-              className="ml-4 hover-target text-foreground/80 hover:text-foreground transition-colors"
+              className="ml-4 hover-target text-foreground/70 hover:text-foreground transition-colors"
               aria-label="Toggle sound"
             >
-              {isSoundOn ? <Volume2 size={20} /> : <VolumeX size={20} />}
+              {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <div className="flex md:hidden items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsSoundOn(!isSoundOn)}
-              className="hover-target text-foreground/80 hover:text-foreground transition-colors"
+              className="hover-target text-foreground/70 hover:text-foreground transition-colors"
               aria-label="Toggle sound"
             >
-              {isSoundOn ? <Volume2 size={20} /> : <VolumeX size={20} />}
+              {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
             <button
               className="hover-target"
               onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
             >
               <Menu size={24} />
             </button>
@@ -93,7 +94,6 @@ export function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -106,10 +106,10 @@ export function Navigation() {
             <button
               className="absolute top-6 right-6 hover-target p-2"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
               <X size={32} />
             </button>
-
             <div className="flex flex-col items-center gap-8">
               {links.map((link, i) => (
                 <motion.a

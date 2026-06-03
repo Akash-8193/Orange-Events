@@ -11,9 +11,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(onComplete, 1000); // Wait for fade out animation
-    }, 2500);
-
+      setTimeout(onComplete, 1000);
+    }, 2800);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -23,14 +22,15 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
+        delay: i * 0.08,
         duration: 0.8,
         ease: [0.215, 0.61, 0.355, 1],
       },
     }),
   };
 
-  const text = "AURA";
+  const line1 = "ORANGE";
+  const line2 = "EVENTS";
 
   return (
     <AnimatePresence>
@@ -41,8 +41,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
           transition={{ duration: 1, ease: "easeInOut" }}
           className="fixed inset-0 z-[10000] bg-background flex flex-col items-center justify-center"
         >
-          <div className="flex overflow-hidden">
-            {text.split("").map((char, i) => (
+          <div className="flex overflow-hidden mb-1">
+            {line1.split("").map((char, i) => (
               <motion.span
                 key={i}
                 custom={i}
@@ -55,14 +55,28 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
               </motion.span>
             ))}
           </div>
-          
+          <div className="flex overflow-hidden">
+            {line2.split("").map((char, i) => (
+              <motion.span
+                key={i}
+                custom={i + line1.length}
+                initial="hidden"
+                animate="visible"
+                variants={letterVariants}
+                className="text-4xl md:text-6xl tracking-[0.3em] font-serif text-primary ml-[0.3em]"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, duration: 1.5 }}
+            transition={{ delay: 1.2, duration: 1.5 }}
             className="mt-8 text-sm uppercase tracking-[0.2em] text-muted-foreground"
           >
-            Luxury Experiences
+            & Conferences Pvt. Ltd.
           </motion.div>
         </motion.div>
       )}

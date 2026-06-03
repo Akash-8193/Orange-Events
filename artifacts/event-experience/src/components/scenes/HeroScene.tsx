@@ -96,13 +96,16 @@ export function HeroScene() {
           className="text-center px-4"
         >
           <h1
-            className="text-6xl md:text-8xl lg:text-9xl font-serif text-foreground tracking-widest mb-4"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif text-foreground tracking-widest mb-3"
             style={{ textShadow: "0 0 80px rgba(201,169,110,0.35)" }}
           >
-            AURA
+            ORANGE EVENTS
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-[0.3em] uppercase text-foreground/70">
-            Extraordinary Experiences
+          <p className="text-sm md:text-base font-light tracking-[0.25em] uppercase text-foreground/60 mb-4">
+            &amp; Conferences Pvt. Ltd.
+          </p>
+          <p className="text-base md:text-lg font-light tracking-[0.15em] text-foreground/50 italic font-serif">
+            A good life is a collection of happy moments.
           </p>
         </motion.div>
       </div>
