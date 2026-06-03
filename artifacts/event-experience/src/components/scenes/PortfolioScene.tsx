@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import portfolio1 from "@/assets/images/portfolio-1.png";
 import portfolio2 from "@/assets/images/portfolio-2.png";
@@ -8,85 +8,111 @@ import portfolio5 from "@/assets/images/portfolio-5.png";
 import portfolio6 from "@/assets/images/portfolio-6.png";
 
 const images = [
-  { src: portfolio1, title: "Outdoor Elegance", type: "Wedding" },
-  { src: portfolio2, title: "Midnight Gala", type: "Corporate" },
-  { src: portfolio3, title: "Future Vision", type: "Activation" },
-  { src: portfolio4, title: "Floral Fantasy", type: "Celebration" },
-  { src: portfolio5, title: "Crystal Dreams", type: "Luxury Party" },
-  { src: portfolio6, title: "Golden Hour", type: "Social" },
+  { src: portfolio1, title: "Outdoor Wedding Ceremony", type: "Wedding Planning" },
+  { src: portfolio2, title: "Corporate Gala Dinner", type: "Corporate Events" },
+  { src: portfolio3, title: "Smart City Conference", type: "Corporate Events" },
+  { src: portfolio4, title: "Floral Fantasy Reception", type: "Wedding Planning" },
+  { src: portfolio5, title: "Royal Mandap Design", type: "Wedding Planning" },
+  { src: portfolio6, title: "Rooftop Celebration", type: "Entertainment" },
 ];
 
 export function PortfolioScene() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -130]);
 
   return (
-    <section id="portfolio" ref={containerRef} className="py-32 bg-foreground text-background relative overflow-hidden">
-      <div className="container mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl md:text-6xl font-serif text-background mb-4">The Gallery</h2>
-        <p className="text-muted uppercase tracking-widest text-sm">Moments captured in time</p>
+    <section
+      id="portfolio"
+      ref={containerRef}
+      className="py-32 bg-foreground text-background relative overflow-hidden"
+    >
+      {/* Decorative glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 mb-16 text-center relative z-10">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Portfolio</p>
+        <h2 className="text-4xl md:text-6xl font-serif text-background mb-3">Our Works</h2>
+        <p className="text-background/50 uppercase tracking-widest text-xs">
+          Moments crafted with meticulous precision
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4 md:px-10 max-w-[100rem] mx-auto h-[150vh] md:h-[120vh]">
-        
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 px-4 md:px-10 max-w-[100rem] mx-auto md:h-[130vh] relative z-10">
         {/* Column 1 */}
-        <motion.div style={{ y: y1 }} className="flex flex-col gap-6 md:gap-8 pt-10">
+        <motion.div style={{ y: y1 }} className="flex flex-col gap-5 md:gap-6 pt-8">
           {[0, 3].map((index) => (
-            <div key={index} className="relative group overflow-hidden rounded-xl aspect-[3/4] hover-target">
-              <img 
-                src={images[index].src} 
+            <div
+              key={index}
+              className="relative group overflow-hidden rounded-2xl aspect-[3/4] hover-target"
+            >
+              <img
+                src={images[index].src}
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <span className="text-xs uppercase tracking-widest text-white/80 mb-2">{images[index].type}</span>
-                <h3 className="text-2xl font-serif text-white">{images[index].title}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                <span className="text-xs uppercase tracking-widest text-primary mb-1">
+                  {images[index].type}
+                </span>
+                <h3 className="text-lg font-serif text-white">{images[index].title}</h3>
               </div>
             </div>
           ))}
         </motion.div>
 
         {/* Column 2 */}
-        <motion.div style={{ y: y2 }} className="flex flex-col gap-6 md:gap-8 -mt-20 md:-mt-40">
+        <motion.div style={{ y: y2 }} className="flex flex-col gap-5 md:gap-6 -mt-16 md:-mt-32">
           {[1, 4].map((index) => (
-            <div key={index} className="relative group overflow-hidden rounded-xl aspect-[3/4] hover-target">
-              <img 
-                src={images[index].src} 
+            <div
+              key={index}
+              className="relative group overflow-hidden rounded-2xl aspect-[3/4] hover-target"
+            >
+              <img
+                src={images[index].src}
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <span className="text-xs uppercase tracking-widest text-white/80 mb-2">{images[index].type}</span>
-                <h3 className="text-2xl font-serif text-white">{images[index].title}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                <span className="text-xs uppercase tracking-widest text-primary mb-1">
+                  {images[index].type}
+                </span>
+                <h3 className="text-lg font-serif text-white">{images[index].title}</h3>
               </div>
             </div>
           ))}
         </motion.div>
 
         {/* Column 3 */}
-        <motion.div style={{ y: y3 }} className="flex flex-col gap-6 md:gap-8 pt-20 md:pt-10">
+        <motion.div style={{ y: y3 }} className="flex flex-col gap-5 md:gap-6 pt-16 md:pt-8">
           {[2, 5].map((index) => (
-            <div key={index} className="relative group overflow-hidden rounded-xl aspect-[3/4] hover-target">
-              <img 
-                src={images[index].src} 
+            <div
+              key={index}
+              className="relative group overflow-hidden rounded-2xl aspect-[3/4] hover-target"
+            >
+              <img
+                src={images[index].src}
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <span className="text-xs uppercase tracking-widest text-white/80 mb-2">{images[index].type}</span>
-                <h3 className="text-2xl font-serif text-white">{images[index].title}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                <span className="text-xs uppercase tracking-widest text-primary mb-1">
+                  {images[index].type}
+                </span>
+                <h3 className="text-lg font-serif text-white">{images[index].title}</h3>
               </div>
             </div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

@@ -1,41 +1,53 @@
 import { motion } from "framer-motion";
 import { Building2, Music2, Heart, Plane, Monitor, Star } from "lucide-react";
+import svcCorporate from "@assets/generated_images/oe-svc-corporate.png";
+import svcEntertainment from "@assets/generated_images/oe-svc-entertainment.png";
+import svcWedding from "@assets/generated_images/oe-svc-wedding.png";
+import svcVacation from "@assets/generated_images/oe-svc-vacation.png";
+import svcVirtual from "@assets/generated_images/oe-svc-virtual.png";
+import svcOthers from "@assets/generated_images/oe-svc-others.png";
 
 const services = [
   {
     id: 1,
     title: "Corporate Events",
     icon: Building2,
+    image: svcCorporate,
     desc: "Conferences, product launches, award ceremonies, and MICE events executed with precision and brand impact.",
   },
   {
     id: 2,
     title: "Entertainment Services",
     icon: Music2,
+    image: svcEntertainment,
     desc: "Celebrity management, live performances, themed entertainment, and cultural programmes that delight audiences.",
   },
   {
     id: 3,
     title: "Wedding Planning",
     icon: Heart,
-    desc: "Bespoke matrimonial celebrations — from intimate gatherings to grand destination weddings — crafted with love and detail.",
+    image: svcWedding,
+    desc: "Bespoke matrimonial celebrations — from intimate gatherings to grand destination weddings — crafted with love.",
   },
   {
     id: 4,
     title: "Vacation Planning",
     icon: Plane,
-    desc: "Curated group travel and incentive tours that blend relaxation, culture, and unforgettable shared experiences.",
+    image: svcVacation,
+    desc: "Curated group travel and incentive tours blending relaxation, culture, and unforgettable shared experiences.",
   },
   {
     id: 5,
     title: "Virtual Events",
     icon: Monitor,
+    image: svcVirtual,
     desc: "Seamless online conferences, hybrid launches, and digital experiences that connect audiences across boundaries.",
   },
   {
     id: 6,
     title: "Others",
     icon: Star,
+    image: svcOthers,
     desc: "Birthday galas, anniversaries, inaugurations, and custom celebrations tailored entirely to your vision.",
   },
 ];
@@ -47,12 +59,21 @@ export function ServicesScene() {
 
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-xs uppercase tracking-[0.3em] text-primary mb-4"
+          >
+            What we do
+          </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-serif text-foreground mb-6"
+            className="text-4xl md:text-6xl font-serif text-foreground mb-4"
           >
             Our Services
           </motion.h2>
@@ -61,38 +82,52 @@ export function ServicesScene() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-muted-foreground uppercase tracking-widest text-sm"
+            className="text-muted-foreground text-sm max-w-xl mx-auto"
           >
-            Originality &amp; creativity in every event
+            Originality and creativity to create some of the most inspiring, unique and exciting
+            celebrations.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
-            const mt =
-              index % 3 === 1 ? "lg:mt-16" : index % 3 === 2 ? "lg:mt-32" : "lg:mt-0";
-
             return (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className={`glass-card p-10 rounded-2xl flex flex-col items-center text-center group cursor-none hover-target ${mt}`}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group cursor-none hover-target rounded-2xl overflow-hidden relative"
+                style={{
+                  boxShadow: "0 4px 40px rgba(0,0,0,0.08)",
+                  border: "1px solid rgba(201,169,110,0.15)",
+                }}
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
-                  <Icon className="text-primary w-8 h-8" strokeWidth={1.5} />
+                {/* Image */}
+                <div className="relative h-52 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center border border-primary/20">
+                    <Icon className="text-primary w-5 h-5" strokeWidth={1.5} />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-serif mb-4 text-foreground">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
 
-                <div className="mt-8 overflow-hidden h-6 w-full relative">
-                  <span className="absolute left-1/2 -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-xs uppercase tracking-widest text-primary font-medium">
-                    Explore
-                  </span>
+                {/* Text */}
+                <div className="p-8 bg-background">
+                  <h3 className="text-xl font-serif mb-3 text-foreground">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                  <div className="mt-6 overflow-hidden h-5">
+                    <span className="block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-xs uppercase tracking-widest text-primary font-medium">
+                      Explore &rarr;
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             );

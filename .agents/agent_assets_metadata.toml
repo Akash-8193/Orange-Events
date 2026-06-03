@@ -5,7 +5,7 @@ outputs = []
 id = "q-sd5K7SdTIVdje1vh_hd"
 uri = "file://artifacts/event-experience/src/assets/images/portfolio-1.png"
 type = "image"
-title = "luxury wedding ceremony outdoors"
+title = "generated_image"
 
 [[generated]]
 id = "iaMKb-EeOZX1GeVvb9a0e"
@@ -36,3 +36,57 @@ id = "cPIbkYsE9ktPJClpOfd8x"
 uri = "file://artifacts/event-experience/src/assets/images/portfolio-6.png"
 type = "image"
 title = "rooftop party sunset"
+
+[[generated]]
+id = "6aYEbbiDWBV6Vd8JL8vPR"
+uri = "file://attached_assets/generated_images/oe-hero-bg.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2ioVfA7UNet5l7BfwEWcu"
+uri = "file://attached_assets/generated_images/oe-svc-wedding.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "K3GUCC8-pFNqCWAhpBwj1"
+uri = "file://attached_assets/generated_images/oe-svc-corporate.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "kx3oB1wlRzypjk5yZmIbV"
+uri = "file://attached_assets/generated_images/oe-svc-entertainment.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "870wEzQzTN3PQ58ZKxZOh"
+uri = "file://attached_assets/generated_images/oe-svc-vacation.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Z-gyKy9UV6ZgLmJcX9OHj"
+uri = "file://attached_assets/generated_images/oe-svc-virtual.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "kv_TadHrU9frlIrht1gcf"
+uri = "file://attached_assets/generated_images/oe-svc-others.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "XjvLBCqrTTkmrZiTz1jPd"
+uri = "file://attached_assets/generated_images/oe-about-bg.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "1z2ENJRw_axKTtcuykQRL"
+uri = "file://attached_assets/generated_images/oe-contact-bg.png"
+type = "image"
+title = "generated_image"

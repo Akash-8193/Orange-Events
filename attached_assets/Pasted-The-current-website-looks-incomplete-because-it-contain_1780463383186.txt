@@ -1,0 +1,140 @@
+The current website looks incomplete because it contains mostly text and layouts.
+
+I do NOT want a text-heavy website.
+
+Use high-quality premium visuals throughout the entire website.
+
+Requirements:
+
+1. Images Must Be Used Across The Whole Website
+
+Do not leave sections with only text.
+
+Every section should contain:
+
+* Premium event images
+* Background visuals
+* Image grids
+* Hero visuals
+* Service visuals
+
+2. Homepage Hero
+
+Create a large immersive hero section with:
+
+* Full-screen background video OR cinematic event footage
+* Luxury event atmosphere
+* Conference lighting
+* Stage visuals
+* Celebration scenes
+* Motion effects
+
+3. About Section
+
+Use:
+
+* Company images
+* Team/event management visuals
+* Professional event photography
+
+4. Services Section
+
+Every service card should contain a preview image.
+
+Corporate Events:
+
+* Conference halls
+* Business events
+* Stage setups
+
+Wedding Planning:
+
+* Luxury weddings
+* Floral decorations
+* Destination weddings
+
+Entertainment:
+
+* Concerts
+* DJ events
+* Celebrity performances
+
+Vacation Planning:
+
+* Resorts
+* Travel destinations
+* Group experiences
+
+Virtual Events:
+
+* Online meetings
+* Webinar setups
+* Digital conferences
+
+Others:
+
+* Custom event visuals
+
+5. Gallery
+
+Create a large visual gallery.
+
+Use:
+
+* Masonry layouts
+* Event photography
+* Hover effects
+* Full-width images
+
+6. Clients Section
+
+Use:
+
+* Client logos
+* Brand showcase images
+* Event partnership visuals
+
+7. Blogs
+
+Every blog card should include:
+
+* Featured image
+* Category image
+* Thumbnail
+
+8. Contact Section
+
+Use:
+
+* Office visuals
+* Event planning visuals
+* Premium background image
+
+9. 3D Visuals
+
+Throughout the website include:
+
+* Floating stage lights
+* Luxury abstract shapes
+* Glassmorphism objects
+* Event decorations
+* Particle effects
+
+10. Videos
+
+Use event-related videos in:
+
+* Homepage hero
+* Gallery highlights
+* Corporate events showcase
+* Wedding showcase
+
+Important:
+
+The website should feel visual-first, not text-first.
+
+Images and videos should be present across all pages.
+
+Avoid empty white sections.
+
+Every section should have professional event-related imagery and immersive visuals.
