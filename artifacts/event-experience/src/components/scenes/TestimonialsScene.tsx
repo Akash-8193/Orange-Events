@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Quote, Star } from "lucide-react";
+import imgTestimonial from "../../assets/gallery/WhatsApp-Image-2025-02-15-at-10.16.56-768x1024.jpeg";
 
 const testimonials = [
   {
@@ -54,23 +54,12 @@ const testimonials = [
   },
 ];
 
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="flex gap-1 mb-5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
-      ))}
-    </div>
-  );
-}
-
 export function TestimonialsScene() {
-  const marqueRef = useRef<HTMLDivElement>(null);
-  const [featured, setFeatured] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Infinite marquee for bottom strip
+  // Infinite marquee for testimonial cards
   useEffect(() => {
-    const track = marqueRef.current;
+    const track = trackRef.current;
     if (!track) return;
     const width = track.scrollWidth / 2;
     const tween = gsap.fromTo(
@@ -81,104 +70,82 @@ export function TestimonialsScene() {
     return () => { tween.kill(); };
   }, []);
 
-  const prev = () => setFeatured((f) => (f - 1 + testimonials.length) % testimonials.length);
-  const next = () => setFeatured((f) => (f + 1) % testimonials.length);
-
-  const t = testimonials[featured];
-
   return (
-    <section className="bg-foreground text-background relative overflow-hidden">
-      {/* Decorative large text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <span className="text-[18vw] font-serif font-bold text-white/3 leading-none">TRUST</span>
-      </div>
-
-      <div className="relative z-10 py-32 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-20">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-xs uppercase tracking-[0.3em] text-primary mb-4"
-            >
-              Client Testimonials
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-serif text-background"
-            >
-              Words from those who
-              <span className="italic text-primary"> trusted us</span>
-            </motion.h2>
+    <section className="py-24 md:py-32 bg-white text-slate-900 overflow-hidden">
+      <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-16 lg:gap-20 items-center">
+        
+        {/* Left Column - Image & Overlay */}
+        <div className="relative">
+          <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative">
+             <img src={imgTestimonial} alt="Event crowd" className="w-full h-full object-cover" />
           </div>
-
-          {/* Featured testimonial */}
-          <div className="relative min-h-[340px] flex flex-col items-center justify-center text-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={featured}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6 }}
-                className="flex flex-col items-center"
-              >
-                <Quote className="text-primary/30 w-14 h-14 mb-6" />
-                <StarRating count={t.stars} />
-                <p className="text-xl md:text-2xl font-serif italic leading-relaxed text-background max-w-3xl mb-10">
-                  "{t.quote}"
-                </p>
-                <div>
-                  <p className="text-sm font-bold uppercase tracking-widest text-background">{t.name}</p>
-                  <p className="text-xs text-primary/70 mt-1">{t.role} · {t.event}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-6 mt-10">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300 hover-target"
-            >
-              <ChevronLeft className="w-4 h-4 text-white/60" />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setFeatured(i)}
-                  className={`transition-all duration-300 rounded-full hover-target ${
-                    i === featured ? "w-8 h-2 bg-primary" : "w-2 h-2 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
+          
+          {/* Stats Overlay matching the screenshot style */}
+          <div className="absolute bottom-6 left-6 md:-left-8 md:bottom-12 bg-primary text-white p-6 rounded-2xl shadow-xl z-10 w-[17rem] border-4 border-white">
+            <div className="flex -space-x-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-[#fca311] border-2 border-white flex items-center justify-center font-bold text-xs">C</div>
+              <div className="w-10 h-10 rounded-full bg-[#14213d] border-2 border-white flex items-center justify-center font-bold text-xs">LG</div>
+              <div className="w-10 h-10 rounded-full bg-[#000000] border-2 border-white flex items-center justify-center font-bold text-xs">H2O</div>
+              <div className="w-10 h-10 rounded-full bg-[#e5e5e5] border-2 border-white flex items-center justify-center font-bold text-xs text-black">NH</div>
             </div>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all duration-300 hover-target"
-            >
-              <ChevronRight className="w-4 h-4 text-white/60" />
-            </button>
+            <h3 className="text-4xl font-bold mb-1">250+</h3>
+            <p className="text-sm font-medium opacity-90">Successful Events Hosted</p>
           </div>
         </div>
-      </div>
 
-      {/* Marquee strip */}
-      <div className="border-t border-white/10 py-5 overflow-hidden">
-        <div ref={marqueRef} className="flex gap-10 w-max will-change-transform">
-          {[...testimonials, ...testimonials].map((t, i) => (
-            <div key={i} className="flex items-center gap-10 flex-shrink-0">
-              <span className="text-xs uppercase tracking-[0.2em] text-white/30 whitespace-nowrap">{t.name}</span>
-              <span className="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0" />
+        {/* Right Column - Content & Auto-Scrolling Testimonials */}
+        <div className="flex flex-col overflow-hidden w-full">
+          {/* Header */}
+          <div className="mb-10 pl-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#0a1128]">Client Testimonials</span>
             </div>
-          ))}
+            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#0a1128] mb-6 font-serif leading-tight">
+              Words from those who trusted us
+            </h2>
+            <p className="text-slate-600 text-lg leading-relaxed max-w-2xl">
+              Hear directly from our corporate partners and clients about their experiences working with Orange Events. Their stories highlight the impeccable execution, creativity, and absolute peace of mind we deliver.
+            </p>
+          </div>
+
+          {/* Scrolling Cards Track */}
+          <div className="w-full overflow-hidden relative pb-10 pt-4 cursor-grab active:cursor-grabbing">
+            <div ref={trackRef} className="flex gap-6 w-max will-change-transform">
+               {[...testimonials, ...testimonials].map((t, i) => (
+                 <div key={i} className="w-[380px] md:w-[480px] bg-[#f8f9fa] rounded-3xl p-8 md:p-10 flex-shrink-0 relative shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                    <Quote className="absolute top-10 right-10 w-8 h-8 text-primary opacity-20" />
+                    
+                    <div className="flex gap-1 mb-6">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} className="w-5 h-5 fill-primary text-primary" />
+                      ))}
+                    </div>
+                    
+                    <p className="text-slate-600 font-medium text-[15px] md:text-base leading-relaxed mb-10 min-h-[140px]">
+                      {t.quote}
+                    </p>
+                    
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-primary font-bold text-xl uppercase">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[#0a1128] text-lg">{t.name}</h4>
+                        <p className="text-sm text-slate-500 font-medium">{t.role}</p>
+                      </div>
+                    </div>
+                 </div>
+               ))}
+            </div>
+            
+            {/* Fade edges */}
+            <div className="absolute top-0 bottom-0 left-0 w-12 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+          </div>
+
         </div>
+
       </div>
     </section>
   );

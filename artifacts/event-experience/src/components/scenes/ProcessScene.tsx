@@ -152,7 +152,7 @@ export function ProcessScene() {
                 >
                   {/* Content side */}
                   <div className={`lg:w-[45%] ${isLeft ? "lg:text-right" : "lg:text-left"}`}>
-                    <div className="text-[6rem] lg:text-[7rem] font-serif text-primary/10 leading-none mb-6 select-none">
+                    <div className="text-[6rem] lg:text-[7rem] font-serif text-[#4a2b16] leading-none mb-6 select-none">
                       {step.number}
                     </div>
                     <p className="text-sm font-bold uppercase tracking-widest text-primary/80 mb-4">{step.subtitle}</p>

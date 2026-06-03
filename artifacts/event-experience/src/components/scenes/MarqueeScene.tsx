@@ -47,13 +47,14 @@ function MarqueeRow({ items, direction = 1, speed = 40 }: { items: string[]; dir
 
   return (
     <div className="overflow-hidden w-full">
-      <div ref={trackRef} className="flex gap-6 w-max will-change-transform py-3">
+      <div ref={trackRef} className="flex gap-8 w-max will-change-transform py-3">
         {doubled.map((item, i) => (
-          <div key={i} className="flex items-center gap-6 flex-shrink-0">
-            <span className="text-sm md:text-base font-light uppercase tracking-[0.2em] text-foreground/60 whitespace-nowrap">
-              {item}
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+          <div key={i} className="flex items-center gap-8 flex-shrink-0">
+            <div className="px-6 py-3 rounded-full bg-[#B46D29] cursor-none hover-target transition-all duration-300 hover:opacity-90 shadow-md">
+              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-white whitespace-nowrap">
+                {item}
+              </span>
+            </div>
           </div>
         ))}
       </div>

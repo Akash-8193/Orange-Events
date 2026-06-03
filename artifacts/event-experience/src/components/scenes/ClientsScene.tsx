@@ -62,8 +62,8 @@ function ClientRow({ items, direction = 1, speed = 40 }: { items: string[]; dire
             key={i}
             className="flex items-center gap-8 flex-shrink-0"
           >
-            <div className="group px-6 py-3 border border-foreground/10 rounded-full hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 cursor-none hover-target">
-              <span className="text-xs md:text-sm font-medium uppercase tracking-widest text-foreground/70 group-hover:text-primary transition-colors duration-300 whitespace-nowrap">
+            <div className="px-6 py-3 rounded-full bg-[#B46D29] cursor-none hover-target transition-all duration-300 hover:opacity-90 shadow-md">
+              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-white whitespace-nowrap">
                 {client}
               </span>
             </div>
