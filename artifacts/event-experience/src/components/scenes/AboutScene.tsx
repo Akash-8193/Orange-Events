@@ -47,8 +47,8 @@ export function AboutScene() {
           alt="Orange Events professional team"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
 
         <div className="absolute inset-0 flex items-center justify-start px-10 md:px-20">
           <motion.div
@@ -68,7 +68,7 @@ export function AboutScene() {
 
       {/* Text content */}
       <div className="py-20 px-6 relative">
-        <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px] opacity-50 pointer-events-none" />
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 relative">
           <div
@@ -80,12 +80,12 @@ export function AboutScene() {
               talented professionals passionate about{" "}
               <span className="text-primary italic">flawless execution.</span>
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-foreground/80 leading-relaxed text-lg">
               Orange Events &amp; Entertainment trains and motivates its team to think innovatively
               and provide creative solutions. The constant pursuit for perfection and attention to
               detail is what makes us one of the best Delhi-based event management companies.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-foreground/80 leading-relaxed text-lg">
               We are an event organizer trusted by many of India's biggest brands — from Cargill
               and LG India to Fortis Hospital and CNH Industrials.
             </p>

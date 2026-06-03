@@ -55,7 +55,7 @@ const services = [
 export function ServicesScene() {
   return (
     <section id="services" className="py-32 px-6 bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent/20 rounded-full blur-[80px] opacity-40 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
@@ -98,9 +98,9 @@ export function ServicesScene() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group cursor-none hover-target rounded-2xl overflow-hidden relative"
+                transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.4, ease: "easeOut" } }}
+                className="group cursor-none hover-target rounded-2xl overflow-hidden relative bg-card"
                 style={{
                   boxShadow: "0 4px 40px rgba(0,0,0,0.08)",
                   border: "1px solid rgba(201,169,110,0.15)",
@@ -113,16 +113,16 @@ export function ServicesScene() {
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-card/10 to-transparent" />
                   <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center border border-primary/20">
                     <Icon className="text-primary w-5 h-5" strokeWidth={1.5} />
                   </div>
                 </div>
 
                 {/* Text */}
-                <div className="p-8 bg-background">
+                <div className="p-8 bg-card">
                   <h3 className="text-xl font-serif mb-3 text-foreground">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                  <p className="text-foreground/80 text-sm leading-relaxed">{service.desc}</p>
                   <div className="mt-6 overflow-hidden h-5">
                     <span className="block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-xs uppercase tracking-widest text-primary font-medium">
                       Explore &rarr;

@@ -63,7 +63,7 @@ export function StatsScene() {
       className="py-28 px-6 bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[20rem] bg-primary/6 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[20rem] bg-primary/10 rounded-full blur-[60px] opacity-40" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -104,7 +104,7 @@ export function StatsScene() {
               <div className="text-sm font-medium uppercase tracking-widest text-foreground mb-2">
                 {stat.label}
               </div>
-              <div className="text-xs text-muted-foreground">{stat.desc}</div>
+              <div className="text-sm text-foreground/70">{stat.desc}</div>
             </motion.div>
           ))}
         </div>

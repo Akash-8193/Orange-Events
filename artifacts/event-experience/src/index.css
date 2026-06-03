@@ -224,11 +224,14 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     cursor: none; /* For custom cursor */
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif tracking-tight;
   }
 }
 
@@ -249,10 +252,11 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+    @apply bg-white/60 dark:bg-black/60 backdrop-blur-sm border border-white/40 dark:border-white/20 shadow-lg;
   }
   
   .text-glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.3);
   }
 }
+

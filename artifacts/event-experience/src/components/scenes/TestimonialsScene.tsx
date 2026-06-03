@@ -129,7 +129,7 @@ export function TestimonialsScene() {
               >
                 <Quote className="text-primary/30 w-14 h-14 mb-6" />
                 <StarRating count={t.stars} />
-                <p className="text-xl md:text-2xl font-serif italic leading-relaxed text-background/80 max-w-3xl mb-10">
+                <p className="text-xl md:text-2xl font-serif italic leading-relaxed text-background max-w-3xl mb-10">
                   "{t.quote}"
                 </p>
                 <div>

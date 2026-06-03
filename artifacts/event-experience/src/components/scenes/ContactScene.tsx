@@ -15,7 +15,7 @@ export function ContactScene() {
           alt="Orange Events luxury venue"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/85" />
+        <div className="absolute inset-0 bg-foreground/70" />
       </div>
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12vw] font-serif font-bold text-white/5 whitespace-nowrap pointer-events-none select-none z-[1]">
@@ -50,7 +50,7 @@ export function ContactScene() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-white/60 text-base max-w-md mx-auto lg:mx-0 mb-12"
+            className="text-white/80 text-base max-w-md mx-auto lg:mx-0 mb-12"
           >
             You will witness originality and creativity in every celebration we craft together.
             We approach every project with meticulous attention to detail and obsessive precision.

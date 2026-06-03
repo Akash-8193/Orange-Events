@@ -34,12 +34,12 @@ export function PortfolioScene() {
       className="py-32 bg-foreground text-background relative overflow-hidden"
     >
       {/* Decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-primary/10 rounded-full blur-[100px] opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-6 mb-16 text-center relative z-10">
         <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Portfolio</p>
         <h2 className="text-4xl md:text-6xl font-serif text-background mb-3">Our Works</h2>
-        <p className="text-background/50 uppercase tracking-widest text-xs">
+        <p className="text-background/80 uppercase tracking-widest text-xs">
           Moments crafted with meticulous precision
         </p>
       </div>
@@ -57,7 +57,7 @@ export function PortfolioScene() {
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
               <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-xs uppercase tracking-widest text-primary mb-1">
                   {images[index].type}
@@ -80,7 +80,7 @@ export function PortfolioScene() {
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
               <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-xs uppercase tracking-widest text-primary mb-1">
                   {images[index].type}
@@ -103,7 +103,7 @@ export function PortfolioScene() {
                 alt={images[index].title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
               <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-xs uppercase tracking-widest text-primary mb-1">
                   {images[index].type}

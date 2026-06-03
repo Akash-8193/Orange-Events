@@ -63,7 +63,7 @@ function ClientRow({ items, direction = 1, speed = 40 }: { items: string[]; dire
             className="flex items-center gap-8 flex-shrink-0"
           >
             <div className="group px-6 py-3 border border-foreground/10 rounded-full hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 cursor-none hover-target">
-              <span className="text-xs md:text-sm font-medium uppercase tracking-widest text-foreground/50 group-hover:text-primary transition-colors duration-300 whitespace-nowrap">
+              <span className="text-xs md:text-sm font-medium uppercase tracking-widest text-foreground/70 group-hover:text-primary transition-colors duration-300 whitespace-nowrap">
                 {client}
               </span>
             </div>
@@ -78,7 +78,7 @@ export function ClientsScene() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/3 w-[30rem] h-[10rem] bg-primary/5 rounded-full blur-[60px]" />
+        <div className="absolute top-0 left-1/3 w-[30rem] h-[10rem] bg-primary/10 rounded-full blur-[50px] opacity-40" />
       </div>
 
       <div className="text-center mb-16 px-6 relative z-10">
@@ -105,7 +105,7 @@ export function ClientsScene() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="text-muted-foreground text-sm mt-4 max-w-md mx-auto"
+          className="text-foreground/80 text-sm mt-4 max-w-md mx-auto"
         >
           From Fortune 500 corporations to India's fastest-growing enterprises — our clients
           trust us because we deliver results, every single time.

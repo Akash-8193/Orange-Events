@@ -72,7 +72,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-7 text-muted-foreground text-sm leading-relaxed max-w-3xl">{a}</p>
+            <p className="pb-7 text-foreground/70 text-sm leading-relaxed max-w-3xl">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -83,7 +83,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 export function FAQScene() {
   return (
     <section className="py-32 px-6 bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/6 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[80px] opacity-40 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="mb-20 grid md:grid-cols-2 gap-12 items-start">
@@ -112,7 +112,7 @@ export function FAQScene() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-muted-foreground leading-relaxed md:pt-12"
+            className="text-foreground/80 leading-relaxed md:pt-12"
           >
             We believe in radical transparency. Here are honest answers to the questions
             clients ask us most — because trust starts with clarity, not sales speak.
@@ -135,7 +135,7 @@ export function FAQScene() {
           <p className="font-serif text-xl text-foreground mb-2">
             Didn't find your answer?
           </p>
-          <p className="text-muted-foreground text-sm mb-6">
+          <p className="text-foreground/70 text-sm mb-6">
             Our team responds within 2 business hours.
           </p>
           <a

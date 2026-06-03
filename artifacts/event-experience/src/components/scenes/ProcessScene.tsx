@@ -91,7 +91,7 @@ export function ProcessScene() {
   return (
     <section ref={sectionRef} id="process" className="py-32 px-6 bg-foreground text-background relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/3 right-0 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[80px] opacity-40" />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -114,7 +114,7 @@ export function ProcessScene() {
             From Concept to Celebration,
             <span className="block italic text-primary">We Handle Everything</span>
           </motion.h2>
-          <p className="text-white/50 max-w-xl mx-auto text-sm">
+          <p className="text-white/80 max-w-xl mx-auto text-base">
             Our proven 5-step event management process ensures every event is delivered
             on time, within budget, and beyond expectations.
           </p>
@@ -146,8 +146,8 @@ export function ProcessScene() {
                     </div>
                     <p className="text-xs uppercase tracking-widest text-primary/60 mb-2">{step.subtitle}</p>
                     <h3 className="text-2xl md:text-3xl font-serif text-background mb-4">{step.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed mb-4">{step.description}</p>
-                    <p className="text-primary/80 text-xs italic">"{step.accent}"</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4">{step.description}</p>
+                    <p className="text-primary text-sm italic">"{step.accent}"</p>
                   </div>
 
                   {/* Center dot */}

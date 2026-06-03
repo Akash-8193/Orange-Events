@@ -50,16 +50,14 @@ export function HeroScene() {
         <img
           src={heroBg}
           alt="Orange Events luxury event"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover brightness-[1.15] contrast-[1.15]"
         />
-        {/* Gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
+        {/* Overlays removed as requested to keep the image 100% natural */}
       </div>
 
       {/* 3D layer on top of image (particles / floating shapes) */}
       {webglOk !== null && (
-        <div className="absolute inset-0 z-[1] opacity-60 pointer-events-none">
+        <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none">
           {webglOk ? (
             <Suspense fallback={null}>
               <Hero3DCanvas />
@@ -69,32 +67,32 @@ export function HeroScene() {
       )}
 
       {/* Text overlay */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 2.8 }}
-          className="text-center px-4"
+          className="text-center px-8 md:px-16 py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl"
         >
           <motion.p
             initial={{ opacity: 0, letterSpacing: "0.1em" }}
             animate={{ opacity: 1, letterSpacing: "0.35em" }}
             transition={{ duration: 2, delay: 2.6 }}
-            className="text-xs md:text-sm font-light uppercase text-white/70 mb-6 tracking-[0.35em]"
+            className="text-xs md:text-sm font-semibold uppercase text-white mb-6 tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             Welcome to
           </motion.p>
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-widest mb-3 drop-shadow-2xl"
-            style={{ textShadow: "0 4px 40px rgba(0,0,0,0.5), 0 0 80px rgba(201,169,110,0.3)" }}
+            className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-widest mb-3"
+            style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
           >
             ORANGE EVENTS
           </h1>
-          <p className="text-sm md:text-base font-light tracking-[0.25em] uppercase text-white/70 mb-5">
+          <p className="text-sm md:text-base font-semibold tracking-[0.25em] uppercase text-white mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             &amp; Conferences Pvt. Ltd.
           </p>
-          <div className="w-16 h-[1px] bg-primary mx-auto mb-5" />
-          <p className="text-base md:text-lg font-light tracking-[0.1em] text-white/60 italic font-serif">
+          <div className="w-16 h-[2px] bg-primary mx-auto mb-5 shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
+          <p className="text-base md:text-xl font-medium tracking-[0.1em] text-white/90 italic font-serif drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             A good life is a collection of happy moments.
           </p>
         </motion.div>
@@ -105,14 +103,19 @@ export function HeroScene() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 4, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none z-20"
       >
-        <span className="text-xs uppercase tracking-widest text-white/50">Scroll to explore</span>
-        <div className="w-[1px] h-12 bg-white/20 overflow-hidden">
+        {/* Soft invisible shadow behind the text to guarantee contrast without looking like a box */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-24 bg-black/60 blur-xl rounded-full -z-10" />
+        
+        <span className="text-[10px] uppercase font-semibold tracking-widest text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          Scroll to explore
+        </span>
+        <div className="w-[1px] h-10 bg-white/20 overflow-hidden shadow-[0_0_5px_rgba(0,0,0,0.5)]">
           <motion.div
             animate={{ y: ["-100%", "100%"] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            className="w-full h-full bg-white/60"
+            className="w-full h-full bg-white"
           />
         </div>
       </motion.div>
