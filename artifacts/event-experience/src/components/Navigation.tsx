@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Volume2, VolumeX } from "lucide-react";
+import neonHeaderBg from "../assets/generated_images/neon_header_bg.png";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,16 +40,25 @@ export function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 3.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background/80 backdrop-blur-md border-b border-border ${
-          isScrolled ? "py-3 shadow-sm" : "py-5"
+        className={`fixed left-2 right-2 md:left-6 md:right-6 lg:left-10 lg:right-10 xl:left-12 xl:right-12 z-50 transition-all duration-500 overflow-hidden rounded-full shadow-2xl border border-white/10 ${
+          isScrolled ? "h-16 top-3" : "h-20 top-5"
         }`}
       >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={neonHeaderBg} 
+            alt="Premium Neon Header" 
+            className="w-full h-full object-cover brightness-110 blur-sm scale-[1.05]" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+        </div>
+
+        <div className="relative z-10 container mx-auto h-full px-6 md:px-12 flex items-center justify-between">
           <a href="#" className="flex flex-col leading-none hover-target">
-            <span className="text-lg md:text-xl font-serif tracking-[0.15em] text-foreground">
+            <span className="text-lg md:text-2xl font-serif tracking-[0.15em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               ORANGE EVENTS
             </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-light">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               &amp; Conferences Pvt. Ltd.
             </span>
           </a>
@@ -59,14 +69,14 @@ export function Navigation() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs uppercase tracking-widest hover:text-primary transition-colors hover-target"
+                className="text-xs uppercase tracking-widest text-white/90 hover:text-white font-medium drop-shadow-md hover:drop-shadow-xl transition-all hover-target"
               >
                 {link.name}
               </a>
             ))}
             <button
               onClick={() => setIsSoundOn(!isSoundOn)}
-              className="ml-4 hover-target text-foreground/70 hover:text-foreground transition-colors"
+              className="ml-4 hover-target text-white/80 hover:text-white transition-colors drop-shadow-md"
               aria-label="Toggle sound"
             >
               {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
@@ -76,13 +86,13 @@ export function Navigation() {
           <div className="flex md:hidden items-center gap-4">
             <button
               onClick={() => setIsSoundOn(!isSoundOn)}
-              className="hover-target text-foreground/70 hover:text-foreground transition-colors"
+              className="hover-target text-white/80 hover:text-white transition-colors"
               aria-label="Toggle sound"
             >
               {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
             <button
-              className="hover-target"
+              className="hover-target text-white"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
             >

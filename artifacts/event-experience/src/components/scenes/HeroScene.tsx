@@ -107,7 +107,7 @@ export function HeroScene() {
       >
         {/* Soft invisible shadow behind the text to guarantee contrast without looking like a box */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-24 bg-black/60 blur-xl rounded-full -z-10" />
-        
+
         <span className="text-[10px] uppercase font-semibold tracking-widest text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           Scroll to explore
         </span>
