@@ -31,7 +31,7 @@ export function AboutScene() {
     <div id="about" ref={containerRef} className="w-full bg-white font-sans overflow-hidden">
       
       {/* SECTION 1: ABOUT US */}
-      <section className="w-full py-24 md:py-32 text-slate-900 border-b border-slate-100">
+      <section className="w-full py-12 md:py-16 text-slate-900 border-b border-slate-100">
         <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Visuals */}
@@ -159,7 +159,7 @@ export function AboutScene() {
       </section>
 
       {/* SECTION 2: OUR EXPERTISE */}
-      <section className="w-full py-24 md:py-32 bg-slate-50 text-slate-900 border-b border-slate-200">
+      <section className="w-full py-12 md:py-16 bg-slate-50 text-slate-900 border-b border-slate-200">
         <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Expertise Content */}
           <div className="flex flex-col z-30">
@@ -238,16 +238,16 @@ export function AboutScene() {
         </div>
       </section>
 
-      {/* SECTION 3: SPECIALTIES (Dark Mode) */}
-      <section className="w-full py-24 md:py-32 bg-[#080B16] text-white">
+      {/* SECTION 3: SPECIALTIES (White Theme) */}
+      <section className="w-full py-12 md:py-16 bg-white text-slate-900 border-b border-slate-200">
         <div className="max-w-[90rem] mx-auto px-4 md:px-8">
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest mb-6">
               <span className="w-2 h-2 rounded-full bg-primary"></span>
               OUR EXPERTISE AREAS
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-3xl leading-[1.1]">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a1128] max-w-3xl leading-[1.1]">
               Discover diverse capabilities designed to elevate every event
             </h2>
           </div>
@@ -259,19 +259,20 @@ export function AboutScene() {
                { img: specWed, icon: Heart, title: "Luxury Weddings", desc: "Emotional storytelling designed to build unforgettable experiences." },
                { img: specConcert, icon: Sparkles, title: "Live Concerts", desc: "High-energy entertainment programs filled with modern production." }
              ].map((card, i) => (
-               <div key={i} className="relative group rounded-3xl overflow-hidden aspect-[4/5] md:aspect-auto md:h-[500px] bg-slate-900 shadow-2xl">
-                 <img src={card.img} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-80" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#080B16]/95 via-[#080B16]/20 to-transparent pointer-events-none"></div>
+               <div key={i} className="relative group rounded-3xl overflow-hidden aspect-[4/5] md:aspect-auto md:h-[500px] bg-slate-900 shadow-xl">
+                 <img src={card.img} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+                 {/* Card overlay gradient */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
                  
                  {/* Primary Icon */}
                  <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-lg">
                    <card.icon className="w-6 h-6 text-primary-foreground" />
                  </div>
 
-                 {/* Content */}
-                 <div className="absolute bottom-0 left-0 w-full p-8">
-                    <h3 className="text-2xl font-bold mb-3">{card.title}</h3>
-                    <p className="text-white/70 font-medium mb-6 text-sm">{card.desc}</p>
+                 {/* Content - Keep text white since it's on dark image gradient */}
+                 <div className="absolute bottom-0 left-0 w-full p-8 text-white">
+                    <h3 className="text-2xl font-bold mb-3 text-white">{card.title}</h3>
+                    <p className="text-white/80 font-medium mb-6 text-sm">{card.desc}</p>
                     <a href="#contact" className="text-primary font-bold text-sm uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2">
                       Read More <ArrowRight className="w-4 h-4 -rotate-45" />
                     </a>
@@ -280,16 +281,16 @@ export function AboutScene() {
              ))}
           </div>
           
-          <div className="mt-16 text-center text-white/60 font-medium text-sm flex items-center justify-center flex-wrap gap-2">
+          <div className="mt-16 text-center text-slate-600 font-medium text-sm flex items-center justify-center flex-wrap gap-2">
              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold uppercase">Pro</span> 
              <span>Professionally Designed Experiences, Built to Inspire Every Audience –</span> 
-             <a href="#contact" className="text-white underline hover:text-primary font-bold">Explore Our Works</a>
+             <a href="#contact" className="text-[#0a1128] underline hover:text-primary font-bold">Explore Our Works</a>
           </div>
         </div>
       </section>
 
       {/* SECTION 4: WHY CHOOSE US */}
-      <section className="w-full py-24 md:py-32 bg-white text-slate-900">
+      <section className="w-full py-12 md:py-16 bg-white text-slate-900">
         <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Visuals */}
