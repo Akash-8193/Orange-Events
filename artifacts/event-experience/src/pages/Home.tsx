@@ -3,7 +3,6 @@ import { Navigation } from "@/components/Navigation";
 import { HeroScene } from "@/components/scenes/HeroScene";
 import { MarqueeScene } from "@/components/scenes/MarqueeScene";
 import { AboutScene } from "@/components/scenes/AboutScene";
-import { WhyChooseScene } from "@/components/scenes/WhyChooseScene";
 import { ServicesScene } from "@/components/scenes/ServicesScene";
 import { ProcessScene } from "@/components/scenes/ProcessScene";
 import { StatsScene } from "@/components/scenes/StatsScene";
@@ -29,7 +28,6 @@ export default function Home() {
           <HeroScene />
           <MarqueeScene />
           <AboutScene />
-          <WhyChooseScene />
           <ServicesScene />
           <ProcessScene />
           <StatsScene />

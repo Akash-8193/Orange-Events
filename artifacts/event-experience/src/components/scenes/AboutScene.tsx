@@ -503,6 +503,9 @@ export function AboutScene() {
         </div>
       </section>
 
+      {/* Thin White Separator Line */}
+      <div className="w-full h-1 bg-white"></div>
+
     </div>
   );
 }
