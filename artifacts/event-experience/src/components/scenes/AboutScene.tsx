@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Check, ArrowRight, Star, ArrowDown, Activity, Sparkles, Heart } from "lucide-react";
+import { Check, ArrowRight, Star, ArrowDown, Activity, Sparkles, Heart, Award, Zap, ShieldCheck, Globe, Clock } from "lucide-react";
 import { useLocation } from "wouter";
 
 // Images Section 1
@@ -18,6 +18,12 @@ import specConcert from "../../assets/generated_images/spec_concert_178047418738
 // Images Section 4
 import whyStage from "../../assets/generated_images/why_stage_1780474202432.png";
 import whyCrowd from "../../assets/generated_images/why_crowd_1780474215901.png";
+
+// Images Section 5 (What We Do)
+import wwdMain from "../../assets/generated_images/wwd_main_1780478659820.png";
+import wwdThumb1 from "../../assets/generated_images/why_stage_1780474202432.png";
+import wwdThumb2 from "../../assets/generated_images/why_crowd_1780474215901.png";
+import wwdThumb3 from "../../assets/generated_images/spec_corporate_1780474159227.png";
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -325,36 +331,36 @@ export function AboutScene() {
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a1128] mb-6 leading-[1.1]">
-              Your trusted pathway to flawless & stage-ready event execution
+              Where Creativity Meets <span className="italic font-serif font-normal text-primary">Flawless Execution</span>
             </h2>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed font-medium">
-              We guide our clients through a structured, supportive journey that builds technical precision, nurtures brand confidence, and prepares venues for the spotlight with professionalism and care.
+              Choosing an event partner is one of the most important decisions you'll make. Here's why India's leading organisations trust Orange Events. We don't follow trends — we create them from deep client consultation.
             </p>
 
             <div className="flex items-start gap-4 mb-8">
                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-md">
-                 <Activity className="w-6 h-6 text-primary-foreground" />
+                 <ShieldCheck className="w-6 h-6 text-primary-foreground" />
                </div>
                <div>
-                 <h3 className="text-xl font-bold text-[#0a1128] mb-2">Certified & Experienced Planners</h3>
+                 <h3 className="text-xl font-bold text-[#0a1128] mb-2">End-to-End Ownership</h3>
                  <p className="text-slate-600 text-[15px] font-medium leading-relaxed">
-                   We prepare brands for real stage experiences through structured practice, logistical mastery, and confidence techniques.
+                   Venue scouting, décor, catering, entertainment, technology, guest experience — we own everything from the first brief to the final applause. One team. Total accountability.
                  </p>
                </div>
             </div>
 
             <div className="space-y-4 mb-12">
-               <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-primary stroke-[3]" />
-                  <span className="text-slate-800 font-medium">Builds brand confidence through flawless execution</span>
+               <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary stroke-[3] mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-800 font-medium"><strong>Flawless Execution:</strong> From a 20-person dinner to a 5,000-seat gala, our systems ensure zero-error delivery.</span>
                </div>
-               <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-primary stroke-[3]" />
-                  <span className="text-slate-800 font-medium">Prepares venues for real performance experiences</span>
+               <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary stroke-[3] mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-800 font-medium"><strong>Pan-India Presence:</strong> Logistics network executing premium events across Delhi, Mumbai, and tier-2 cities.</span>
                </div>
-               <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-primary stroke-[3]" />
-                  <span className="text-slate-800 font-medium">Sharpens logistics with strategy-based planning</span>
+               <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary stroke-[3] mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-800 font-medium"><strong>Trusted by Leading Brands:</strong> India's top enterprises like LG, Fortis, and Cargill choose us repeatedly.</span>
                </div>
             </div>
 
@@ -366,9 +372,9 @@ export function AboutScene() {
                       <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[14px] border-b-primary-foreground"></div>
                       <div className="w-4 h-4 border-[1.5px] border-primary-foreground rounded-full"></div>
                   </div>
-                  <p className="font-semibold text-[15px] mb-8 leading-snug">Enhances brand awareness and guest engagement</p>
+                  <p className="font-semibold text-[15px] mb-8 leading-snug">Since 2009, building a reputation on trust, creativity, and outcomes.</p>
                   <h3 className="text-5xl font-extrabold mb-2">15+</h3>
-                  <p className="font-semibold text-primary-foreground/90 text-sm">Years Of Experience</p>
+                  <p className="font-semibold text-primary-foreground/90 text-sm">Years Of Expertise</p>
                 </div>
 
                 <div className="flex flex-col gap-8 w-full lg:w-1/2">
@@ -393,6 +399,106 @@ export function AboutScene() {
                 </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: WHAT WE DO (Dark Grid) */}
+      <section className="relative w-full py-20 md:py-28 bg-[#0a0a16] overflow-hidden text-white">
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        
+        <div className="relative max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          
+          {/* Left Visuals (Large Image + 3 Thumbnails) */}
+          <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-2xl overflow-visible">
+            {/* Main Image */}
+            <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+              <img src={wwdMain} alt="Event Excellence" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Overlapping Thumbnails Container */}
+            <div className="absolute -bottom-8 lg:-bottom-12 right-0 flex gap-4 pr-6 pb-6">
+               <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shadow-2xl border-4 border-[#0a0a16] transform -rotate-2 hover:scale-110 transition-transform">
+                 <img src={wwdThumb1} alt="Stage setup details" className="w-full h-full object-cover" />
+               </div>
+               <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shadow-2xl border-4 border-[#0a0a16] hover:scale-110 transition-transform z-10">
+                 <img src={wwdThumb2} alt="Event crowd details" className="w-full h-full object-cover" />
+               </div>
+               <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shadow-2xl border-4 border-[#0a0a16] transform rotate-2 hover:scale-110 transition-transform">
+                 <img src={wwdThumb3} alt="Corporate event details" className="w-full h-full object-cover" />
+               </div>
+            </div>
+          </div>
+
+          {/* Right Content */}
+          <div className="flex flex-col z-10 pt-12 lg:pt-0">
+            {/* Pill Tag */}
+            <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest w-max mb-6 border border-white/10 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-primary"></span>
+              WHAT WE DO
+            </div>
+            
+            {/* Main Heading */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+              Discover why top brands trust our event management
+            </h2>
+
+            {/* Description */}
+            <p className="text-white/80 text-lg leading-relaxed mb-10 font-medium">
+              We are committed to delivering exceptional event experiences that blend creativity, discipline, and passion. Our experienced planners, state-of-the-art production, and meticulous logistics ensure flawless execution every time.
+            </p>
+
+            {/* Two Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+               {/* Card 1 */}
+               <div className="bg-[#1a1a2e] rounded-xl p-6 flex items-center gap-4 border border-white/5 hover:border-primary/50 transition-colors shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                  <span className="font-bold text-white text-[15px] leading-tight">Solutions for Every<br/>Scale & Budget</span>
+               </div>
+
+               {/* Card 2 */}
+               <div className="bg-[#1a1a2e] rounded-xl p-6 flex items-center gap-4 border border-white/5 hover:border-primary/50 transition-colors shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">
+                    <svg className="w-5 h-5 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                  </div>
+                  <span className="font-bold text-white text-[15px] leading-tight">Flawless Execution &<br/>Experiences</span>
+               </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mb-12">
+               <div className="flex justify-between font-bold text-white mb-3">
+                 <span>Professional Experience</span>
+                 <span>95%</span>
+               </div>
+               <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                 <div className="h-full bg-primary rounded-full w-[95%] shadow-[0_0_10px_rgba(255,255,255,0.2)]"></div>
+               </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+               <button 
+                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/30 hover:-translate-y-1"
+               >
+                 Contact Now <ArrowRight className="w-4 h-4 -rotate-45" />
+               </button>
+               
+               <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3.5 h-3.5 text-primary stroke-[3]" />
+                  </div>
+                  <span className="text-white/90 text-sm font-medium">Work with passionate professionals who guide you</span>
+               </div>
+            </div>
           </div>
         </div>
       </section>
