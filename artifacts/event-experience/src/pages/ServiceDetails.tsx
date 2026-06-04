@@ -10,6 +10,11 @@ import svcEntertainment from "../assets/generated_images/svc-entertainment-new.p
 import svcVacation from "../assets/generated_images/svc-vacation-new.png";
 import svcVirtual from "../assets/generated_images/svc-virtual-new.png";
 import svcOthers from "../assets/generated_images/svc-others-new.png";
+import { GalleryGrid } from "@/components/GalleryGrid";
+
+// Import all gallery images dynamically
+const corporateImages = Object.values(import.meta.glob('../assets/gallery/corporate/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })) as string[];
+const weddingImages = Object.values(import.meta.glob('../assets/gallery/wedding/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })) as string[];
 
 // Data mapping based on ID
 const serviceData: Record<string, any> = {
@@ -17,13 +22,15 @@ const serviceData: Record<string, any> = {
     title: "Corporate Event",
     image: svcCorporate,
     tagline: "Precision, Impact, and Brand Excellence.",
-    description: "From massive international conferences to intimate executive retreats, we deliver corporate events that align perfectly with your brand's vision. We handle every logistical detail—from venue sourcing and AV production to guest management and post-event analytics—ensuring a seamless, professional experience that leaves a lasting impression on your stakeholders."
+    description: "From massive international conferences to intimate executive retreats, we deliver corporate events that align perfectly with your brand's vision. We handle every logistical detail—from venue sourcing and AV production to guest management and post-event analytics—ensuring a seamless, professional experience that leaves a lasting impression on your stakeholders.",
+    gallery: corporateImages
   },
   wedding: {
     title: "Wedding Planning",
     image: svcWedding,
     tagline: "Your Love Story, Produced Like a Masterpiece.",
-    description: "Step into your own fairy tale. Our luxury wedding planning service is designed for couples who demand the extraordinary. Inspired by Hollywood grandeur, we orchestrate opulent floral installations, bespoke culinary experiences, and majestic venue transformations. We manage everything from the rehearsal dinner to the grand departure, letting you simply enjoy the magic."
+    description: "Step into your own fairy tale. Our luxury wedding planning service is designed for couples who demand the extraordinary. Inspired by Hollywood grandeur, we orchestrate opulent floral installations, bespoke culinary experiences, and majestic venue transformations. We manage everything from the rehearsal dinner to the grand departure, letting you simply enjoy the magic.",
+    gallery: weddingImages
   },
   entertainment: {
     title: "Entertainment Services",
@@ -117,15 +124,21 @@ export default function ServiceDetails() {
           <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-light font-serif">
             {service.description}
           </p>
+        </div>
 
-          <div className="mt-20">
-            <h3 className="text-3xl font-serif mb-8 text-white">Ready to plan this event?</h3>
-            <Link href="/#contact">
-              <a className="inline-block px-10 py-5 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-sm rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                Contact Us
-              </a>
-            </Link>
+        {service.gallery && service.gallery.length > 0 && (
+          <div className="mt-16 w-full">
+            <GalleryGrid images={service.gallery} title={`${service.title} Gallery`} />
           </div>
+        )}
+
+        <div className="max-w-4xl mt-20">
+          <h3 className="text-3xl font-serif mb-8 text-white">Ready to plan this event?</h3>
+          <Link href="/contact">
+            <a className="inline-block px-10 py-5 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-sm rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              Contact Us
+            </a>
+          </Link>
         </div>
       </div>
     </div>

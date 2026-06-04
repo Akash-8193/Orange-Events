@@ -4,7 +4,13 @@ import { TextReveal } from "@/components/animations/TextReveal";
 import { PortfolioScene } from "@/components/scenes/PortfolioScene";
 import { ClientsScene } from "@/components/scenes/ClientsScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
+import { GalleryGrid } from "@/components/GalleryGrid";
 import portfolioHeroBg from "../assets/generated_images/portfolio-hero-bg.png";
+
+// Load all images dynamically
+const corporateImages = Object.values(import.meta.glob('../assets/gallery/corporate/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })) as string[];
+const weddingImages = Object.values(import.meta.glob('../assets/gallery/wedding/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })) as string[];
+const allGalleryImages = [...corporateImages, ...weddingImages].sort(() => Math.random() - 0.5); // Shuffle for a mixed gallery view
 
 export default function PortfolioPage() {
   return (
@@ -62,6 +68,14 @@ export default function PortfolioPage() {
       </section>
 
       <PortfolioScene />
+      
+      <section className="bg-background w-full py-16 px-4 md:px-12 container mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Complete Gallery</h2>
+          <div className="w-16 h-[2px] bg-primary mx-auto"></div>
+        </div>
+        <GalleryGrid images={allGalleryImages} />
+      </section>
       <ClientsScene />
       <ContactScene />
     </main>

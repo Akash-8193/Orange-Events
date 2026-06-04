@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Instagram, Facebook, Mail } from "lucide-react";
+import { useLocation } from "wouter";
 import neonHeaderBg from "../assets/generated_images/neon_header_bg.png";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,10 @@ export function Navigation() {
         const top = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top, behavior: "smooth" });
       }
+    } else if (href.startsWith("/")) {
+      e.preventDefault();
+      setLocation(href);
+      window.scrollTo({ top: 0, behavior: "auto" });
     }
   };
 

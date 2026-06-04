@@ -34,11 +34,29 @@ import wwdThumb3 from "../../assets/generated_images/spec_corporate_178047415922
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const isHomePage = location === "/";
 
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+  const handleMoreAbout = () => {
+    setLocation("/about");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  const handleContact = () => {
+    setLocation("/contact");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  const handleServices = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setLocation("/services");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  const handlePortfolio = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setLocation("/portfolio");
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   return (
@@ -171,7 +189,7 @@ export function AboutScene() {
 
                {isHomePage && (
                  <button 
-                   onClick={scrollToContact}
+                   onClick={handleMoreAbout}
                    className="premium-button inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/30"
                  >
                    More About Us
@@ -261,7 +279,7 @@ export function AboutScene() {
              {/* Floating Primary Badge */}
              <FloatingElement duration={3.5} yOffset={12} className="absolute bottom-1/4 right-[40%] translate-x-1/2 translate-y-1/2 z-30">
                <div 
-                 onClick={scrollToContact}
+                 onClick={handleContact}
                  className="bg-primary text-primary-foreground p-6 rounded-full w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center text-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
                >
                   <ArrowDown className="w-6 h-6 mb-1" />
@@ -313,7 +331,7 @@ export function AboutScene() {
                  <div className="absolute bottom-0 left-0 w-full p-8 text-white">
                     <h3 className="text-2xl font-bold mb-3 text-white">{card.title}</h3>
                     <p className="text-white/80 font-medium mb-6 text-sm">{card.desc}</p>
-                    <a href="#contact" className="text-primary font-bold text-sm uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2">
+                    <a href="/services" onClick={handleServices} className="text-primary font-bold text-sm uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2">
                       Read More <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </a>
                  </div>
@@ -325,7 +343,7 @@ export function AboutScene() {
             <div className="mt-16 text-center text-slate-600 font-medium text-sm flex items-center justify-center flex-wrap gap-2">
                <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold uppercase">Pro</span> 
                <span>Professionally Designed Experiences, Built to Inspire Every Audience –</span> 
-               <a href="#contact" className="text-[#0a1128] underline hover:text-primary font-bold">Explore Our Works</a>
+               <a href="/portfolio" onClick={handlePortfolio} className="text-[#0a1128] underline hover:text-primary font-bold">Explore Our Works</a>
             </div>
           </RevealAnimation>
         </div>
@@ -350,7 +368,7 @@ export function AboutScene() {
             {/* Primary Contact Badge */}
             <FloatingElement duration={4} yOffset={10} className="absolute top-[15%] right-[15%] z-30">
               <div 
-                onClick={scrollToContact}
+                onClick={handleContact}
                 className="bg-primary text-primary-foreground p-4 rounded-full w-28 h-28 flex items-center justify-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
               >
                 <div className="absolute inset-1 border-[1.5px] border-primary-foreground/40 rounded-full border-dashed"></div>
@@ -428,7 +446,7 @@ export function AboutScene() {
 
                 <div className="flex flex-col gap-8 w-full lg:w-1/2">
                   <button 
-                    onClick={scrollToContact}
+                    onClick={handleMoreAbout}
                     className="premium-button inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-sm hover:brightness-110 shadow-lg w-max"
                   >
                     Learn More <ArrowRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
@@ -542,7 +560,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.5}>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                  <button 
-                   onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                   onClick={handleContact}
                    className="premium-button inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/30"
                  >
                    Contact Now <ArrowRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
