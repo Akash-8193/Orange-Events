@@ -33,7 +33,7 @@ import wwdThumb2 from "../../assets/generated_images/why_crowd_1780474215901.png
 import wwdThumb3 from "../../assets/generated_images/spec_corporate_1780474159227.png";
 
 export function AboutScene() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [location, setLocation] = useLocation();
   const isHomePage = location === "/";
 

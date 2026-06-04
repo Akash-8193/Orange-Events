@@ -28,7 +28,7 @@ export function TypewriterAnimation({ text, delay = 0, className = "", speed = 0
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 100,
       },
@@ -37,7 +37,7 @@ export function TypewriterAnimation({ text, delay = 0, className = "", speed = 0
       opacity: 0,
       y: 10,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 100,
       },

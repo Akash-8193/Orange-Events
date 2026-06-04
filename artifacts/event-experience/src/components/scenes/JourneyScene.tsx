@@ -84,7 +84,7 @@ export function JourneyScene() {
               return (
                 <div 
                   key={index}
-                  ref={(el) => itemsRef.current[index] = el}
+                  ref={(el) => { itemsRef.current[index] = el; }}
                   className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   <div className={`md:w-1/2 ${isEven ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'} ml-12 md:ml-0`}>

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float, MeshTransmissionMaterial, Stars } from "@react-three/drei";
+// @ts-ignore - Vercel build missing types
 import * as THREE from "three";
 
 function FloatingShapes() {
