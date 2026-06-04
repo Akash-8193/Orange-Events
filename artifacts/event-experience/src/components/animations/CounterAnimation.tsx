@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useInView, useMotionValue, useSpring, useMotionValueEvent } from "framer-motion";
 
 interface CounterAnimationProps {
   value: number;
@@ -23,13 +23,11 @@ export function CounterAnimation({ value, duration = 2, className = "" }: Counte
     }
   }, [motionValue, isInView, value]);
 
-  useEffect(() => {
-    return springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Intl.NumberFormat("en-US").format(Math.floor(latest));
-      }
-    });
-  }, [springValue]);
+  useMotionValueEvent(springValue, "change", (latest) => {
+    if (ref.current) {
+      ref.current.textContent = Intl.NumberFormat("en-US").format(Math.floor(latest));
+    }
+  });
 
   return <span ref={ref} className={className}>0</span>;
 }
