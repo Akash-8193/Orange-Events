@@ -77,7 +77,7 @@ export function Navigation() {
             </a>
           </div>
 
-          <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-8">
             {links.map((link) => (
               <a
                 key={link.name}
@@ -90,7 +90,7 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center justify-end gap-4 lg:gap-6">
+          <div className="hidden lg:flex items-center justify-end gap-3 xl:gap-6">
             <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover-target text-white/80 hover:text-white transition-colors">
               <Instagram size={20} />
             </a>
@@ -102,7 +102,7 @@ export function Navigation() {
             </a>
           </div>
 
-          <div className="flex md:hidden items-center gap-4">
+          <div className="flex lg:hidden items-center gap-4">
             <button
               className="hover-target text-white"
               onClick={() => setIsMobileMenuOpen(true)}

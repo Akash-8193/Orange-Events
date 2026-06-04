@@ -34,8 +34,11 @@ export default function PortfolioPage() {
             </p>
             <TextReveal variant="hero" delay={0.3}>
               <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-widest mb-3"
-                style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
+                className="font-serif text-white tracking-widest mb-3 whitespace-nowrap"
+                style={{ 
+                  fontSize: "clamp(2.5rem, 10vw, 6rem)",
+                  textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" 
+                }}
               >
                 OUR WORKS
               </h1>

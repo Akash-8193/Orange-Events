@@ -149,9 +149,12 @@ export function ServicesScene() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
         
         {/* Massive Watermark Text - Light Brown/Black */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden flex justify-center items-center">
           <RevealAnimation delay={0.1}>
-            <span className="text-[12rem] md:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+            <span 
+              className="font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none whitespace-nowrap"
+              style={{ fontSize: "12.5vw" }}
+            >
               SERVICES
             </span>
           </RevealAnimation>
@@ -172,7 +175,7 @@ export function ServicesScene() {
           </RevealAnimation>
           
           <TextReveal variant="word" delay={0.4}>
-            <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-[#0a1128] leading-[1.1] mb-8">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-[#0a1128] leading-[1.1] mb-8">
               Experiences we <span className="italic text-primary font-light">craft</span>
             </h2>
           </TextReveal>
@@ -214,7 +217,7 @@ export function ServicesScene() {
               </span>
             </div>
 
-            <h3 className="reveal-text text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
+            <h3 className="reveal-text text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
               {service.title}
             </h3>
             

@@ -108,7 +108,10 @@ export default function ServiceDetails() {
             <p className="text-primary font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-4 drop-shadow-md">
               Service Details
             </p>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 
+              className="font-serif text-white mb-6 leading-tight drop-shadow-2xl"
+              style={{ fontSize: "clamp(2rem, 8vw, 7rem)" }}
+            >
               {service.title}
             </h1>
             <p className="text-xl md:text-3xl text-white/90 font-light italic font-serif max-w-3xl drop-shadow-lg">
@@ -119,7 +122,7 @@ export default function ServiceDetails() {
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto px-8 md:px-16 py-24">
+      <div className="container mx-auto px-4 sm:px-8 md:px-16 py-16 md:py-24">
         <div className="max-w-4xl">
           <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-light font-serif">
             {service.description}

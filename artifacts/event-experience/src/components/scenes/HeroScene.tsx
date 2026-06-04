@@ -70,16 +70,16 @@ export function HeroScene() {
       {/* Text overlay */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
         <div
-          className="text-center px-8 md:px-16 py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl"
+          className="text-center px-4 sm:px-8 md:px-16 py-8 md:py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl mx-4 sm:mx-0 w-full max-w-[95vw] sm:max-w-auto"
         >
           <p
-            className="text-xs md:text-sm font-semibold uppercase text-white mb-6 tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            className="text-[10px] md:text-sm font-semibold uppercase text-white mb-4 md:mb-6 tracking-[0.2em] md:tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             Welcome to
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
-              className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-widest mb-3"
+              className="text-3xl sm:text-5xl md:text-7xl lg:text-[6.5vw] xl:text-9xl font-serif text-white tracking-widest mb-3 whitespace-nowrap"
               style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
             >
               ORANGE EVENTS

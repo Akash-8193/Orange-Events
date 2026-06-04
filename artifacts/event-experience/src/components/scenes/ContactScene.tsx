@@ -40,9 +40,12 @@ export function ContactScene() {
       {/* 0. Section Header with Massive Watermark */}
       <div className="mb-20 text-center relative flex flex-col items-center justify-center pt-16 overflow-hidden">
         {/* Massive Watermark Text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center flex justify-center items-center">
           <RevealAnimation delay={0.1}>
-            <span className="text-[11rem] md:text-[16rem] lg:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+            <span 
+              className="font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none whitespace-nowrap"
+              style={{ fontSize: "14vw" }}
+            >
               CONTACT
             </span>
           </RevealAnimation>
@@ -306,9 +309,9 @@ export function ContactScene() {
             <div className="bg-[#f5f0e6] rounded-tl-3xl rounded-b-3xl md:rounded-tl-[3rem] md:rounded-b-[3rem] p-8 md:p-16 text-[#4a2b16] relative w-full pt-12 md:pt-16 shadow-2xl">
               
               {/* Header Row */}
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-8">
-                <h2 className="text-5xl md:text-7xl font-serif font-bold italic tracking-tight">
-                  Orange Events<sup className="text-2xl md:text-4xl ml-1 font-sans">™</sup>
+              <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between mb-16 gap-8">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tight">
+                  Orange Events<sup className="text-xl sm:text-2xl md:text-4xl ml-1 font-sans">™</sup>
                 </h2>
                 <button 
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 

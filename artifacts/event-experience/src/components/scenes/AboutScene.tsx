@@ -64,7 +64,7 @@ export function AboutScene() {
       
       {/* SECTION 1: ABOUT US */}
       <section className="w-full py-12 md:py-16 text-slate-900 border-b border-slate-100">
-        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 xl:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Visuals */}
           <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center">
@@ -204,7 +204,7 @@ export function AboutScene() {
 
       {/* SECTION 2: OUR EXPERTISE */}
       <section className="w-full py-12 md:py-16 bg-slate-50 text-slate-900 border-b border-slate-200">
-        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 xl:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Expertise Content */}
           <div className="flex flex-col z-30">
             <RevealAnimation delay={0.1}>
@@ -266,7 +266,7 @@ export function AboutScene() {
           </div>
 
           {/* Right Column: Visuals */}
-          <div className="relative w-full h-[500px] lg:h-[650px] flex items-center justify-center mt-12 lg:mt-0">
+          <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[650px] flex items-center justify-center mt-12 lg:mt-0">
              {/* Left Image */}
              <ImageReveal className="absolute left-0 top-10 w-[60%] h-[80%] rounded-[2rem] overflow-hidden shadow-2xl z-10">
                <img src={expCorp} alt="Corporate Tech" className="w-full h-full object-cover premium-image-zoom" />
@@ -280,7 +280,7 @@ export function AboutScene() {
              <FloatingElement duration={3.5} yOffset={12} className="absolute bottom-1/4 right-[40%] translate-x-1/2 translate-y-1/2 z-30">
                <div 
                  onClick={handleContact}
-                 className="bg-primary text-primary-foreground p-6 rounded-full w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center text-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
+                 className="bg-primary text-primary-foreground p-4 md:p-6 rounded-full w-24 h-24 md:w-40 md:h-40 flex flex-col items-center justify-center text-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
                >
                   <ArrowDown className="w-6 h-6 mb-1" />
                   <span className="font-bold text-[10px] md:text-xs uppercase tracking-widest" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
@@ -351,10 +351,10 @@ export function AboutScene() {
 
       {/* SECTION 4: WHY CHOOSE US */}
       <section className="w-full py-12 md:py-16 bg-white text-slate-900">
-        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 xl:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Visuals */}
-          <div className="relative w-full h-[600px] lg:h-[750px] flex items-center justify-center">
+          <div className="relative w-full h-[350px] sm:h-[500px] lg:h-[750px] flex items-center justify-center">
             {/* Background Image (Shifted up) */}
             <ImageReveal className="absolute left-0 top-0 w-[60%] h-[75%] rounded-3xl overflow-hidden shadow-xl z-10">
                <img src={whyStage} alt="Stage Setup" className="w-full h-full object-cover premium-image-zoom" />
@@ -369,7 +369,7 @@ export function AboutScene() {
             <FloatingElement duration={4} yOffset={10} className="absolute top-[15%] right-[15%] z-30">
               <div 
                 onClick={handleContact}
-                className="bg-primary text-primary-foreground p-4 rounded-full w-28 h-28 flex items-center justify-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
+                className="bg-primary text-primary-foreground p-3 md:p-4 rounded-full w-20 h-20 md:w-28 md:h-28 flex items-center justify-center shadow-xl shadow-primary/40 cursor-pointer hover:brightness-110 hover:scale-105 transition-all"
               >
                 <div className="absolute inset-1 border-[1.5px] border-primary-foreground/40 rounded-full border-dashed"></div>
                 <span className="font-bold text-[11px] text-center uppercase tracking-widest leading-tight">
@@ -475,7 +475,7 @@ export function AboutScene() {
         {/* Subtle Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
-        <div className="relative max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="relative max-w-[90rem] mx-auto px-4 md:px-8 grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left Visuals (Large Image + 3 Thumbnails) */}
           <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-2xl overflow-visible">

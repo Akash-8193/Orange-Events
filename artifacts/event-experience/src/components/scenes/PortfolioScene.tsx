@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
@@ -25,9 +25,18 @@ export function PortfolioScene() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -180]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 180]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -130]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : -180]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : 180]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : -130]);
 
   return (
     <section

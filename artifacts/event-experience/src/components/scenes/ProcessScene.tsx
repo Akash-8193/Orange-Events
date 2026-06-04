@@ -108,8 +108,11 @@ export function ProcessScene() {
       <div className="max-w-[90rem] mx-auto px-4 md:px-8 relative z-10">
         <div className="mb-24 text-center relative flex flex-col items-center justify-center">
           {/* Massive Watermark Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden">
-            <span className="text-[11rem] md:text-[16rem] lg:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden flex justify-center items-center">
+            <span 
+              className="font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none whitespace-nowrap"
+              style={{ fontSize: "14vw" }}
+            >
               PROCESS
             </span>
           </div>
