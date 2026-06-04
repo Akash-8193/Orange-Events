@@ -4,6 +4,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import AboutPage from "@/pages/AboutPage";
+import ServicesPage from "@/pages/ServicesPage";
+import PortfolioPage from "@/pages/PortfolioPage";
+import ContactPage from "@/pages/ContactPage";
 import ServiceDetails from "@/pages/ServiceDetails";
 import BlogsPage from "@/pages/BlogsPage";
 
@@ -17,6 +21,10 @@ function Router() {
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/services" component={ServicesPage} />
+        <Route path="/portfolio" component={PortfolioPage} />
+        <Route path="/contact" component={ContactPage} />
         <Route path="/blogs" component={BlogsPage} />
         <Route path="/service/:id" component={ServiceDetails} />
         <Route component={NotFound} />

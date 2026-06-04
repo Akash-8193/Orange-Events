@@ -17,12 +17,12 @@ export function Navigation() {
   }, []);
 
   const links = [
-    { name: "About", href: "/#about" },
-    { name: "Services", href: "/#services" },
-    { name: "Our Works", href: "/#portfolio" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Our Works", href: "/portfolio" },
     { name: "Journey", href: "/#journey" },
     { name: "Blogs", href: "/blogs" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -46,7 +46,7 @@ export function Navigation() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 3.2 }}
+        transition={{ duration: 1, delay: 1.0 }}
         className={`fixed left-2 right-2 md:left-6 md:right-6 lg:left-10 lg:right-10 xl:left-12 xl:right-12 z-50 transition-all duration-500 overflow-hidden rounded-full shadow-2xl border border-white/10 ${
           isScrolled ? "h-16 top-3" : "h-20 top-5"
         }`}

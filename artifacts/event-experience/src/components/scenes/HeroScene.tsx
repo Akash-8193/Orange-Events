@@ -77,7 +77,7 @@ export function HeroScene() {
           >
             Welcome to
           </p>
-          <TextReveal variant="hero" delay={3.5}>
+          <TextReveal variant="hero" delay={0.8}>
             <h1
               className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-widest mb-3"
               style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
@@ -99,7 +99,7 @@ export function HeroScene() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4, duration: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none z-20"
       >
         {/* Soft invisible shadow behind the text to guarantee contrast without looking like a box */}

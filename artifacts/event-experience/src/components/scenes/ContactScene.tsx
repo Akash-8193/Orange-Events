@@ -244,7 +244,7 @@ export function ContactScene() {
               <div>
                 <h4 className="text-2xl font-serif font-bold text-white mb-6">Quick Link</h4>
                 <div className="flex flex-col gap-4 text-sm font-medium text-white/80">
-                  <a href="/#about" onClick={(e) => handleNavClick(e, "/#about")} className="hover:text-primary transition-colors w-fit">About Us</a>
+                  <a href="/about" onClick={(e) => handleNavClick(e, "/about")} className="hover:text-primary transition-colors w-fit">About Us</a>
                   <a href="/blogs" onClick={(e) => handleNavClick(e, "/blogs")} className="hover:text-primary transition-colors w-fit">Blogs</a>
                   <a href="/service/corporate" onClick={(e) => handleNavClick(e, "/service/corporate")} className="hover:text-primary transition-colors w-fit">Corporate Event</a>
                   <a href="/service/entertainment" onClick={(e) => handleNavClick(e, "/service/entertainment")} className="hover:text-primary transition-colors w-fit">Entertainment Services</a>
@@ -255,8 +255,8 @@ export function ContactScene() {
                 <div className="flex flex-col gap-4 text-sm font-medium text-white/80">
                   <a href="/service/vacation" onClick={(e) => handleNavClick(e, "/service/vacation")} className="hover:text-primary transition-colors w-fit">Vacation Planning</a>
                   <a href="/#clients" onClick={(e) => handleNavClick(e, "/#clients")} className="hover:text-primary transition-colors w-fit">Clients</a>
-                  <a href="/#portfolio" onClick={(e) => handleNavClick(e, "/#portfolio")} className="hover:text-primary transition-colors w-fit">Our Footprint</a>
-                  <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact")} className="hover:text-primary transition-colors w-fit">Contact Us</a>
+                  <a href="/portfolio" onClick={(e) => handleNavClick(e, "/portfolio")} className="hover:text-primary transition-colors w-fit">Our Footprint</a>
+                  <a href="/contact" onClick={(e) => handleNavClick(e, "/contact")} className="hover:text-primary transition-colors w-fit">Contact Us</a>
                 </div>
               </div>
             </div>
