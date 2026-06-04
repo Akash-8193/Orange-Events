@@ -12,6 +12,11 @@ const artifactDir = path.dirname(fileURLToPath(import.meta.url));
 
 async function buildAll() {
   const distDir = path.resolve(artifactDir, "dist");
+  const tsBuildInfoFile = path.resolve(artifactDir, ".tsbuildinfo");
+
+  // Vercel can reuse cached incremental TypeScript state between builds.
+  // Clearing it here keeps the API server build deterministic.
+  await rm(tsBuildInfoFile, { force: true });
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
