@@ -14,11 +14,15 @@ import BlogsPage from "@/pages/BlogsPage";
 const queryClient = new QueryClient();
 
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { CustomCursor } from "@/components/CustomCursor";
 
 function Router() {
   return (
     <>
+      <CustomCursor />
       <ScrollToTop />
+      <WhatsAppWidget />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={AboutPage} />

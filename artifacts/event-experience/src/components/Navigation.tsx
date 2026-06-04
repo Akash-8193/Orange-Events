@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Volume2, VolumeX } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Mail } from "lucide-react";
 import neonHeaderBg from "../assets/generated_images/neon_header_bg.png";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSoundOn, setIsSoundOn] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +16,7 @@ export function Navigation() {
   }, []);
 
   const links = [
+    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Our Works", href: "/portfolio" },
@@ -29,10 +29,9 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
     
     if (href.startsWith("/#")) {
-      const targetId = href.substring(1); // get '#about' from '/#about'
+      const targetId = href.substring(1);
       const element = document.querySelector(targetId);
       
-      // If we are already on the homepage and the element exists, scroll smoothly
       if (element) {
         e.preventDefault();
         const top = element.getBoundingClientRect().top + window.scrollY;
@@ -60,17 +59,19 @@ export function Navigation() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
         </div>
 
-        <div className="relative z-10 container mx-auto h-full px-6 md:px-12 flex items-center justify-between">
-          <a href="#" className="flex flex-col leading-none hover-target">
-            <span className="text-lg md:text-2xl font-serif tracking-[0.15em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              ORANGE EVENTS
-            </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-              &amp; Conferences Pvt. Ltd.
-            </span>
-          </a>
+        <div className="relative z-10 container mx-auto h-full px-6 md:px-12 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
+          <div className="flex items-center justify-start">
+            <a href="#" className="flex flex-col leading-none hover-target">
+              <span className="text-lg md:text-2xl font-serif tracking-[0.15em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                ORANGE EVENTS
+              </span>
+              <span className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                &amp; Conferences Pvt. Ltd.
+              </span>
+            </a>
+          </div>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8">
             {links.map((link) => (
               <a
                 key={link.name}
@@ -81,23 +82,21 @@ export function Navigation() {
                 {link.name}
               </a>
             ))}
-            <button
-              onClick={() => setIsSoundOn(!isSoundOn)}
-              className="ml-4 hover-target text-white/80 hover:text-white transition-colors drop-shadow-md"
-              aria-label="Toggle sound"
-            >
-              {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
-            </button>
+          </div>
+
+          <div className="hidden md:flex items-center justify-end gap-4 lg:gap-6">
+            <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover-target text-white/80 hover:text-white transition-colors">
+              <Instagram size={20} />
+            </a>
+            <a href="https://www.facebook.com/orangeeventsandconferences/#" target="_blank" rel="noopener noreferrer" className="hover-target text-white/80 hover:text-white transition-colors">
+              <Facebook size={20} />
+            </a>
+            <a href="mailto:info@orangeevents.in" className="hover-target text-white/80 hover:text-white transition-colors">
+              <Mail size={20} />
+            </a>
           </div>
 
           <div className="flex md:hidden items-center gap-4">
-            <button
-              onClick={() => setIsSoundOn(!isSoundOn)}
-              className="hover-target text-white/80 hover:text-white transition-colors"
-              aria-label="Toggle sound"
-            >
-              {isSoundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
-            </button>
             <button
               className="hover-target text-white"
               onClick={() => setIsMobileMenuOpen(true)}

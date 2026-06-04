@@ -13,14 +13,13 @@ import { FAQScene } from "@/components/scenes/FAQScene";
 import { BlogScene } from "@/components/scenes/BlogScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
 import { LoadingScreen } from "@/components/LoadingScreen";
-import { CustomCursor } from "@/components/CustomCursor";
+// CustomCursor is now imported globally in App.tsx
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      <CustomCursor />
       {isLoading ? (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (

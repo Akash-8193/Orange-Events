@@ -55,7 +55,7 @@ export function BlogScene() {
         {/* Mobile View All Button */}
         <div className="flex justify-center mb-12 md:hidden">
           <Link href="/blogs">
-            <span className="premium-button cursor-pointer bg-[#d94838] hover:bg-[#b93a2b] text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2">
+            <span className="premium-button cursor-pointer bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2">
               View All Blogs
               <ArrowUpRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
             </span>

@@ -6,6 +6,8 @@ import { ImageReveal } from "@/components/animations/ImageReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { FloatingElement } from "@/components/animations/FloatingElement";
+import { CounterAnimation } from "@/components/animations/CounterAnimation";
+import { TypewriterAnimation } from "@/components/animations/TypewriterAnimation";
 
 // Images Section 1
 import imgCorporate from "../../assets/generated_images/about_corporate_1780473664041.png";
@@ -32,7 +34,8 @@ import wwdThumb3 from "../../assets/generated_images/spec_corporate_178047415922
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
-  const [, setLocation] = useLocation();
+  const [location] = useLocation();
+  const isHomePage = location === "/";
 
   const scrollToContact = () => {
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -88,7 +91,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.1}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest w-max mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                ABOUT US
+                <TypewriterAnimation text="ABOUT US" speed={0.1} />
               </div>
             </RevealAnimation>
 
@@ -132,15 +135,15 @@ export function AboutScene() {
             {/* Stats Row */}
             <StaggerContainer staggerDelay={0.15} className="flex flex-wrap gap-x-12 gap-y-8 mb-10 pb-10 border-b border-slate-200">
               <div>
-                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1">15+</h3>
+                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1"><CounterAnimation value={15} />+</h3>
                 <p className="text-slate-500 font-semibold text-sm">Years of Excellence</p>
               </div>
               <div>
-                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1">500+</h3>
+                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1"><CounterAnimation value={500} />+</h3>
                 <p className="text-slate-500 font-semibold text-sm">Events Delivered</p>
               </div>
               <div>
-                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1">100+</h3>
+                <h3 className="text-4xl lg:text-5xl font-extrabold text-[#0a1128] mb-1"><CounterAnimation value={100} />+</h3>
                 <p className="text-slate-500 font-semibold text-sm">Corporate Clients</p>
               </div>
             </StaggerContainer>
@@ -166,13 +169,15 @@ export function AboutScene() {
                  </div>
                </div>
 
-               <button 
-                 onClick={scrollToContact}
-                 className="premium-button inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/30"
-               >
-                 More About Us
-                 <ArrowRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
-               </button>
+               {isHomePage && (
+                 <button 
+                   onClick={scrollToContact}
+                   className="premium-button inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/30"
+                 >
+                   More About Us
+                   <ArrowRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+                 </button>
+               )}
             </div>
 
           </div>
@@ -187,7 +192,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.1}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest w-max mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                OUR EXPERTISE
+                <TypewriterAnimation text="OUR EXPERTISE" speed={0.1} />
               </div>
             </RevealAnimation>
 
@@ -277,7 +282,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.1}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                OUR EXPERTISE AREAS
+                <TypewriterAnimation text="OUR EXPERTISE AREAS" speed={0.1} />
               </div>
             </RevealAnimation>
             <TextReveal variant="word" delay={0.2}>
@@ -361,7 +366,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.1}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest w-max mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                WHY CHOOSE US
+                <TypewriterAnimation text="WHY CHOOSE US" speed={0.1} />
               </div>
             </RevealAnimation>
             
@@ -416,7 +421,7 @@ export function AboutScene() {
                         <div className="w-4 h-4 border-[1.5px] border-primary-foreground rounded-full"></div>
                     </div>
                     <p className="font-semibold text-[15px] mb-8 leading-snug">Since 2009, building a reputation on trust, creativity, and outcomes.</p>
-                    <h3 className="text-5xl font-extrabold mb-2">15+</h3>
+                    <h3 className="text-5xl font-extrabold mb-2"><CounterAnimation value={15} />+</h3>
                     <p className="font-semibold text-primary-foreground/90 text-sm">Years Of Expertise</p>
                   </div>
                 </RevealAnimation>
@@ -481,7 +486,7 @@ export function AboutScene() {
             <RevealAnimation delay={0.1}>
               <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest w-max mb-6 border border-white/10 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
-                WHAT WE DO
+                <TypewriterAnimation text="WHAT WE DO" speed={0.1} />
               </div>
             </RevealAnimation>
             

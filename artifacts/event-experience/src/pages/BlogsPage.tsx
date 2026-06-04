@@ -82,10 +82,10 @@ export default function BlogsPage() {
 
                 {/* Content */}
                 <div className="flex flex-col flex-grow">
-                  <div className="text-xs font-bold text-[#d94838] uppercase tracking-wider mb-3">
+                  <div className="text-xs font-bold text-primary uppercase tracking-wider mb-3">
                     {blog.date}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-[#0a1128] leading-snug mb-4 group-hover:text-[#d94838] transition-colors">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#0a1128] leading-snug mb-4 group-hover:text-primary transition-colors">
                     {blog.title}
                   </h3>
                   
@@ -96,7 +96,7 @@ export default function BlogsPage() {
                   <div className="mt-auto">
                     <div className="w-full h-px bg-slate-200 mb-4"></div>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm font-bold text-[#0a1128] group-hover:text-[#d94838] transition-colors">
+                      <div className="flex items-center gap-2 text-sm font-bold text-[#0a1128] group-hover:text-primary transition-colors">
                         Read More 
                         <ArrowUpRight className="w-4 h-4" />
                       </div>

@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Send, ArrowRight, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Send, ArrowRight, Instagram, Linkedin, Twitter, Youtube, Facebook } from "lucide-react";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import imgContact from "../../assets/gallery/WhatsApp-Image-2025-02-12-at-19.56.16-1-768x1024.jpeg";
@@ -312,7 +312,7 @@ export function ContactScene() {
                 </h2>
                 <button 
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-                  className="bg-[#d94838] hover:bg-[#b93a2b] text-white px-8 py-4 rounded-full transition-colors font-bold whitespace-nowrap shadow-xl text-sm tracking-wide"
+                  className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-colors font-bold whitespace-nowrap shadow-xl text-sm tracking-wide"
                 >
                   Work together?
                 </button>
@@ -328,7 +328,7 @@ export function ContactScene() {
                       placeholder="email" 
                       className="w-full bg-[#5d2f1d] text-white placeholder:text-white/50 px-6 py-5 rounded-[2rem] focus:outline-none focus:ring-2 focus:ring-primary text-lg"
                     />
-                    <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#d94838] hover:text-white transition-colors">
+                    <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary hover:text-white transition-colors">
                       <ArrowRight className="w-8 h-8" />
                     </button>
                   </form>
@@ -344,10 +344,9 @@ export function ContactScene() {
                   
                   {/* Social Icons */}
                   <div className="flex items-center gap-6 mt-2">
-                    <a href="#" className="hover:text-[#d94838] transition-colors"><Instagram className="w-7 h-7" /></a>
-                    <a href="#" className="hover:text-[#d94838] transition-colors"><Linkedin className="w-7 h-7" /></a>
-                    <a href="#" className="hover:text-[#d94838] transition-colors"><Twitter className="w-7 h-7" /></a>
-                    <a href="#" className="hover:text-[#d94838] transition-colors"><Youtube className="w-7 h-7" /></a>
+                    <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Instagram className="w-7 h-7" /></a>
+                    <a href="https://www.facebook.com/orangeeventsandconferences/#" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Facebook className="w-7 h-7" /></a>
+                    <a href="https://www.youtube.com/channel/UCwEPbmRQT8N7TBS8QQZlHog" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Youtube className="w-7 h-7" /></a>
                   </div>
                 </div>
               </div>
