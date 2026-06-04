@@ -79,8 +79,11 @@ export function HeroScene() {
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
-              className="text-3xl sm:text-5xl md:text-7xl lg:text-[6.5vw] xl:text-9xl font-serif text-white tracking-widest mb-3 whitespace-nowrap"
-              style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
+              className="font-serif text-white tracking-widest mb-3 whitespace-nowrap"
+              style={{
+                fontSize: "min(6.5vw, 8rem)",
+                textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)"
+              }}
             >
               ORANGE EVENTS
             </h1>
