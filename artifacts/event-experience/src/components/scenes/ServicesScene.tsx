@@ -58,6 +58,9 @@ const services = [
   },
 ];
 
+import { TextReveal } from "@/components/animations/TextReveal";
+import { RevealAnimation } from "@/components/animations/RevealAnimation";
+
 export function ServicesScene() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [, setLocation] = useLocation();
@@ -147,28 +150,38 @@ export function ServicesScene() {
         
         {/* Massive Watermark Text - Light Brown/Black */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center overflow-hidden">
-          <span className="text-[12rem] md:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
-            SERVICES
-          </span>
+          <RevealAnimation delay={0.1}>
+            <span className="text-[12rem] md:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+              SERVICES
+            </span>
+          </RevealAnimation>
         </div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
           {/* Animated Vertical Line */}
-          <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-primary/30 to-primary mb-8" />
+          <RevealAnimation delay={0.2}>
+            <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-primary/30 to-primary mb-8" />
+          </RevealAnimation>
           
-          <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold flex items-center gap-4">
-            <span className="w-8 h-[1px] bg-primary/30" />
-            Our Services
-            <span className="w-8 h-[1px] bg-primary/30" />
-          </p>
+          <RevealAnimation delay={0.3}>
+            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-primary/30" />
+              Our Services
+              <span className="w-8 h-[1px] bg-primary/30" />
+            </p>
+          </RevealAnimation>
           
-          <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-[#0a1128] leading-[1.1] mb-8">
-            Experiences we <span className="italic text-primary font-light">craft</span>
-          </h2>
+          <TextReveal variant="word" delay={0.4}>
+            <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-[#0a1128] leading-[1.1] mb-8">
+              Experiences we <span className="italic text-primary font-light">craft</span>
+            </h2>
+          </TextReveal>
           
-          <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-            From grand corporate galas to intimate luxury weddings, we bring a blend of meticulous planning, bold creativity, and flawless execution to every moment.
-          </p>
+          <RevealAnimation delay={0.5}>
+            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+              From grand corporate galas to intimate luxury weddings, we bring a blend of meticulous planning, bold creativity, and flawless execution to every moment.
+            </p>
+          </RevealAnimation>
         </div>
       </section>
 

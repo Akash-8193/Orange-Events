@@ -258,5 +258,55 @@
   .text-glow {
     text-shadow: 0 0 10px hsl(var(--primary) / 0.3);
   }
-}
 
+  /* Premium Button Hover */
+  .premium-button {
+    @apply relative overflow-hidden transition-all duration-500 ease-out z-10;
+  }
+  .premium-button::before {
+    content: '';
+    @apply absolute top-0 left-0 w-0 h-full bg-current opacity-10 transition-all duration-500 ease-out z-[-1];
+  }
+  .premium-button:hover::before {
+    @apply w-full;
+  }
+  .premium-button:hover .premium-button-arrow {
+    @apply translate-x-1;
+  }
+
+  /* Image Hover Zoom */
+  .premium-image-zoom {
+    @apply overflow-hidden;
+  }
+  .premium-image-zoom img {
+    @apply transition-transform duration-700 ease-out;
+  }
+  .premium-image-zoom:hover img {
+    @apply scale-110;
+  }
+
+  /* Card Hover Lift */
+  .premium-card {
+    @apply transition-all duration-500 ease-out;
+  }
+  .premium-card:hover {
+    @apply -translate-y-[10px] shadow-2xl;
+  }
+
+  /* Lenis CSS */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}

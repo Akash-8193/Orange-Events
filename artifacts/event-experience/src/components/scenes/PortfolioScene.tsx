@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { TextReveal } from "@/components/animations/TextReveal";
+import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import portfolio1 from "@/assets/images/portfolio-1.png";
 import portfolio2 from "@/assets/images/portfolio-2.png";
 import portfolio3 from "@/assets/images/portfolio-3.png";
@@ -37,11 +39,17 @@ export function PortfolioScene() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-primary/10 rounded-full blur-[100px] opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-6 mb-16 text-center relative z-10">
-        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Portfolio</p>
-        <h2 className="text-4xl md:text-6xl font-serif text-background mb-3">Our Works</h2>
-        <p className="text-background/80 uppercase tracking-widest text-xs">
-          Moments crafted with meticulous precision
-        </p>
+        <RevealAnimation delay={0.1}>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Portfolio</p>
+        </RevealAnimation>
+        <TextReveal variant="word" delay={0.2}>
+          <h2 className="text-4xl md:text-6xl font-serif text-background mb-3">Our Works</h2>
+        </TextReveal>
+        <RevealAnimation delay={0.3}>
+          <p className="text-background/80 uppercase tracking-widest text-xs">
+            Moments crafted with meticulous precision
+          </p>
+        </RevealAnimation>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 px-4 md:px-10 max-w-[100rem] mx-auto md:h-[130vh] relative z-10">

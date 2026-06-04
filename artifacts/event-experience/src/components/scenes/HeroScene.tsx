@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import heroBg from "@assets/generated_images/oe-hero-bg.png";
+import { TextReveal } from "@/components/animations/TextReveal";
 
 function isWebGLAvailable(): boolean {
   try {
@@ -68,26 +69,22 @@ export function HeroScene() {
 
       {/* Text overlay */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 2.8 }}
+        <div
           className="text-center px-8 md:px-16 py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl"
         >
-          <motion.p
-            initial={{ opacity: 0, letterSpacing: "0.1em" }}
-            animate={{ opacity: 1, letterSpacing: "0.35em" }}
-            transition={{ duration: 2, delay: 2.6 }}
+          <p
             className="text-xs md:text-sm font-semibold uppercase text-white mb-6 tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             Welcome to
-          </motion.p>
-          <h1
-            className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-widest mb-3"
-            style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
-          >
-            ORANGE EVENTS
-          </h1>
+          </p>
+          <TextReveal variant="hero" delay={3.5}>
+            <h1
+              className="text-5xl md:text-7xl lg:text-9xl font-serif text-white tracking-widest mb-3"
+              style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)" }}
+            >
+              ORANGE EVENTS
+            </h1>
+          </TextReveal>
           <p className="text-sm md:text-base font-semibold tracking-[0.25em] uppercase text-white mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             &amp; Conferences Pvt. Ltd.
           </p>
@@ -95,7 +92,7 @@ export function HeroScene() {
           <p className="text-base md:text-xl font-medium tracking-[0.1em] text-white/90 italic font-serif drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             A good life is a collection of happy moments.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}

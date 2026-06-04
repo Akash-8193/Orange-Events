@@ -20,15 +20,21 @@ function Router() {
   );
 }
 
+import { SmoothScrollProvider } from "@/components/animations/SmoothScrollProvider";
+import { PagePreloader } from "@/components/animations/PagePreloader";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
+      <SmoothScrollProvider>
+        <PagePreloader />
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </SmoothScrollProvider>
     </QueryClientProvider>
   );
 }

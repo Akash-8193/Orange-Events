@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Send, ArrowRight, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { TextReveal } from "@/components/animations/TextReveal";
+import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import imgContact from "../../assets/gallery/WhatsApp-Image-2025-02-12-at-19.56.16-1-768x1024.jpeg";
 
 export function ContactScene() {
@@ -10,36 +11,33 @@ export function ContactScene() {
       <div className="mb-20 text-center relative flex flex-col items-center justify-center pt-16 overflow-hidden">
         {/* Massive Watermark Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center">
-          <span className="text-[11rem] md:text-[16rem] lg:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
-            CONTACT
-          </span>
+          <RevealAnimation delay={0.1}>
+            <span className="text-[11rem] md:text-[16rem] lg:text-[18rem] font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none">
+              CONTACT
+            </span>
+          </RevealAnimation>
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 relative z-10 flex items-center justify-center gap-4"
-        >
-          <span className="w-8 h-[1px] bg-primary/50" />
-          Get In Touch
-          <span className="w-8 h-[1px] bg-primary/50" />
-        </motion.p>
+        <RevealAnimation delay={0.2} className="relative z-10 flex flex-col items-center">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-[1px] bg-primary/50" />
+            Get In Touch
+            <span className="w-8 h-[1px] bg-primary/50" />
+          </p>
+        </RevealAnimation>
         
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#0a1128] font-bold mb-6 leading-[1.1] relative z-10"
-        >
-          Let's Plan Your <span className="italic text-primary font-normal">Next Event</span>
-        </motion.h2>
+        <TextReveal variant="word" delay={0.3}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#0a1128] font-bold mb-6 leading-[1.1] relative z-10">
+            Let's Plan Your <span className="italic text-primary font-normal">Next Event</span>
+          </h2>
+        </TextReveal>
         
-        <p className="text-slate-600 font-medium max-w-2xl mx-auto text-lg leading-relaxed relative z-10 px-4">
-          Looking for the best event management company in Noida & Delhi NCR? 
-          Get in touch with Orange Events today. Let's discuss your vision and weave success together.
-        </p>
+        <RevealAnimation delay={0.4}>
+          <p className="text-slate-600 font-medium max-w-2xl mx-auto text-lg leading-relaxed relative z-10 px-4">
+            Looking for the best event management company in Noida & Delhi NCR? 
+            Get in touch with Orange Events today. Let's discuss your vision and weave success together.
+          </p>
+        </RevealAnimation>
       </div>
 
       {/* 1. Split Contact Section */}
@@ -102,60 +100,64 @@ export function ContactScene() {
 
         {/* Right: Contact Form */}
         <div className="lg:w-1/2 px-6 py-16 md:p-20 flex flex-col justify-center">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-sm font-bold text-[#0a1128]">Contact Us</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a1128] mb-6 font-serif leading-tight">
-            Get in touch with our team anytime today
-          </h2>
-          <p className="text-slate-600 mb-10 text-base leading-relaxed">
-            Our team is always here to listen, support, and guide you. Whether you have questions, need assistance, or want to discuss your next project or event.
-          </p>
-
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-              />
+          <RevealAnimation delay={0.2}>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-sm font-bold text-[#0a1128]">Contact Us</span>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="tel"
-                placeholder="Mobile Number"
-                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-              />
-              <input
-                type="email"
-                placeholder="E-mail Address"
-                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-              />
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0a1128] mb-6 font-serif leading-tight">
+              Get in touch with our team anytime today
+            </h2>
+            <p className="text-slate-600 mb-10 text-base leading-relaxed">
+              Our team is always here to listen, support, and guide you. Whether you have questions, need assistance, or want to discuss your next project or event.
+            </p>
+          </RevealAnimation>
 
-            <textarea
-              rows={5}
-              placeholder="Write your message here..."
-              className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
-            ></textarea>
+          <RevealAnimation delay={0.4}>
+            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="tel"
+                  placeholder="Mobile Number"
+                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail Address"
+                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                />
+              </div>
 
-            <div>
-              <button
-                type="submit"
-                className="bg-primary text-white font-bold py-4 px-10 rounded-full hover:bg-[#965a22] transition-colors inline-flex items-center gap-2"
-              >
-                Send A Message
-                <Send className="w-4 h-4" />
-              </button>
-            </div>
-          </form>
+              <textarea
+                rows={5}
+                placeholder="Write your message here..."
+                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+              ></textarea>
+
+              <div>
+                <button
+                  type="submit"
+                  className="premium-button bg-primary text-white font-bold py-4 px-10 rounded-full shadow-lg inline-flex items-center gap-2"
+                >
+                  Send A Message
+                  <Send className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+                </button>
+              </div>
+            </form>
+          </RevealAnimation>
         </div>
       </section>
 
