@@ -19,6 +19,11 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     lenis.on("scroll", ScrollTrigger.update);
 
+    // Refresh GSAP when fonts are loaded to fix height miscalculations
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });

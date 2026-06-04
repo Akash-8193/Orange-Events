@@ -2,8 +2,38 @@ import { MapPin, Phone, Mail, Send, ArrowRight, Instagram, Linkedin, Twitter, Yo
 import { TextReveal } from "@/components/animations/TextReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import imgContact from "../../assets/gallery/WhatsApp-Image-2025-02-12-at-19.56.16-1-768x1024.jpeg";
+import { useLocation } from "wouter";
 
 export function ContactScene() {
+  const [location, setLocation] = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("/#")) {
+      const targetId = href.substring(1);
+      
+      if (location !== "/") {
+        setLocation("/");
+        setTimeout(() => {
+          const element = document.querySelector(targetId);
+          if (element) {
+            const top = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(targetId);
+        if (element) {
+          const top = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }
+    } else {
+      setLocation(href);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <div id="contact" className="bg-[#f8f9fa] pt-12 pb-0">
       
@@ -214,19 +244,19 @@ export function ContactScene() {
               <div>
                 <h4 className="text-2xl font-serif font-bold text-white mb-6">Quick Link</h4>
                 <div className="flex flex-col gap-4 text-sm font-medium text-white/80">
-                  <a href="#about" className="hover:text-primary transition-colors w-fit">About Us</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Blogs</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Corporate Event</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Entertainment Services</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Wedding Planning</a>
+                  <a href="/#about" onClick={(e) => handleNavClick(e, "/#about")} className="hover:text-primary transition-colors w-fit">About Us</a>
+                  <a href="/blogs" onClick={(e) => handleNavClick(e, "/blogs")} className="hover:text-primary transition-colors w-fit">Blogs</a>
+                  <a href="/service/corporate" onClick={(e) => handleNavClick(e, "/service/corporate")} className="hover:text-primary transition-colors w-fit">Corporate Event</a>
+                  <a href="/service/entertainment" onClick={(e) => handleNavClick(e, "/service/entertainment")} className="hover:text-primary transition-colors w-fit">Entertainment Services</a>
+                  <a href="/service/wedding" onClick={(e) => handleNavClick(e, "/service/wedding")} className="hover:text-primary transition-colors w-fit">Wedding Planning</a>
                 </div>
               </div>
               <div className="sm:pt-[3.75rem]">
                 <div className="flex flex-col gap-4 text-sm font-medium text-white/80">
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Vacation Planning</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Clients</a>
-                  <a href="#" className="hover:text-primary transition-colors w-fit">Our Footprint</a>
-                  <a href="#contact" className="hover:text-primary transition-colors w-fit">Contact Us</a>
+                  <a href="/service/vacation" onClick={(e) => handleNavClick(e, "/service/vacation")} className="hover:text-primary transition-colors w-fit">Vacation Planning</a>
+                  <a href="/#clients" onClick={(e) => handleNavClick(e, "/#clients")} className="hover:text-primary transition-colors w-fit">Clients</a>
+                  <a href="/#portfolio" onClick={(e) => handleNavClick(e, "/#portfolio")} className="hover:text-primary transition-colors w-fit">Our Footprint</a>
+                  <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact")} className="hover:text-primary transition-colors w-fit">Contact Us</a>
                 </div>
               </div>
             </div>

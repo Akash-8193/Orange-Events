@@ -76,7 +76,7 @@ function ClientRow({ items, direction = 1, speed = 40 }: { items: string[]; dire
 
 export function ClientsScene() {
   return (
-    <section className="pt-8 pb-24 bg-background relative overflow-hidden">
+    <section id="clients" className="pt-8 pb-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/3 w-[30rem] h-[10rem] bg-primary/10 rounded-full blur-[50px] opacity-40" />
       </div>

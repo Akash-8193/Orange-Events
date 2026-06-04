@@ -144,7 +144,7 @@ export function ServicesScene() {
 
   return (
     <>
-      <section className="bg-white pt-32 pb-24 relative overflow-hidden flex flex-col items-center border-b border-slate-100">
+      <section className="bg-white pt-32 pb-24 relative z-20 overflow-hidden flex flex-col items-center border-b border-slate-100">
         {/* Background Decorative Elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
         

@@ -9,14 +9,19 @@ import BlogsPage from "@/pages/BlogsPage";
 
 const queryClient = new QueryClient();
 
+import { ScrollToTop } from "@/components/ScrollToTop";
+
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/blogs" component={BlogsPage} />
-      <Route path="/service/:id" component={ServiceDetails} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/blogs" component={BlogsPage} />
+        <Route path="/service/:id" component={ServiceDetails} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, ReactNode } from "react";
+import { useLayoutEffect, useRef, ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -18,7 +18,7 @@ export function TextReveal({ children, variant = "word", className = "", delay =
   const hiddenRef = useRef<HTMLDivElement>(null);
   const visibleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!hiddenRef.current || !visibleRef.current) return;
 
     // Copy the original HTML to the visible container

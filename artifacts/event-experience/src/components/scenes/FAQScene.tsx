@@ -85,7 +85,7 @@ export function FAQScene() {
   return (
     <section id="faq" className="py-24 md:py-32 bg-white overflow-hidden relative">
       <div className="max-w-[90rem] mx-auto px-4 md:px-8 flex flex-col lg:flex-row gap-20 lg:gap-28 items-start">
-        
+
         {/* Left Column - Image & Contact Box */}
         <div className="w-full lg:w-[45%] relative pl-12 md:pl-20 mt-10 lg:mt-0">
           {/* Vertical rotated text behind image */}
@@ -96,20 +96,20 @@ export function FAQScene() {
           </div>
 
           <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative z-10 bg-slate-100">
-             <img src={imgFaq} alt="Events FAQ" className="w-full h-full object-cover" />
+            <img src={imgFaq} alt="Events FAQ" className="w-full h-full object-cover" />
           </div>
-          
+
           {/* Contact Overlay Box (Primary Color) */}
           <div className="absolute -bottom-10 -right-4 md:-right-12 bg-primary text-white p-8 md:p-10 rounded-3xl shadow-2xl z-20 w-[18rem] md:w-[22rem]">
-             <div className="flex -space-x-4 mb-8">
+            <div className="flex -space-x-4 mb-8">
               <div className="w-12 h-12 rounded-full bg-[#fca311] border-2 border-primary overflow-hidden">
-                 <img src={imgFaq} className="w-full h-full object-cover" />
+                <img src={imgFaq} className="w-full h-full object-cover" />
               </div>
               <div className="w-12 h-12 rounded-full bg-[#14213d] border-2 border-primary overflow-hidden">
-                 <img src={imgFaq} className="w-full h-full object-cover" />
+                <img src={imgFaq} className="w-full h-full object-cover" />
               </div>
               <div className="w-12 h-12 rounded-full bg-[#000000] border-2 border-primary overflow-hidden">
-                 <img src={imgFaq} className="w-full h-full object-cover" />
+                <img src={imgFaq} className="w-full h-full object-cover" />
               </div>
             </div>
             <h4 className="text-xl md:text-2xl font-bold mb-4">Still Have Any Questions?</h4>
@@ -118,7 +118,7 @@ export function FAQScene() {
             </p>
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5" />
-              <span className="font-bold text-lg">+91 (0) 123 456 7890</span>
+              <span className="font-bold text-lg">+91 93508 66151</span>
             </div>
           </div>
         </div>
