@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "wouter";
 import { Navigation } from "@/components/Navigation";
 import { ContactScene } from "@/components/scenes/ContactScene";
 import { TextReveal } from "@/components/animations/TextReveal";
@@ -70,40 +71,42 @@ export default function BlogsPage() {
           {/* Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-20">
             {blogs.map((blog) => (
-              <div key={blog.id} className="group cursor-pointer flex flex-col h-full">
-                {/* Image */}
-                <div className="overflow-hidden rounded-2xl mb-6 aspect-[4/3] relative">
-                  <img 
-                    src={blog.image} 
-                    alt={blog.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-grow">
-                  <div className="text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                    {blog.date}
+              <Link href={`/blogs/${blog.id}`} key={blog.id}>
+                <a className="group cursor-pointer flex flex-col h-full">
+                  {/* Image */}
+                  <div className="overflow-hidden rounded-2xl mb-6 aspect-[4/3] relative">
+                    <img 
+                      src={blog.image} 
+                      alt={blog.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-[#0a1128] leading-snug mb-4 group-hover:text-primary transition-colors">
-                    {blog.title}
-                  </h3>
-                  
-                  <p className="text-slate-600 line-clamp-3 mb-6 text-sm leading-relaxed flex-grow">
-                    {blog.excerpt}
-                  </p>
 
-                  <div className="mt-auto">
-                    <div className="w-full h-px bg-slate-200 mb-4"></div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm font-bold text-[#0a1128] group-hover:text-primary transition-colors">
-                        Read More 
-                        <ArrowUpRight className="w-4 h-4" />
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow">
+                    <div className="text-xs font-bold text-primary uppercase tracking-wider mb-3">
+                      {blog.date}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-[#0a1128] leading-snug mb-4 group-hover:text-primary transition-colors">
+                      {blog.title}
+                    </h3>
+                    
+                    <p className="text-slate-600 line-clamp-3 mb-6 text-sm leading-relaxed flex-grow">
+                      {blog.excerpt}
+                    </p>
+
+                    <div className="mt-auto">
+                      <div className="w-full h-px bg-slate-200 mb-4"></div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-sm font-bold text-[#0a1128] group-hover:text-primary transition-colors">
+                          Read More 
+                          <ArrowUpRight className="w-4 h-4" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </a>
+              </Link>
             ))}
           </div>
         </div>

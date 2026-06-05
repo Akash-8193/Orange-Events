@@ -10,6 +10,7 @@ import PortfolioPage from "@/pages/PortfolioPage";
 import ContactPage from "@/pages/ContactPage";
 import ServiceDetails from "@/pages/ServiceDetails";
 import BlogsPage from "@/pages/BlogsPage";
+import BlogDetails from "@/pages/BlogDetails";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ function Router() {
         <Route path="/portfolio" component={PortfolioPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/blogs" component={BlogsPage} />
+        <Route path="/blogs/:id" component={BlogDetails} />
         <Route path="/service/:id" component={ServiceDetails} />
         <Route component={NotFound} />
       </Switch>
