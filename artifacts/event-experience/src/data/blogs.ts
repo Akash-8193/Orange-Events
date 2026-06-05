@@ -14,7 +14,7 @@ export const blogs: BlogPost[] = [
     date: "October 3, 2025",
     url: "/mastering-multi-city-corporate-trainings",
     excerpt: "Handling corporate events across multiple cities on the same day is no small feat, but for Orange Events & Conferences Pvt. Ltd., it's all in a day's work. Today, we had the privilege of managing Assessment Trainings for Avery Dennison simultaneously in Gurgaon and Bangalore, delivering an experience that was both flawless and memorable.",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "event-mastery-in-action-orange-events-at-the-dholera-smart-city-conference",
@@ -22,7 +22,7 @@ export const blogs: BlogPost[] = [
     date: "October 3, 2025",
     url: "/event-mastery-in-action-orange-events-at-the-dholera-smart-city-conference",
     excerpt: "Some mornings are not just about hosting events — they're about being part of history in the making. This Sunday, we had the privilege of managing \"The Iconic Nest Group by Soil Search\", a grand conference dedicated to the launch and promotion of DHOLERA – THE SMART CITY.",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "this-diwali-lets-illuminate-more-than-just-spaces",
@@ -30,7 +30,7 @@ export const blogs: BlogPost[] = [
     date: "September 27, 2025",
     url: "/this-diwali-lets-illuminate-more-than-just-spaces",
     excerpt: "Diwali has always been more than a festival of lights—it is the celebration of the greatest truth humanity has ever known: the victory of good over evil, light over darkness, hope over despair.",
-    image: "https://images.unsplash.com/photo-1568285521016-72449520b7bc?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/diwali_celebration_india.png",
   },
   {
     id: "silent-rituals-traditions-guests-often-overlook-but-carry-deep-meaning",
@@ -38,7 +38,7 @@ export const blogs: BlogPost[] = [
     date: "September 23, 2025",
     url: "/silent-rituals-traditions-guests-often-overlook-but-carry-deep-meaning",
     excerpt: "Every wedding is a story — some parts loud and festive, others quiet and sacred. The beauty doubles when two families from different cultural backgrounds come together. Even within the same caste, rituals can look completely different across...",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/indian_wedding_rituals.png",
   },
   {
     id: "guest-communication-in-destination-weddings-the-key-to-a-stress-free-celebration",
@@ -46,7 +46,7 @@ export const blogs: BlogPost[] = [
     date: "September 20, 2025",
     url: "/guest-communication-in-destination-weddings-the-key-to-a-stress-free-celebration",
     excerpt: "When you dream of a destination wedding, you imagine sunsets, celebrations, and a picture-perfect backdrop. But for your guests, the experience goes beyond just attending your big day. They've taken time off work, booked travel, and are stepping into an unfamiliar place.",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/destination_wedding_india.png",
   },
   {
     id: "how-corporate-events-build-culture-brand-identity",
@@ -54,7 +54,7 @@ export const blogs: BlogPost[] = [
     date: "September 10, 2025",
     url: "/how-corporate-events-build-culture-brand-identity",
     excerpt: "In today's competitive business world, corporate events are more than just gatherings. They are strategic tools that shape culture, strengthen internal bonds, and project a brand's identity to the outside world.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "you-enjoy-the-moments-while-we-perfect-the-details",
@@ -62,7 +62,7 @@ export const blogs: BlogPost[] = [
     date: "September 8, 2025",
     url: "/you-enjoy-the-moments-while-we-perfect-the-details",
     excerpt: "Festivals, weddings, and celebrations are just around the corner — Diwali lights will soon glow, Dussehra stages will rise, and wedding bells will ring. This season is about bringing people together, creating memories, and celebrating moments that last a lifetime.",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/destination_wedding_india.png",
   },
   {
     id: "corporate-badminton-tournament-2025-smashing-energy-team-spirit",
@@ -70,7 +70,7 @@ export const blogs: BlogPost[] = [
     date: "September 2, 2025",
     url: "/corporate-badminton-tournament-2025-smashing-energy-team-spirit",
     excerpt: "The Corporate Badminton Tournament 2025 was held on 30th & 31st September at Rackonnect Exclusive Padel Pickle Park (REPPP), bringing together passion, teamwork, and the thrill of competition.",
-    image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "independence-day-celebrations-at-itc-atc-offices",
@@ -78,7 +78,7 @@ export const blogs: BlogPost[] = [
     date: "August 22, 2025",
     url: "/independence-day-celebrations-at-itc-atc-offices",
     excerpt: "This Independence Day, the ITC and ATC offices of a respected company in Gurgaon were transformed into vibrant spaces of pride and celebration. The 79th year of India's freedom was marked not just by decor but by an atmosphere that truly captured the essence of unity and patriotism.",
-    image: "https://images.unsplash.com/photo-1532375810565-c07a3c3f25c7?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "from-vision-to-reality-in-24-hours-an-80th-birthday-celebration-at-taj-resort-spa-sundarkund",
@@ -86,7 +86,7 @@ export const blogs: BlogPost[] = [
     date: "August 20, 2025",
     url: "/from-vision-to-reality-in-24-hours-an-80th-birthday-celebration-at-taj-resort-spa-sundarkund",
     excerpt: "Some celebrations are planned months in advance. Others come as a challenge — a true test of creativity, dedication, and agility. For our team at Orange Events & Conferences Pvt. Ltd., this challenge arrived on Janmashtami, when we were entrusted with creating a grand celebration...",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/birthday_party_india.png",
   },
   {
     id: "behind-the-scenes-of-casmara-esskay-beautys-grand-product-launch-celebration",
@@ -94,7 +94,7 @@ export const blogs: BlogPost[] = [
     date: "July 29, 2025",
     url: "/behind-the-scenes-of-casmara-esskay-beautys-grand-product-launch-celebration",
     excerpt: "Powered by Orange Events and Conferences Pvt. Ltd. When two iconic beauty brands – Casmara India and Esskay Beauty Resources Pvt. Ltd. – celebrated 17 glorious years of partnership, they chose to mark the milestone with nothing less than a show-stopping product launch event.",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/awards_ceremony_india.png",
   },
   {
     id: "celebrating-innovation-milestones-hashstudioz-annual-day-2025-curated-by-orange-events-and-conferences-pvt-ltd",
@@ -102,7 +102,7 @@ export const blogs: BlogPost[] = [
     date: "July 15, 2025",
     url: "/celebrating-innovation-milestones-hashstudioz-annual-day-2025-curated-by-orange-events-and-conferences-pvt-ltd",
     excerpt: "Orange Events and Conferences Pvt. Ltd. had the privilege of organizing the spectacular 7th Annual Day celebration of HashStudioz Technologies, held in 2025. The event, branded as HashMax 7.0, marked seven remarkable years of Trust, tech, and transformation...",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "a-big-mice-milestone-by-orange-events-and-conferences-pvt-ltd",
@@ -110,7 +110,7 @@ export const blogs: BlogPost[] = [
     date: "July 11, 2025",
     url: "/a-big-mice-milestone-by-orange-events-and-conferences-pvt-ltd",
     excerpt: "Managing 3 Aspiring Conferences for Avery Dennison. Organizing one conference is a task in itself. Managing three conferences at the same time across different locations? That's what Orange Events and Conferences Pvt. Ltd. did successfully for Avery Dennison.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "a-dreamy-celebration-aditya-manishas-bespoke-engagement-at-noida-golf-course",
@@ -118,7 +118,7 @@ export const blogs: BlogPost[] = [
     date: "June 25, 2025",
     url: "/a-dreamy-celebration-aditya-manishas-bespoke-engagement-at-noida-golf-course",
     excerpt: "On the serene evening of 14th June 2025, the Noida Golf Course witnessed a celebration that was nothing short of visual poetry — the engagement ceremony of Aditya and Manisha. Thoughtfully curated and deeply personal...",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/destination_wedding_india.png",
   },
   {
     id: "balancing-business-and-well-being-yoga-week-at-cnh-industrials",
@@ -126,7 +126,7 @@ export const blogs: BlogPost[] = [
     date: "June 24, 2025",
     url: "/balancing-business-and-well-being-yoga-week-at-cnh-industrials",
     excerpt: "In celebration of International Yoga Day on June 21, 2025, CNH Industrials, in partnership with Orange Events & Conferences, embarked on a holistic journey to enhance employee wellness.",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "top-10-questions-to-ask-before-hiring-an-event-planner",
@@ -134,7 +134,7 @@ export const blogs: BlogPost[] = [
     date: "June 9, 2025",
     url: "/top-10-questions-to-ask-before-hiring-an-event-planner",
     excerpt: "Planning an event can feel like juggling a million details at once. Whether it's a dream wedding, a corporate conference, or an intimate celebration, hiring the right event planner can turn the chaos into calm...",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "a-wedding-to-remember-how-we-organized-sonam-viveks-dream-wedding-in-just-one-day",
@@ -142,7 +142,7 @@ export const blogs: BlogPost[] = [
     date: "June 7, 2025",
     url: "/a-wedding-to-remember-how-we-organized-sonam-viveks-dream-wedding-in-just-one-day",
     excerpt: "At TheOrangeKnotStory, we believe that every wedding is unique and filled with emotions, but some weddings truly challenge us to push our limits. Sonam and Vivek's wedding was one such thrilling experience! When they contacted us just a day before...",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/indian_wedding_rituals.png",
   },
   {
     id: "celebrating-our-wonderful-directors-birthday-a-heartfelt-surprise-for-mrs-asha-panwar",
@@ -150,7 +150,7 @@ export const blogs: BlogPost[] = [
     date: "June 5, 2025",
     url: "/celebrating-our-wonderful-directors-birthday-a-heartfelt-surprise-for-mrs-asha-panwar",
     excerpt: "Yesterday was a truly special day at Orange Events and Conferences Pvt Ltd. as we came together to celebrate the birthday of our honorable director, Mrs. Asha Panwar. It was an occasion filled with joy, creativity, and heartfelt appreciation.",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/birthday_party_india.png",
   },
   {
     id: "why-couples-who-choose-theorangeknotstory-say-it-felt-like-a-dream",
@@ -158,7 +158,7 @@ export const blogs: BlogPost[] = [
     date: "May 31, 2025",
     url: "/why-couples-who-choose-theorangeknotstory-say-it-felt-like-a-dream",
     excerpt: "Discover how TheOrangeKnotStory transforms weddings into dreamlike experiences with personalized planning, exquisite decor, and unforgettable moments that couples cherish forever.",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/indian_wedding_rituals.png",
   },
   {
     id: "enhance-team-spirit-with-exciting-team-building-activities-by-orange-events-and-conferences",
@@ -166,7 +166,7 @@ export const blogs: BlogPost[] = [
     date: "May 15, 2025",
     url: "/enhance-team-spirit-with-exciting-team-building-activities-by-orange-events-and-conferences",
     excerpt: "In today's dynamic work environment, fostering strong team bonds and effective communication is more important than ever. At Orange Events and Conferences, we believe that engaging team-building activities not only boost morale but also enhance collaboration.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_training_india.png",
   },
   {
     id: "creating-a-memorable-event-experience",
@@ -174,7 +174,7 @@ export const blogs: BlogPost[] = [
     date: "May 13, 2025",
     url: "/creating-a-memorable-event-experience",
     excerpt: "Creating a memorable event isn't an easy task; going through lots of hurdles and giving something out of the box is our thing. At TheOrangeKnotStory, we believe that every event should be unique and full of great experiences.",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/destination_wedding_india.png",
   },
   {
     id: "where-strategy-meets-serenity-corporate-offsites-that-work",
@@ -182,7 +182,7 @@ export const blogs: BlogPost[] = [
     date: "May 8, 2025",
     url: "/where-strategy-meets-serenity-corporate-offsites-that-work",
     excerpt: "Building strong team connections and ensuring employee well-being is essential in today's busy corporate environment. Corporate offsites are a great way to refresh teams and promote collaboration. At Orange Events and Conferences Pvt. Ltd., we create tailored offsite experiences...",
-    image: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "neurosciences-conclave-2025-a-brainstorming-success-by-orange-events",
@@ -190,7 +190,7 @@ export const blogs: BlogPost[] = [
     date: "May 2, 2025",
     url: "/neurosciences-conclave-2025-a-brainstorming-success-by-orange-events",
     excerpt: "On April 6, 2025, the elite of the neurosciences community gathered at the Holiday Inn, Mayur Vihar Phase-1, Delhi for a landmark event — Neurosciences Conclave 2025, hosted by Fortis Hospital Noida and meticulously organized by Orange Events & Conferences Pvt. Ltd.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "from-blueprint-to-blessings-inside-sthapana-divas-by-orange-events",
@@ -198,7 +198,7 @@ export const blogs: BlogPost[] = [
     date: "April 29, 2025",
     url: "/from-blueprint-to-blessings-inside-sthapana-divas-by-orange-events",
     excerpt: "When spirituality meets seamless execution, the result is nothing short of divine. This year's Sthapana Divas at Sai Mandir, Sector 61, Noida, on 13th April 2025, stood as a testament to that truth. Behind the scenes, orchestrating every detail from ideation to execution was Orange Events & Conferences Pvt. Ltd.",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/spiritual_divas_event.png",
   },
   {
     id: "icons-of-influence-a-celebration-of-womanhood-at-gulshan-one29",
@@ -206,7 +206,7 @@ export const blogs: BlogPost[] = [
     date: "April 22, 2025",
     url: "/icons-of-influence-a-celebration-of-womanhood-at-gulshan-one29",
     excerpt: "Last month, Gulshan One29 transformed into a hub of joy, empowerment, and creativity as it hosted a vibrant celebration dedicated to womanhood. With the powerful tagline \"Icons of Influence,\" the event paid tribute to the spirit, strength, and style of women from all walks of life.",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/women_empowerment_event.png",
   },
   {
     id: "vibrant-holi-celebrations-at-cnh-corporate-office-a-feast-for-the-eyes",
@@ -214,7 +214,7 @@ export const blogs: BlogPost[] = [
     date: "March 22, 2025",
     url: "/vibrant-holi-celebrations-at-cnh-corporate-office-a-feast-for-the-eyes",
     excerpt: "The festival of colors, Holi, was celebrated with great zeal and enthusiasm at the CNH corporate office on 13th March 2025. The Orange Events and Conferences team worked their magic to transform the office into a vibrant and colorful space, creating an unforgettable experience for all employees.",
-    image: "https://images.unsplash.com/photo-1532375810565-c07a3c3f25c7?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/holi_office_india.png",
   },
   {
     id: "our-24-hour-transformation-for-sharda-care-inauguration",
@@ -222,7 +222,7 @@ export const blogs: BlogPost[] = [
     date: "March 13, 2025",
     url: "/our-24-hour-transformation-for-sharda-care-inauguration",
     excerpt: "As event professionals, we thrive on challenges and deadlines. But sometimes, we're pushed to our limits, and that's when the real magic happens. It's not every day we get high-profile events that test our mettle, but when we do, we seize the opportunity with both hands.",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "75th-birthday-party",
@@ -230,7 +230,7 @@ export const blogs: BlogPost[] = [
     date: "March 5, 2025",
     url: "/75th-birthday-party",
     excerpt: "A Special Day to Remember: 75th Birthday Party at Noida Golf Course Terrace. Last Friday, 28th February 2025, was a very special day for a family who gathered to celebrate the 75th birthday of their loved one.",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/birthday_party_india.png",
   },
   {
     id: "ensuring-safety-at-events",
@@ -238,7 +238,7 @@ export const blogs: BlogPost[] = [
     date: "February 22, 2025",
     url: "/ensuring-safety-at-events",
     excerpt: "A PRIORITY FOR SEAMLESS EXPERIENCES. In event planning, creating a visually stunning experience is essential, but true success lies in seamless execution without safety concerns. Whether it's a corporate gathering, wedding, or large-scale awards ceremony, prioritizing safety ensures a stress-free and enjoyable experience for all attendees.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "goosebumps-gratitude-reliving-the-luxurydot-pr-influencer-awards-2024",
@@ -246,7 +246,7 @@ export const blogs: BlogPost[] = [
     date: "February 6, 2025",
     url: "/goosebumps-gratitude-reliving-the-luxurydot-pr-influencer-awards-2024",
     excerpt: "We still get goosebumps thinking about the incredible experience we had at the LuxuryDot PR Influencer Awards 2024! It wasn't just about managing the event — it was also about meeting, interacting with, and hosting exclusive conversations with some of the biggest influencers and celebrity guests.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/awards_ceremony_india.png",
   },
   {
     id: "the-evolution-of-indian-wedding-trends",
@@ -254,7 +254,7 @@ export const blogs: BlogPost[] = [
     date: "January 23, 2025",
     url: "/the-evolution-of-indian-wedding-trends",
     excerpt: "Indian weddings are renowned for their grandeur and cultural richness, making them a significant part of the country's social fabric. With an industry worth approximately $30 billion, India boasts the second-largest wedding market globally, trailing only behind China.",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/indian_wedding_rituals.png",
   },
   {
     id: "rising-beyond-boundaries-the-inspiring-journey-of-asha-panwar-director-of-orange-events-entertainment",
@@ -262,7 +262,7 @@ export const blogs: BlogPost[] = [
     date: "December 12, 2024",
     url: "/rising-beyond-boundaries-the-inspiring-journey-of-asha-panwar-director-of-orange-events-entertainment",
     excerpt: "Rising Beyond Boundaries: The Inspiring Journey of Asha Panwar, Director of Orange Events & Entertainment. Life is a mosaic of moments, each shaping the path toward our dreams. For Asha Panwar, Director of Orange Events & Entertainment, every experience has been a building block in her remarkable journey.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/women_empowerment_event.png",
   },
   {
     id: "a-magical-unicorn-themed-birthday-pool-party",
@@ -270,7 +270,7 @@ export const blogs: BlogPost[] = [
     date: "October 15, 2024",
     url: "/a-magical-unicorn-themed-birthday-pool-party",
     excerpt: "At Orange Events and Entertainment, we take immense pride in turning moments into memories. On Sunday, October 13th, 2024, we had the pleasure of hosting a spectacular unicorn-themed birthday pool party for a little girl who turned 5. The event took place at Krishna Manor Farms, Noida.",
-    image: "https://images.unsplash.com/photo-1530103862676-de88b9015c32?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/birthday_party_india.png",
   },
   {
     id: "celebrate-green-diwali-with-us",
@@ -278,7 +278,7 @@ export const blogs: BlogPost[] = [
     date: "October 5, 2024",
     url: "/celebrate-green-diwali-with-us",
     excerpt: "Sustainable style & personalized touch for every brand. As we move towards more conscious and mindful living, sustainable practices have extended into every aspect of life, including how we celebrate festivals. One of the most beloved festivals in India, Diwali, the festival of lights, has traditionally been synonymous with grandeur, vibrant decor, and large-scale celebrations.",
-    image: "https://images.unsplash.com/photo-1568285521016-72449520b7bc?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/diwali_celebration_india.png",
   },
   {
     id: "arogya-maitri-bhishm-cube-launch",
@@ -286,7 +286,7 @@ export const blogs: BlogPost[] = [
     date: "September 26, 2024",
     url: "/arogya-maitri-bhishm-cube-launch",
     excerpt: "A Grand Success by Orange Events & Entertainment at the National Media Centre. The Orange Events & Entertainment team is pleased to inform that the prestigious Arogya Maitri Bhishm Cube launch at the National Media Centre in New Delhi was successfully organized. This high-profile event, which was carried out in partnership with the Central Government...",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/corporate_event_india.png",
   },
   {
     id: "netnix-2024",
@@ -294,6 +294,6 @@ export const blogs: BlogPost[] = [
     date: "September 25, 2024",
     url: "/netnix-2024",
     excerpt: "BNI Noida's Grand Success with Orange Events. Thanks to the unmatched commitment and expertise of Orange Events and Entertainment, the most anticipated event of the year, NETNIX 2024 — the 10th anniversary celebration of BNI Noida — turned out to be a huge success. We were crucial in making sure that this historic event went off without a hitch.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
+    image: "/images/blogs/awards_ceremony_india.png",
   }
 ];
