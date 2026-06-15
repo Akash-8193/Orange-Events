@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { Navigation } from "@/components/Navigation";
-import { Save, Loader2, Database, LayoutTemplate, MessageSquare, LockKeyhole, Mail, Phone } from "lucide-react";
+import { Save, Loader2, Database, LayoutTemplate, MessageSquare, LockKeyhole, Mail, Phone, Image as ImageIcon, FileText, Plus, Trash2, Upload } from "lucide-react";
 import heroBg from "@assets/generated_images/oe-hero-bg.png";
 
 // Admin tabs
-type Tab = "content" | "submissions";
+type Tab = "content" | "submissions" | "portfolio" | "blogs";
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<Tab>("content");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("admin_auth") === "true";
+  });
   const [password, setPassword] = useState("");
 
   // Content Editor State
@@ -22,21 +24,77 @@ export default function AdminPage() {
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [loadingSubs, setLoadingSubs] = useState(false);
 
+  // Portfolio CMS State
+  const [portfolioItems, setPortfolioItems] = useState<any[]>([]);
+  const [newPortfolio, setNewPortfolio] = useState({ url: "", type: "image", title: "" });
+
+  // Blogs CMS State
+  const [blogsList, setBlogsList] = useState<any[]>([]);
+  const [newBlog, setNewBlog] = useState({ title: "", image: "", date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }), excerpt: "", content: "" });
+
+  const [isUploading, setIsUploading] = useState(false);
+
+  const uploadFile = async (file: File) => {
+    setIsUploading(true);
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error } = await supabase.storage.from('media').upload(filePath, file);
+    if (error) {
+      alert("Error uploading file. Make sure you created a 'media' public bucket in Supabase Storage! " + error.message);
+      setIsUploading(false);
+      return null;
+    }
+
+    const { data } = supabase.storage.from('media').getPublicUrl(filePath);
+    setIsUploading(false);
+    return data.publicUrl;
+  };
+
   // Simple hardcoded auth for now (can be upgraded to Supabase Auth later)
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === "12345") {
       setIsAuthenticated(true);
+      localStorage.setItem("admin_auth", "true");
       fetchContent();
     } else {
       alert("Invalid password");
     }
   };
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("admin_auth");
+    setPassword("");
+  };
+
   const fetchContent = async () => {
     if (!import.meta.env.VITE_SUPABASE_URL) return;
     const { data } = await supabase.from("site_content").select("*");
-    if (data) setContentKeys(data);
+    if (data) {
+      setContentKeys(data);
+      try {
+        const portRow = data.find(d => d.key === "portfolio_items");
+        if (portRow && portRow.content) setPortfolioItems(JSON.parse(portRow.content));
+        
+        const blogRow = data.find(d => d.key === "blogs_list");
+        if (blogRow && blogRow.content) setBlogsList(JSON.parse(blogRow.content));
+      } catch (e) {
+        console.error("Error parsing JSON content", e);
+      }
+    }
+  };
+
+  const savePortfolio = async (items: any[]) => {
+    await handleSaveContent("portfolio_items", JSON.stringify(items));
+    setPortfolioItems(items);
+  };
+
+  const saveBlogs = async (items: any[]) => {
+    await handleSaveContent("blogs_list", JSON.stringify(items));
+    setBlogsList(items);
   };
 
   const fetchSubmissions = async () => {
@@ -138,12 +196,19 @@ export default function AdminPage() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-          <div>
+          <div className="flex flex-col">
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#0a1128] mb-2 drop-shadow-sm">Admin Dashboard</h1>
             <p className="text-primary font-bold uppercase tracking-[0.2em] text-sm">Manage your website</p>
           </div>
 
-          <div className="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm">
+          <div className="flex flex-col md:flex-row gap-4 items-end md:items-center">
+            <button 
+              onClick={handleLogout}
+              className="text-sm font-bold text-slate-500 hover:text-red-500 transition-colors"
+            >
+              Logout
+            </button>
+            <div className="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab("content")}
               className={`px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${activeTab === "content" ? "bg-primary text-white shadow-md" : "text-slate-500 hover:text-[#0a1128] hover:bg-slate-50"}`}
@@ -151,12 +216,25 @@ export default function AdminPage() {
               <LayoutTemplate className="w-4 h-4" /> Content
             </button>
             <button
+              onClick={() => setActiveTab("portfolio")}
+              className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all whitespace-nowrap ${activeTab === "portfolio" ? "bg-primary text-white shadow-md" : "text-slate-500 hover:text-[#0a1128] hover:bg-slate-50"}`}
+            >
+              Our Works
+            </button>
+            <button
+              onClick={() => setActiveTab("blogs")}
+              className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all whitespace-nowrap ${activeTab === "blogs" ? "bg-primary text-white shadow-md" : "text-slate-500 hover:text-[#0a1128] hover:bg-slate-50"}`}
+            >
+              Blogs
+            </button>
+            <button
               onClick={() => setActiveTab("submissions")}
-              className={`px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${activeTab === "submissions" ? "bg-primary text-white shadow-md" : "text-slate-500 hover:text-[#0a1128] hover:bg-slate-50"}`}
+              className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all whitespace-nowrap ${activeTab === "submissions" ? "bg-primary text-white shadow-md" : "text-slate-500 hover:text-[#0a1128] hover:bg-slate-50"}`}
             >
               <MessageSquare className="w-4 h-4" /> Form Data
             </button>
           </div>
+        </div>
         </div>
 
         <div className="bg-white border border-slate-100 rounded-[2rem] p-6 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] min-h-[500px]">
@@ -257,6 +335,202 @@ export default function AdminPage() {
                   ))}
                 </div>
               )}
+            </div>
+          )}
+
+          {/* Portfolio CMS Tab */}
+          {activeTab === "portfolio" && (
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h3 className="text-[#0a1128] font-bold text-xl mb-4 flex items-center gap-2">
+                  <ImageIcon className="w-5 h-5 text-primary" /> Add New Portfolio Item
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <input
+                      placeholder="Title (e.g. Royal Wedding 2026)"
+                      value={newPortfolio.title} onChange={e => setNewPortfolio({...newPortfolio, title: e.target.value})}
+                      className="flex-1 bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                    />
+                    <select
+                      value={newPortfolio.type}
+                      onChange={e => setNewPortfolio({...newPortfolio, type: e.target.value})}
+                      className="bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                    >
+                      <option value="image">Image</option>
+                      <option value="video">Video (MP4/URL)</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex flex-col gap-2 flex-[3]">
+                      <input
+                        placeholder="Image or Video URL (Paste link OR upload below)"
+                        value={newPortfolio.url} onChange={e => setNewPortfolio({...newPortfolio, url: e.target.value})}
+                        className="w-full bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                      />
+                      <div className="relative">
+                        <input 
+                          type="file" 
+                          accept={newPortfolio.type === "video" ? "video/*" : "image/*"}
+                          onChange={async (e) => {
+                            if (e.target.files && e.target.files[0]) {
+                              const url = await uploadFile(e.target.files[0]);
+                              if (url) setNewPortfolio({...newPortfolio, url});
+                            }
+                          }}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+                          disabled={isUploading}
+                        />
+                        <div className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-colors text-sm font-semibold">
+                          {isUploading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Upload className="w-4 h-4" />}
+                          {isUploading ? "Uploading..." : "Upload File from Computer"}
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => { 
+                        if(!newPortfolio.url) return;
+                        const newItem = { id: Date.now().toString(), ...newPortfolio };
+                        savePortfolio([newItem, ...portfolioItems]);
+                        setNewPortfolio({ url: "", type: "image", title: "" });
+                      }}
+                      className="bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-primary/90 flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
+                    >
+                      <Plus className="w-4 h-4" /> Add Item
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-[#0a1128] font-bold text-xl mb-4">Existing Portfolio Items</h3>
+                {portfolioItems.length === 0 ? (
+                  <p className="text-slate-500 text-center py-8">No portfolio items yet.</p>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {portfolioItems.map((item) => (
+                      <div key={item.id} className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden group relative">
+                        {item.type === "video" ? (
+                          <video src={item.url} className="w-full h-40 object-cover" />
+                        ) : (
+                          <img src={item.url} className="w-full h-40 object-cover" />
+                        )}
+                        <div className="p-3">
+                          <p className="font-bold text-sm text-[#0a1128] truncate">{item.title || "Untitled"}</p>
+                          <p className="text-xs text-slate-500 capitalize">{item.type}</p>
+                        </div>
+                        <button
+                          onClick={() => savePortfolio(portfolioItems.filter(i => i.id !== item.id))}
+                          className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Blogs CMS Tab */}
+          {activeTab === "blogs" && (
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h3 className="text-[#0a1128] font-bold text-xl mb-4 flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-primary" /> Add New Blog Post
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <input
+                    placeholder="Blog Title"
+                    value={newBlog.title} onChange={e => setNewBlog({...newBlog, title: e.target.value})}
+                    className="w-full bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:outline-none"
+                  />
+                  <div className="flex flex-col md:flex-row gap-4 items-start">
+                    <div className="flex flex-col gap-2 flex-[2]">
+                      <input
+                        placeholder="Cover Image URL (Paste link OR upload below)"
+                        value={newBlog.image} onChange={e => setNewBlog({...newBlog, image: e.target.value})}
+                        className="w-full bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:outline-none"
+                      />
+                      <div className="relative">
+                        <input 
+                          type="file" 
+                          accept="image/*"
+                          onChange={async (e) => {
+                            if (e.target.files && e.target.files[0]) {
+                              const url = await uploadFile(e.target.files[0]);
+                              if (url) setNewBlog({...newBlog, image: url});
+                            }
+                          }}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+                          disabled={isUploading}
+                        />
+                        <div className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-colors text-sm font-semibold">
+                          {isUploading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Upload className="w-4 h-4" />}
+                          {isUploading ? "Uploading..." : "Upload Cover Image"}
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      placeholder="Date (e.g. October 15, 2026)"
+                      value={newBlog.date} onChange={e => setNewBlog({...newBlog, date: e.target.value})}
+                      className="flex-1 bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:border-primary focus:outline-none"
+                    />
+                  </div>
+                  <textarea
+                    placeholder="Short Excerpt (shows on blogs list page)"
+                    value={newBlog.excerpt} onChange={e => setNewBlog({...newBlog, excerpt: e.target.value})}
+                    className="w-full bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 min-h-[80px] focus:border-primary focus:outline-none"
+                  />
+                  <textarea
+                    placeholder="Full Blog Content (Supports HTML or plain text)"
+                    value={newBlog.content} onChange={e => setNewBlog({...newBlog, content: e.target.value})}
+                    className="w-full bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 min-h-[200px] focus:border-primary focus:outline-none"
+                  />
+                  <button
+                    onClick={() => {
+                      if(!newBlog.title) return;
+                      const newItem = { id: Date.now().toString(), ...newBlog };
+                      saveBlogs([newItem, ...blogsList]);
+                      setNewBlog({ title: "", image: "", date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }), excerpt: "", content: "" });
+                    }}
+                    className="bg-primary text-white px-6 py-4 rounded-xl font-bold hover:bg-primary/90 flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <Plus className="w-5 h-5" /> Publish Blog Post
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-[#0a1128] font-bold text-xl mb-4">Manage Blogs</h3>
+                {blogsList.length === 0 ? (
+                  <p className="text-slate-500 text-center py-8">No blogs created yet.</p>
+                ) : (
+                  <div className="grid gap-4">
+                    {blogsList.map((blog) => (
+                      <div key={blog.id} className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center shadow-sm relative pr-12">
+                        {blog.image && (
+                          <div className="w-full md:w-32 h-24 shrink-0 rounded-lg overflow-hidden bg-slate-100">
+                            <img src={blog.image} className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                        <div className="flex-1 w-full space-y-2">
+                          <h4 className="font-bold text-lg text-[#0a1128]">{blog.title}</h4>
+                          <p className="text-sm text-slate-500">{blog.date}</p>
+                          <p className="text-sm text-slate-600 line-clamp-2">{blog.excerpt}</p>
+                        </div>
+                        <button
+                          onClick={() => saveBlogs(blogsList.filter(b => b.id !== blog.id))}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-red-50 hover:bg-red-500 text-red-500 hover:text-white p-3 rounded-xl transition-colors"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           )}
 

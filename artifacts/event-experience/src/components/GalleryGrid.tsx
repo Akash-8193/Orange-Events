@@ -2,15 +2,25 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
+export interface GalleryItem {
+  id?: string;
+  url: string;
+  type?: "image" | "video";
+}
+
 interface GalleryGridProps {
-  images: string[];
+  images: (string | GalleryItem)[];
   title?: string;
 }
 
 export function GalleryGrid({ images, title }: GalleryGridProps) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   if (!images || images.length === 0) return null;
+
+  const normalizedImages: GalleryItem[] = images.map(img => 
+    typeof img === "string" ? { url: img, type: "image" } : img
+  );
 
   return (
     <div className="w-full py-12">
@@ -18,22 +28,45 @@ export function GalleryGrid({ images, title }: GalleryGridProps) {
         <h3 className="text-3xl font-serif text-white mb-8">{title}</h3>
       )}
       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-        {images.map((src, index) => (
+        {normalizedImages.map((item, index) => (
           <motion.div
-            key={index}
+            key={item.id || index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index % 4 * 0.1 }}
-            className="break-inside-avoid overflow-hidden rounded-xl cursor-pointer group"
-            onClick={() => setSelectedImage(src)}
+            className="break-inside-avoid overflow-hidden rounded-xl cursor-pointer group relative mb-4"
+            onClick={() => setSelectedImage(item)}
           >
-            <img
-              src={src}
-              alt={`Gallery Image ${index + 1}`}
-              className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
+            {item.type === "video" ? (
+              <div className="relative">
+                <video
+                  src={item.url}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                  muted
+                  loop
+                  playsInline
+                  onMouseOver={e => (e.target as HTMLVideoElement).play()}
+                  onMouseOut={e => {
+                    const v = e.target as HTMLVideoElement;
+                    v.pause();
+                    v.currentTime = 0;
+                  }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm">
+                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-[12px] border-l-white border-b-8 border-b-transparent ml-1" />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <img
+                src={item.url}
+                alt={`Gallery Item ${index + 1}`}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+            )}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
           </motion.div>
         ))}
@@ -54,15 +87,25 @@ export function GalleryGrid({ images, title }: GalleryGridProps) {
             >
               <X size={32} />
             </button>
-            <motion.img
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              src={selectedImage}
-              alt="Expanded view"
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {selectedImage.type === "video" ? (
+              <video
+                src={selectedImage.url}
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                controls
+                autoPlay
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <motion.img
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.9 }}
+                src={selectedImage.url}
+                alt="Expanded view"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>

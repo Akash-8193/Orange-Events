@@ -3,8 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { PortfolioScene } from "@/components/scenes/PortfolioScene";
 import { ClientsScene } from "@/components/scenes/ClientsScene";
+import { useState, useEffect } from "react";
 import { ContactScene } from "@/components/scenes/ContactScene";
-import { GalleryGrid } from "@/components/GalleryGrid";
+import { GalleryGrid, GalleryItem } from "@/components/GalleryGrid";
+import { supabase } from "@/lib/supabase";
 import portfolioHeroBg from "../assets/generated_images/portfolio-hero-bg.png";
 
 // Load all images dynamically
@@ -13,6 +15,33 @@ const weddingImages = Object.values(import.meta.glob('../assets/gallery/wedding/
 const allGalleryImages = [...corporateImages, ...weddingImages].sort(() => Math.random() - 0.5); // Shuffle for a mixed gallery view
 
 export default function PortfolioPage() {
+  const [dbImages, setDbImages] = useState<GalleryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPortfolio() {
+      if (!import.meta.env.VITE_SUPABASE_URL) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const { data } = await supabase.from("site_content").select("content").eq("key", "portfolio_items").single();
+        if (data && data.content) {
+          const items = JSON.parse(data.content);
+          if (items.length > 0) {
+            setDbImages(items);
+          }
+        }
+      } catch (e) {
+        console.error("Error fetching portfolio:", e);
+      }
+      setLoading(false);
+    }
+    fetchPortfolio();
+  }, []);
+
+  const displayImages = dbImages.length > 0 ? dbImages : allGalleryImages;
+
   return (
     <main className="bg-background min-h-screen">
       <Navigation />
@@ -77,7 +106,13 @@ export default function PortfolioPage() {
           <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Complete Gallery</h2>
           <div className="w-16 h-[2px] bg-primary mx-auto"></div>
         </div>
-        <GalleryGrid images={allGalleryImages} />
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <GalleryGrid images={displayImages} />
+        )}
       </section>
       <ClientsScene />
       <ContactScene />

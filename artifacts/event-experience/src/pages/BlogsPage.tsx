@@ -1,13 +1,43 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { Navigation } from "@/components/Navigation";
 import { ContactScene } from "@/components/scenes/ContactScene";
 import { TextReveal } from "@/components/animations/TextReveal";
-import { blogs } from "@/data/blogs";
+import { blogs as localBlogs } from "@/data/blogs";
+import { supabase } from "@/lib/supabase";
+import { useState, useEffect } from "react";
 import blogsHeroBg from "../assets/generated_images/blogs-hero-bg.png";
 
 export default function BlogsPage() {
+  const [, setLocation] = useLocation();
+  const [dbBlogs, setDbBlogs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      if (!import.meta.env.VITE_SUPABASE_URL) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const { data } = await supabase.from("site_content").select("content").eq("key", "blogs_list").single();
+        if (data && data.content) {
+          const items = JSON.parse(data.content);
+          if (items.length > 0) {
+            setDbBlogs(items);
+          }
+        }
+      } catch (e) {
+        console.error("Error fetching blogs:", e);
+      }
+      setLoading(false);
+    }
+    fetchBlogs();
+  }, []);
+
+  const displayBlogs = dbBlogs.length > 0 ? dbBlogs : localBlogs;
+
   return (
     <main className="bg-background min-h-screen">
       <Navigation />
@@ -69,17 +99,30 @@ export default function BlogsPage() {
           {/* Header Section removed since we have a Hero now */}
 
           {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-20">
-            {blogs.map((blog) => (
-              <Link href={`/blogs/${blog.id}`} key={blog.id}>
-                <a className="group cursor-pointer flex flex-col h-full">
+          {loading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-20">
+              {displayBlogs.map((blog) => (
+                <div 
+                  key={blog.id} 
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    setLocation(`/blogs/${blog.id}`);
+                  }}
+                  className="group cursor-pointer flex flex-col h-full"
+                >
                   {/* Image */}
-                  <div className="overflow-hidden rounded-2xl mb-6 aspect-[4/3] relative">
-                    <img 
-                      src={blog.image} 
-                      alt={blog.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                  <div className="overflow-hidden rounded-2xl mb-6 aspect-[4/3] relative bg-slate-100">
+                    {blog.image && (
+                      <img 
+                        src={blog.image} 
+                        alt={blog.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    )}
                   </div>
 
                   {/* Content */}
@@ -105,10 +148,10 @@ export default function BlogsPage() {
                       </div>
                     </div>
                   </div>
-                </a>
-              </Link>
-            ))}
-          </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 
 export function PagePreloader() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => {
+    return !sessionStorage.getItem("has_seen_preloader");
+  });
 
   useEffect(() => {
+    if (!isVisible) return;
+
     // Wait for the window to load
     const handleLoad = () => {
       gsap.to(".page-preloader", {
         opacity: 0,
         duration: 0.6,
         ease: "power2.inOut",
-        onComplete: () => setIsVisible(false)
+        onComplete: () => {
+          setIsVisible(false);
+          sessionStorage.setItem("has_seen_preloader", "true");
+        }
       });
     };
 
@@ -25,7 +32,7 @@ export function PagePreloader() {
     }
 
     return () => window.removeEventListener("load", handleLoad);
-  }, []);
+  }, [isVisible]);
 
   if (!isVisible) return null;
 

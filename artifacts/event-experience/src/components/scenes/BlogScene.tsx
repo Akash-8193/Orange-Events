@@ -1,13 +1,33 @@
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import { blogs } from "@/data/blogs";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 
 export function BlogScene() {
-  // Take only the first 3 blogs for the homepage
-  const homepageBlogs = blogs.slice(0, 3);
+  const [, setLocation] = useLocation();
+  const [dbBlogs, setDbBlogs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      if (!import.meta.env.VITE_SUPABASE_URL) return;
+      try {
+        const { data } = await supabase.from("site_content").select("*").eq("key", "blogs_list").single();
+        if (data && data.content) {
+          setDbBlogs(JSON.parse(data.content));
+        }
+      } catch (e) {
+        console.error("Error parsing blogs", e);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  const displayBlogs = dbBlogs.length > 0 ? dbBlogs : blogs;
+  const homepageBlogs = displayBlogs.slice(0, 3);
 
   return (
     <section className="py-24 bg-white relative">
@@ -42,30 +62,45 @@ export function BlogScene() {
             </RevealAnimation>
 
             <RevealAnimation delay={0.5} className="hidden md:block">
-              <Link href="/blogs">
-                <span className="premium-button cursor-pointer bg-[#d94838] hover:bg-[#b93a2b] text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2">
-                  View All Blogs
-                  <ArrowUpRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
-                </span>
-              </Link>
+              <span 
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  setLocation("/blogs");
+                }}
+                className="premium-button cursor-pointer bg-[#d94838] hover:bg-[#b93a2b] text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2"
+              >
+                View All Blogs
+                <ArrowUpRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+              </span>
             </RevealAnimation>
           </div>
         </div>
 
         {/* Mobile View All Button */}
         <div className="flex justify-center mb-12 md:hidden">
-          <Link href="/blogs">
-            <span className="premium-button cursor-pointer bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2">
-              View All Blogs
-              <ArrowUpRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
-            </span>
-          </Link>
+          <span 
+            onClick={() => {
+              window.scrollTo(0, 0);
+              setLocation("/blogs");
+            }}
+            className="premium-button cursor-pointer bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg inline-flex items-center gap-2"
+          >
+            View All Blogs
+            <ArrowUpRight className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+          </span>
         </div>
 
         {/* Blog Grid */}
         <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {homepageBlogs.map((blog) => (
-            <div key={blog.id} className="premium-card group cursor-pointer flex flex-col h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300">
+            <div 
+              key={blog.id} 
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setLocation(`/blogs/${blog.id}`);
+              }}
+              className="premium-card group cursor-pointer flex flex-col h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+            >
               {/* Image */}
               <div className="overflow-hidden rounded-t-2xl mb-6 aspect-[4/3] relative">
                 <img 

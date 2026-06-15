@@ -1,17 +1,56 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRoute, useLocation, Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { blogs } from "@/data/blogs";
+import { blogs as localBlogs } from "@/data/blogs";
 import { blogContents } from "@/data/blogContents";
+import { supabase } from "@/lib/supabase";
 
 export default function BlogDetails() {
   const [match, params] = useRoute("/blogs/:id");
   const [, setLocation] = useLocation();
 
+  const [blog, setBlog] = useState<any>(null);
+  const [content, setContent] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     // Scroll to top when page loads
     window.scrollTo(0, 0);
+
+    async function fetchBlogDetails() {
+      if (!params?.id) return;
+      
+      let foundBlog = null;
+      let foundContent = null;
+
+      if (import.meta.env.VITE_SUPABASE_URL) {
+        try {
+          const { data } = await supabase.from("site_content").select("content").eq("key", "blogs_list").single();
+          if (data && data.content) {
+            const items = JSON.parse(data.content);
+            const dbBlog = items.find((b: any) => b.id === params.id);
+            if (dbBlog) {
+              foundBlog = dbBlog;
+              foundContent = dbBlog.content;
+            }
+          }
+        } catch (e) {
+          console.error("Error fetching blog details:", e);
+        }
+      }
+
+      if (!foundBlog) {
+        foundBlog = localBlogs.find(b => b.id === params.id);
+        foundContent = blogContents[params.id];
+      }
+
+      setBlog(foundBlog);
+      setContent(foundContent);
+      setLoading(false);
+    }
+
+    fetchBlogDetails();
   }, [params?.id]);
 
   if (!match || !params?.id) {
@@ -19,8 +58,13 @@ export default function BlogDetails() {
     return null;
   }
 
-  const blog = blogs.find(b => b.id === params.id);
-  const content = blogContents[params.id];
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (!blog) {
     setLocation("/blogs");
@@ -41,12 +85,13 @@ export default function BlogDetails() {
         
         {/* Back button */}
         <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20">
-          <Link href="/blogs">
-            <a className="flex items-center gap-2 text-white/80 hover:text-white transition-colors uppercase tracking-widest text-xs font-semibold backdrop-blur-md bg-black/30 px-5 py-2.5 rounded-full border border-white/20 hover:bg-black/60">
-              <ArrowLeft size={16} />
-              Back to Blogs
-            </a>
-          </Link>
+          <button 
+            onClick={() => setLocation("/blogs")}
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors uppercase tracking-widest text-xs font-semibold backdrop-blur-md bg-black/30 px-5 py-2.5 rounded-full border border-white/20 hover:bg-black/60"
+          >
+            <ArrowLeft size={16} />
+            Back to Blogs
+          </button>
         </div>
 
         {/* Title */}
