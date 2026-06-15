@@ -67,7 +67,7 @@ export function HeroScene() {
       {/* Text overlay */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
         <div
-          className="text-center px-4 sm:px-8 md:px-16 py-8 md:py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl mx-4 sm:mx-0 w-full max-w-[95vw] sm:max-w-auto"
+          className="text-center px-4 sm:px-8 md:px-16 py-8 md:py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl mx-4 sm:mx-0 w-full max-w-[95vw]"
         >
           <p
             className="text-[10px] md:text-sm font-semibold uppercase text-white mb-4 md:mb-6 tracking-[0.2em] md:tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
@@ -76,9 +76,9 @@ export function HeroScene() {
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
-              className="font-serif text-white tracking-widest mb-3 whitespace-nowrap"
+              className="font-serif text-white tracking-widest mb-3 leading-tight"
               style={{
-                fontSize: "min(6.5vw, 8rem)",
+                fontSize: "clamp(3rem, 6vw, 8rem)",
                 textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)"
               }}
             >
