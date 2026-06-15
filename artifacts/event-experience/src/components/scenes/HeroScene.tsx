@@ -76,9 +76,9 @@ export function HeroScene() {
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
-              className="font-serif text-white tracking-widest mb-3 leading-tight"
+              className="font-serif text-white tracking-widest mb-3 whitespace-nowrap"
               style={{
-                fontSize: "clamp(3rem, 6vw, 8rem)",
+                fontSize: "min(6.5vw, 8rem)",
                 textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)"
               }}
             >
