@@ -51,57 +51,57 @@ export function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1.0 }}
-        className={`fixed left-2 right-2 md:left-6 md:right-6 lg:left-10 lg:right-10 xl:left-12 xl:right-12 z-50 transition-all duration-500 overflow-hidden rounded-full shadow-2xl border border-white/10 ${
-          isScrolled ? "h-16 top-3" : "h-20 top-5"
+        className={`fixed left-4 right-4 md:left-6 md:right-6 lg:left-8 lg:right-8 xl:left-12 xl:right-12 z-50 transition-all duration-500 overflow-hidden rounded-full shadow-2xl border border-white/10 ${
+          isScrolled ? "h-12 md:h-14 top-2" : "h-14 md:h-16 top-4"
         }`}
       >
         <div className="absolute inset-0 z-0">
           <img 
             src={neonHeaderBg} 
             alt="Premium Neon Header" 
-            className="w-full h-full object-cover brightness-110 scale-[1.05]" 
+            className="w-full h-full object-cover brightness-110 blur-sm scale-[1.05]" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
         </div>
 
-        <div className="relative z-10 container mx-auto h-full px-6 md:px-12 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
+        <div className="relative z-10 w-full h-full px-6 md:px-10 lg:px-12 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
           <div className="flex items-center justify-start">
             <a href="#" className="flex flex-col leading-none hover-target">
-              <span className="text-lg md:text-2xl font-serif tracking-[0.15em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <span className="text-xl md:text-[1.35rem] font-serif tracking-[0.2em] text-white drop-shadow-md">
                 ORANGE EVENTS
               </span>
-              <span className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+              <span className="text-[8px] md:text-[9px] tracking-[0.25em] uppercase text-white/90 font-medium drop-shadow-sm mt-0.5 ml-0.5">
                 &amp; Conferences Pvt. Ltd.
               </span>
             </a>
           </div>
 
-          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-8">
+          <div className="hidden md:flex items-center justify-center gap-5 lg:gap-8 xl:gap-10">
             {links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs uppercase tracking-widest text-white/90 hover:text-white font-medium drop-shadow-md hover:drop-shadow-xl transition-all hover-target"
+                className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] md:tracking-[0.25em] text-white hover:text-white/80 drop-shadow-md transition-all hover-target"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center justify-end gap-3 xl:gap-6">
-            <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover-target text-white/80 hover:text-white transition-colors">
-              <Instagram size={20} />
+          <div className="hidden md:flex items-center justify-end gap-5 xl:gap-7">
+            <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover-target text-white hover:text-white/80 transition-colors drop-shadow-md">
+              <Instagram size={20} strokeWidth={1.5} />
             </a>
-            <a href="https://www.facebook.com/orangeeventsandconferences/#" target="_blank" rel="noopener noreferrer" className="hover-target text-white/80 hover:text-white transition-colors">
-              <Facebook size={20} />
+            <a href="https://www.facebook.com/orangeeventsandconferences/#" target="_blank" rel="noopener noreferrer" className="hover-target text-white hover:text-white/80 transition-colors drop-shadow-md">
+              <Facebook size={20} strokeWidth={1.5} />
             </a>
-            <a href="mailto:info@orangeevents.in" className="hover-target text-white/80 hover:text-white transition-colors">
-              <Mail size={20} />
+            <a href="mailto:info@orangeevents.in" className="hover-target text-white hover:text-white/80 transition-colors drop-shadow-md">
+              <Mail size={20} strokeWidth={1.5} />
             </a>
           </div>
 
-          <div className="flex lg:hidden items-center gap-4">
+          <div className="flex md:hidden items-center gap-4">
             <button
               className="hover-target text-white"
               onClick={() => setIsMobileMenuOpen(true)}

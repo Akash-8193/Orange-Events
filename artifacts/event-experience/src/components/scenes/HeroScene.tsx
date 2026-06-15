@@ -65,31 +65,31 @@ export function HeroScene() {
       {/* 3D layer removed for performance optimization */}
 
       {/* Text overlay */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4 mt-16 md:mt-0">
         <div
-          className="text-center px-4 sm:px-8 md:px-16 py-8 md:py-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl mx-4 sm:mx-0 w-full max-w-[95vw]"
+          className="text-center px-4 sm:px-8 md:px-16 py-[min(2rem,4vh)] md:py-[min(3rem,6vh)] rounded-3xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl mx-4 sm:mx-0 w-full max-w-[95vw] sm:max-w-auto"
         >
           <p
-            className="text-[10px] md:text-sm font-semibold uppercase text-white mb-4 md:mb-6 tracking-[0.2em] md:tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            className="text-[10px] md:text-sm font-semibold uppercase text-white mb-[min(1rem,2vh)] md:mb-[min(1.5rem,3vh)] tracking-[0.2em] md:tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             {welcomeText}
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
-              className="font-serif text-white tracking-widest mb-3 whitespace-nowrap"
+              className="font-serif text-white tracking-widest mb-[min(0.75rem,1.5vh)] whitespace-nowrap"
               style={{
-                fontSize: "min(6.5vw, 8rem)",
+                fontSize: "min(6.5vw, 15vh, 8rem)",
                 textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)"
               }}
             >
               {mainTitle}
             </h1>
           </TextReveal>
-          <p className="text-sm md:text-base font-semibold tracking-[0.25em] uppercase text-white mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          <p className="text-sm md:text-[min(1rem,2.5vh)] font-semibold tracking-[0.25em] uppercase text-white mb-[min(1.25rem,2.5vh)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             {subTitle}
           </p>
-          <div className="w-16 h-[2px] bg-primary mx-auto mb-5 shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
-          <p className="text-base md:text-xl font-medium tracking-[0.1em] text-white/90 italic font-serif drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          <div className="w-16 h-[2px] bg-primary mx-auto mb-[min(1.25rem,2.5vh)] shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
+          <p className="text-base md:text-[min(1.25rem,3vh)] font-medium tracking-[0.1em] text-white/90 italic font-serif drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             {tagline}
           </p>
         </div>
