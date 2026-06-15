@@ -62,16 +62,7 @@ export function HeroScene() {
         {/* Overlays removed as requested to keep the image 100% natural */}
       </div>
 
-      {/* 3D layer on top of image (particles / floating shapes) */}
-      {webglOk !== null && (
-        <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none">
-          {webglOk ? (
-            <Suspense fallback={null}>
-              <Hero3DCanvas />
-            </Suspense>
-          ) : null}
-        </div>
-      )}
+      {/* 3D layer removed for performance optimization */}
 
       {/* Text overlay */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">

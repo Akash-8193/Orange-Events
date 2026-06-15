@@ -402,28 +402,27 @@ export function ContactScene() {
                 </button>
               </div>
 
-              {/* Newsletter Row */}
+              {/* Creative Brand Message Row */}
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12">
-                <div className="w-full lg:w-1/2">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Newsletter</h3>
-                  <form className="relative max-w-md" onSubmit={e => e.preventDefault()}>
-                    <input
-                      type="email"
-                      placeholder="email"
-                      className="w-full bg-[#5d2f1d] text-white placeholder:text-white/50 px-6 py-5 rounded-[2rem] focus:outline-none focus:ring-2 focus:ring-primary text-lg"
-                    />
-                    <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary hover:text-white transition-colors">
-                      <ArrowRight className="w-8 h-8" />
-                    </button>
-                  </form>
-                  <p className="text-xs text-[#4a2b16]/70 mt-3 font-bold px-2">
-                    We promise, no spam.
+                <div className="w-full lg:w-[60%]">
+                  <h3 className="text-3xl md:text-4xl font-serif font-bold italic mb-4 tracking-tight">
+                    Let's Create Magic Together
+                  </h3>
+                  <p className="text-base md:text-lg font-medium text-[#4a2b16]/80 leading-relaxed max-w-lg mb-8">
+                    Whether you are planning a grand corporate summit or an intimate luxury wedding, our team is dedicated to turning your vision into a breathtaking reality. Your extraordinary journey begins with a simple conversation.
                   </p>
+                  <button
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="group flex items-center gap-3 bg-[#5d2f1d] hover:bg-[#4a2b16] text-white px-8 py-4 rounded-[2rem] transition-all font-bold shadow-xl"
+                  >
+                    Start Your Journey
+                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
 
-                <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end gap-6 text-left lg:text-right">
+                <div className="w-full lg:w-[40%] flex flex-col items-start lg:items-end gap-6 text-left lg:text-right">
                   <p className="text-sm font-bold max-w-[280px] text-[#4a2b16]/90 leading-relaxed">
-                    Every week, we share updates on our latest luxury events, trends, and corporate insights. If you don't want to miss a thing, drop us your e-mail.
+                    Connect with us on our social platforms to explore our latest luxury events, trends, and inspirations.
                   </p>
 
                   {/* Social Icons */}

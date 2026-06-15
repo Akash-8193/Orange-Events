@@ -11,30 +11,16 @@ interface SmoothScrollProviderProps {
 
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.08, // Smoothness
-      smoothWheel: true,
-      wheelMultiplier: 1,
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
+    // Set native smooth scrolling
+    document.documentElement.style.scrollBehavior = "smooth";
 
     // Refresh GSAP when fonts are loaded to fix height miscalculations
     document.fonts.ready.then(() => {
       ScrollTrigger.refresh();
     });
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    
-    gsap.ticker.lagSmoothing(0);
-
     return () => {
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
-      lenis.destroy();
+      document.documentElement.style.scrollBehavior = "auto";
     };
   }, []);
 

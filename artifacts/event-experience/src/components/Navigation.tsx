@@ -22,7 +22,6 @@ export function Navigation() {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Our Works", href: "/portfolio" },
-    { name: "Journey", href: "/#journey" },
     { name: "Blogs", href: "/blogs" },
     { name: "Contact", href: "/contact" },
   ];
@@ -60,9 +59,9 @@ export function Navigation() {
           <img 
             src={neonHeaderBg} 
             alt="Premium Neon Header" 
-            className="w-full h-full object-cover brightness-110 blur-sm scale-[1.05]" 
+            className="w-full h-full object-cover brightness-110 scale-[1.05]" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70" />
         </div>
 
         <div className="relative z-10 container mx-auto h-full px-6 md:px-12 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
