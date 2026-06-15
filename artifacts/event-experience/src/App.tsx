@@ -18,6 +18,8 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { CustomCursor } from "@/components/CustomCursor";
 
+import AdminPage from "@/pages/AdminPage";
+
 function Router() {
   return (
     <>
@@ -33,6 +35,7 @@ function Router() {
         <Route path="/blogs" component={BlogsPage} />
         <Route path="/blogs/:id" component={BlogDetails} />
         <Route path="/service/:id" component={ServiceDetails} />
+        <Route path="/admin" component={AdminPage} />
         <Route component={NotFound} />
       </Switch>
     </>

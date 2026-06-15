@@ -67,7 +67,6 @@ function FloatingShapes() {
 export default function Hero3DCanvas() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 45 }} style={{ width: "100%", height: "100%" }}>
-      <color attach="background" args={["#fafaf8"]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} color="#C9A96E" />
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#F5E6E0" />

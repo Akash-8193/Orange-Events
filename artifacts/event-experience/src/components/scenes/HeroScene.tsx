@@ -2,6 +2,7 @@ import { lazy, Suspense, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import heroBg from "@assets/generated_images/oe-hero-bg.png";
 import { TextReveal } from "@/components/animations/TextReveal";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 function isWebGLAvailable(): boolean {
   try {
@@ -40,6 +41,11 @@ function HeroFallback() {
 export function HeroScene() {
   const [webglOk, setWebglOk] = useState<boolean | null>(null);
 
+  const welcomeText = useSiteContent("hero_welcome", "Welcome to");
+  const mainTitle = useSiteContent("hero_title", "ORANGE EVENTS");
+  const subTitle = useSiteContent("hero_subtitle", "& Conferences Pvt. Ltd.");
+  const tagline = useSiteContent("hero_tagline", "A good life is a collection of happy moments.");
+
   useEffect(() => {
     setWebglOk(isWebGLAvailable());
   }, []);
@@ -75,7 +81,7 @@ export function HeroScene() {
           <p
             className="text-[10px] md:text-sm font-semibold uppercase text-white mb-4 md:mb-6 tracking-[0.2em] md:tracking-[0.35em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            Welcome to
+            {welcomeText}
           </p>
           <TextReveal variant="hero" delay={0.8}>
             <h1
@@ -85,15 +91,15 @@ export function HeroScene() {
                 textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8)"
               }}
             >
-              ORANGE EVENTS
+              {mainTitle}
             </h1>
           </TextReveal>
           <p className="text-sm md:text-base font-semibold tracking-[0.25em] uppercase text-white mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            &amp; Conferences Pvt. Ltd.
+            {subTitle}
           </p>
           <div className="w-16 h-[2px] bg-primary mx-auto mb-5 shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
           <p className="text-base md:text-xl font-medium tracking-[0.1em] text-white/90 italic font-serif drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            A good life is a collection of happy moments.
+            {tagline}
           </p>
         </div>
       </div>

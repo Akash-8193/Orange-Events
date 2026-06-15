@@ -3,15 +3,20 @@ import { TextReveal } from "@/components/animations/TextReveal";
 import { RevealAnimation } from "@/components/animations/RevealAnimation";
 import imgContact from "../../assets/gallery/WhatsApp-Image-2025-02-12-at-19.56.16-1-768x1024.jpeg";
 import { useLocation } from "wouter";
-
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { Loader2 } from "lucide-react";
 export function ContactScene() {
   const [location, setLocation] = useLocation();
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [submittedMessage, setSubmittedMessage] = useState("");
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     if (href.startsWith("/#")) {
       const targetId = href.substring(1);
-      
+
       if (location !== "/") {
         setLocation("/");
         setTimeout(() => {
@@ -36,13 +41,13 @@ export function ContactScene() {
 
   return (
     <div id="contact" className="bg-[#f8f9fa] pt-12 pb-0">
-      
+
       {/* 0. Section Header with Massive Watermark */}
       <div className="mb-20 text-center relative flex flex-col items-center justify-center pt-16 overflow-hidden">
         {/* Massive Watermark Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10 w-full text-center flex justify-center items-center">
           <RevealAnimation delay={0.1}>
-            <span 
+            <span
               className="font-black text-[#4a2b16] uppercase tracking-tighter leading-none select-none whitespace-nowrap"
               style={{ fontSize: "14vw" }}
             >
@@ -58,16 +63,16 @@ export function ContactScene() {
             <span className="w-8 h-[1px] bg-primary/50" />
           </p>
         </RevealAnimation>
-        
+
         <TextReveal variant="word" delay={0.3}>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#0a1128] font-bold mb-6 leading-[1.1] relative z-10">
             Let's Plan Your <span className="italic text-primary font-normal">Next Event</span>
           </h2>
         </TextReveal>
-        
+
         <RevealAnimation delay={0.4}>
           <p className="text-slate-600 font-medium max-w-2xl mx-auto text-lg leading-relaxed relative z-10 px-4">
-            Looking for the best event management company in Noida & Delhi NCR? 
+            Looking for the best event management company in Noida & Delhi NCR?
             Get in touch with Orange Events today. Let's discuss your vision and weave success together.
           </p>
         </RevealAnimation>
@@ -75,7 +80,7 @@ export function ContactScene() {
 
       {/* 1. Split Contact Section */}
       <section className="max-w-[95rem] mx-auto flex flex-col lg:flex-row overflow-hidden bg-[#f8f9fa]">
-        
+
         {/* Left: Image & Info Cards */}
         <div className="lg:w-1/2 relative min-h-[600px] lg:min-h-[800px] rounded-r-[3rem] lg:rounded-r-[4rem] overflow-hidden">
           <img
@@ -85,20 +90,20 @@ export function ContactScene() {
           />
           {/* Gradient Overlay for better readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          
+
           {/* Info Cards Overlay */}
           <div className="absolute bottom-8 left-8 md:bottom-16 md:left-16 z-10 w-[90%] md:w-auto">
-            
+
             {/* Top Row: Call and Email */}
             <div className="flex flex-col sm:flex-row items-start gap-8 sm:gap-20 pb-8 border-b border-white/20">
-              
+
               {/* Phone Card */}
               <div>
                 <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mb-5 shadow-lg">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-white font-bold text-2xl mb-2">Call Now!</h3>
-                <p className="text-white/90 text-base leading-relaxed">+91 93508 66151<br/>+91 98111 19024</p>
+                <p className="text-white/90 text-base leading-relaxed">+91 93508 66151<br />+91 98111 19024</p>
               </div>
 
               {/* Email Card */}
@@ -109,7 +114,7 @@ export function ContactScene() {
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-white font-bold text-2xl mb-2">E-mail Us!</h3>
-                <p className="text-white/90 text-base leading-relaxed">asha@orangeevents.in<br/>vipin@orangeevents.in</p>
+                <p className="text-white/90 text-base leading-relaxed">asha@orangeevents.in<br />vipin@orangeevents.in</p>
               </div>
 
             </div>
@@ -147,49 +152,125 @@ export function ContactScene() {
           </RevealAnimation>
 
           <RevealAnimation delay={0.4}>
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="tel"
-                  placeholder="Mobile Number"
-                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-                <input
-                  type="email"
-                  placeholder="E-mail Address"
-                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-              </div>
-
-              <textarea
-                rows={5}
-                placeholder="Write your message here..."
-                className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
-              ></textarea>
-
-              <div>
+            {formStatus === "success" ? (
+              <div className="bg-primary/10 border border-primary/20 rounded-2xl p-10 text-center flex flex-col items-center justify-center animate-in fade-in zoom-in duration-500">
+                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-6 shadow-lg">
+                  <Send className="w-8 h-8" />
+                </div>
+                <h3 className="text-3xl font-serif font-bold text-[#0a1128] mb-3">Thank you for contacting us!</h3>
+                <p className="text-slate-600">We have received your message and our team will get back to you shortly.</p>
+                <div className="bg-white/50 border border-primary/10 rounded-xl p-4 mt-4 w-full text-left">
+                  <p className="text-sm font-bold text-primary mb-1">Your Message:</p>
+                  <p className="text-slate-700 whitespace-pre-wrap italic">"{submittedMessage}"</p>
+                </div>
                 <button
-                  type="submit"
-                  className="premium-button bg-primary text-white font-bold py-4 px-10 rounded-full shadow-lg inline-flex items-center gap-2"
+                  onClick={() => setFormStatus("idle")}
+                  className="mt-8 text-primary font-bold hover:underline"
                 >
-                  Send A Message
-                  <Send className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+                  Send another message
                 </button>
               </div>
-            </form>
+            ) : (
+              <form className="flex flex-col gap-6" onSubmit={async (e) => {
+                e.preventDefault();
+                setFormStatus("submitting");
+                setErrorMessage("");
+
+                const formData = new FormData(e.target as HTMLFormElement);
+
+                const first_name = formData.get("first name");
+                const last_name = formData.get("last name");
+                const email = formData.get("email");
+                const mobile = formData.get("mobile");
+                const message = formData.get("message");
+
+                try {
+                  const { error } = await supabase
+                    .from("contacts")
+                    .insert([{ 
+                      "first name": first_name, 
+                      "last name": last_name, 
+                      email, 
+                      mobile, 
+                      message 
+                    }]);
+
+                  if (error) throw error;
+
+                  setSubmittedMessage(message as string);
+                  setFormStatus("success");
+                } catch (err: any) {
+                  setFormStatus("error");
+                  setErrorMessage(err.message || "Something went wrong. Please try again.");
+                }
+              }}>
+                {formStatus === "error" && (
+                  <div className="bg-red-50 text-red-600 p-4 rounded-xl border border-red-200 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input
+                    name="first name"
+                    required
+                    type="text"
+                    placeholder="First Name"
+                    className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                  <input
+                    name="last name"
+                    type="text"
+                    placeholder="Last Name"
+                    className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input
+                    name="mobile"
+                    required
+                    type="tel"
+                    placeholder="Mobile Number"
+                    className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="E-mail Address"
+                    className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                </div>
+
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Write your message here..."
+                  className="w-full bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                ></textarea>
+
+                <div>
+                  <button
+                    type="submit"
+                    disabled={formStatus === "submitting"}
+                    className="premium-button bg-primary text-white font-bold py-4 px-10 rounded-full shadow-lg inline-flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === "submitting" ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send A Message
+                        <Send className="premium-button-arrow w-4 h-4 transition-transform duration-400" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
           </RevealAnimation>
         </div>
       </section>
@@ -203,9 +284,9 @@ export function ContactScene() {
           </span>
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#0a1128] mb-16 font-serif leading-tight">
-          Reach out and let's weave success <br className="hidden md:block"/> together
+          Reach out and let's weave success <br className="hidden md:block" /> together
         </h2>
-        
+
         <div className="w-full h-[500px] grayscale hover:grayscale-0 transition-all duration-700 relative z-10">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.882194576307!2d77.34861621257125!3d28.585573426767595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce50f3b468cb5%3A0x6b772594539db1ee!2sSector%2059%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1717436098263!5m2!1sen!2sin"
@@ -218,19 +299,19 @@ export function ContactScene() {
           ></iframe>
         </div>
       </section>
-      
+
       {/* Footer Wrapper for Cutout Effect */}
       <div className="w-full relative z-0">
-        
+
         {/* 4. Footer Section with Clip Path */}
-        <footer 
+        <footer
           className="bg-[#4a2b16] text-white pt-20 pb-12 px-4 md:px-12 relative -mt-4"
           style={{ clipPath: 'polygon(0 2rem, 3vw 2rem, calc(3vw + 2rem) 4rem, 28vw 4rem, calc(28vw + 4rem) 0, 75vw 0, calc(75vw + 4rem) 4rem, 100% 4rem, 100% 100%, 0 100%)' }}
         >
-          
+
           {/* Top Links */}
           <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-24 mt-8">
-            
+
             {/* Brand & Description */}
             <div className="lg:col-span-1">
               <h3 className="font-serif text-4xl font-bold italic mb-2 text-[#f5f0e6]">Orange</h3>
@@ -241,7 +322,7 @@ export function ContactScene() {
                 You will witness originality and creativity to create some of the most inspiring, unique and exciting celebrations with us. We approach every project with meticulous attention to detail and obsessive precision.
               </p>
             </div>
-            
+
             {/* Quick Links */}
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:px-8">
               <div>
@@ -263,22 +344,22 @@ export function ContactScene() {
                 </div>
               </div>
             </div>
-            
+
             {/* Contact Info */}
             <div className="lg:col-span-1 flex flex-col gap-8 text-white/80">
               <div className="flex gap-4 items-start">
                 <MapPin className="w-6 h-6 mt-1 shrink-0 text-white" />
                 <div>
                   <h4 className="text-xl font-bold text-white mb-2 font-serif">Address</h4>
-                  <p className="text-sm leading-relaxed">F-104, 1st Floor, A-1, Sector-59,<br/>Noida-201307</p>
+                  <p className="text-sm leading-relaxed">F-104, 1st Floor, A-1, Sector-59,<br />Noida-201307</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-4 items-start">
                 <Phone className="w-6 h-6 mt-1 shrink-0 text-white" />
                 <div>
                   <h4 className="text-xl font-bold text-white mb-2 font-serif">Contact No</h4>
-                  <p className="text-sm leading-relaxed">+91 93508 66151<br/>+91 98111 19024</p>
+                  <p className="text-sm leading-relaxed">+91 93508 66151<br />+91 98111 19024</p>
                 </div>
               </div>
 
@@ -286,7 +367,7 @@ export function ContactScene() {
                 <Mail className="w-6 h-6 mt-1 shrink-0 text-white" />
                 <div>
                   <h4 className="text-xl font-bold text-white mb-2 font-serif">Email</h4>
-                  <p className="text-sm leading-relaxed hover:text-primary transition-colors"><a href="mailto:asha@orangeevents.in">asha@orangeevents.in</a><br/><a href="mailto:vipin@orangeevents.in">vipin@orangeevents.in</a></p>
+                  <p className="text-sm leading-relaxed hover:text-primary transition-colors"><a href="mailto:asha@orangeevents.in">asha@orangeevents.in</a><br /><a href="mailto:vipin@orangeevents.in">vipin@orangeevents.in</a></p>
                 </div>
               </div>
             </div>
@@ -295,7 +376,7 @@ export function ContactScene() {
 
           {/* Bottom Card Area */}
           <div className="max-w-[90rem] mx-auto relative z-10 px-4 md:px-0">
-            
+
             {/* The Slanted Tab */}
             <div className="flex justify-end relative -mb-[1px]">
               <div className="bg-[#f5f0e6] pl-12 pr-8 py-4 rounded-tr-3xl md:rounded-tr-[3rem] relative text-[#4a2b16] font-bold text-[10px] md:text-sm tracking-widest uppercase">
@@ -307,14 +388,14 @@ export function ContactScene() {
 
             {/* The Main Cream Card */}
             <div className="bg-[#f5f0e6] rounded-tl-3xl rounded-b-3xl md:rounded-tl-[3rem] md:rounded-b-[3rem] p-8 md:p-16 text-[#4a2b16] relative w-full pt-12 md:pt-16 shadow-2xl">
-              
+
               {/* Header Row */}
               <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between mb-16 gap-8">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tight">
                   Orange Events<sup className="text-xl sm:text-2xl md:text-4xl ml-1 font-sans">™</sup>
                 </h2>
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-colors font-bold whitespace-nowrap shadow-xl text-sm tracking-wide"
                 >
                   Work together?
@@ -326,9 +407,9 @@ export function ContactScene() {
                 <div className="w-full lg:w-1/2">
                   <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Newsletter</h3>
                   <form className="relative max-w-md" onSubmit={e => e.preventDefault()}>
-                    <input 
-                      type="email" 
-                      placeholder="email" 
+                    <input
+                      type="email"
+                      placeholder="email"
                       className="w-full bg-[#5d2f1d] text-white placeholder:text-white/50 px-6 py-5 rounded-[2rem] focus:outline-none focus:ring-2 focus:ring-primary text-lg"
                     />
                     <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary hover:text-white transition-colors">
@@ -344,7 +425,7 @@ export function ContactScene() {
                   <p className="text-sm font-bold max-w-[280px] text-[#4a2b16]/90 leading-relaxed">
                     Every week, we share updates on our latest luxury events, trends, and corporate insights. If you don't want to miss a thing, drop us your e-mail.
                   </p>
-                  
+
                   {/* Social Icons */}
                   <div className="flex items-center gap-6 mt-2">
                     <a href="https://www.instagram.com/orangeeventsandconferences?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Instagram className="w-7 h-7" /></a>
@@ -353,7 +434,7 @@ export function ContactScene() {
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </footer>
